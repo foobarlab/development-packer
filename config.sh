@@ -27,7 +27,15 @@ export BUILD_KEEP_MAX_CLOUD_BOXES=7       # set the maximum number of boxes to k
 
 # ----------------------------! do not edit below this line !----------------------------
 
-export BUILD_BOX_RELEASE_NOTES="Development environment for various programming languages and stacks. See README for details."     # edit this to reflect actual setup
+BUILD_BOX_RELEASE_NOTES="Development environment for various programming languages and stacks. See README for details."     # edit this to reflect actual setup
+
+if [[ -n "$BUILD_INCLUDE_ANSIBLE" ]]; then
+    if [ "$BUILD_INCLUDE_ANSIBLE" = true ]; then
+        BUILD_BOX_RELEASE_NOTES="${BUILD_BOX_RELEASE_NOTES}, Ansible 2.8"     # edit this to reflect actual setup
+    fi
+fi
+
+export BUILD_BOX_RELEASE_NOTES
 
 export BUILD_TIMESTAMP="$(date --iso-8601=seconds)"
 
