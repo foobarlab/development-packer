@@ -21,6 +21,7 @@ export BUILD_BOX_MEMORY="2048"
 export BUILD_BOX_PROVIDER="virtualbox"
 
 export BUILD_KERNEL=false                 # set to true to build a new kernel
+export BUILD_INCLUDE_ANSIBLE=true         # if true, include Ansible for automation
 
 export BUILD_KEEP_MAX_CLOUD_BOXES=7       # set the maximum number of boxes to keep in Vagrant Cloud
 

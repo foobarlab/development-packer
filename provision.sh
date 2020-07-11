@@ -15,6 +15,7 @@ for script in \
   10-prepare \
   20-kernel \
   30-system-update \
+  40-ansible \
   90-postprocess \
   99-cleanup
 do

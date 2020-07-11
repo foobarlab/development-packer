@@ -45,7 +45,8 @@
           "BUILD_BOX_DESCRIPTION={{user `box_description`}}",
           "BUILD_BOX_VERSION={{user `box_version`}}",
 		  "BUILD_TIMESTAMP={{user `timestamp`}}",
-		  "BUILD_KERNEL={{user `kernel`}}"
+		  "BUILD_KERNEL={{user `kernel`}}",
+		  "BUILD_INCLUDE_ANSIBLE={{user `include_ansible`}}"
       ],
       "expect_disconnect": false
   }],
@@ -66,6 +67,7 @@
     "box_version": "{{env `BUILD_BOX_VERSION`}}",
     "timestamp": "{{env `BUILD_TIMESTAMP`}}",
     "kernel": "{{env `BUILD_KERNEL`}}",
+    "include_ansible": "{{env `BUILD_INCLUDE_ANSIBLE`}}",
     "headless": "true",
     "username": "vagrant",
     "password": "vagrant"
