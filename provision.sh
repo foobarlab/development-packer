@@ -16,6 +16,7 @@ for script in \
   20-kernel \
   30-system-update \
   40-ansible \
+  50-software \
   90-postprocess \
   99-cleanup
 do
