@@ -5,30 +5,30 @@ system("./config.sh >/dev/null")
 
 $script_clean_kernel = <<SCRIPT
 # clean stale kernel files
-sudo eclean-kernel
-sudo ego boot update
+eclean-kernel
+ego boot update
 # clean kernel sources
 cd /usr/src/linux
-sudo make distclean
+make distclean
 SCRIPT
 
 $script_cleanup = <<SCRIPT
 # stop services
-sudo /etc/init.d/rsyslog stop
+/etc/init.d/rsyslog stop
 # delete logs (comment-in for debugging!)
-sudo rm -rf /var/log/*
-sudo sync
+rm -rf /var/log/*
+sync
 # run zerofree at last to squeeze the last bit
 # /boot (initially not mounted)
-sudo mount -o ro /dev/sda1
-sudo zerofree -v /dev/sda1
+mount -o ro /dev/sda1
+zerofree -v /dev/sda1
 # /
-sudo mount -o remount,ro /dev/sda4
-sudo zerofree -v /dev/sda4
+mount -o remount,ro /dev/sda4
+zerofree -v /dev/sda4
 # swap
-sudo swapoff -v /dev/sda3
-sudo bash -c 'dd if=/dev/zero of=/dev/sda3 2>/dev/null' || true
-sudo mkswap /dev/sda3
+swapoff -v /dev/sda3
+bash -c 'dd if=/dev/zero of=/dev/sda3 2>/dev/null' || true
+mkswap /dev/sda3
 SCRIPT
 
 Vagrant.configure("2") do |config|
@@ -59,9 +59,23 @@ Vagrant.configure("2") do |config|
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-vm-entry", "on"]
     #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
   end
+  # public network (bridged)
+  config.vm.network "public_network", use_dhcp_assigned_default_route: true, mac: "0800273CA134", bridge: [
+    "eth0",
+    # TODO add alternative network cards here, see: https://www.vagrantup.com/docs/networking/public_network.html
+  ]
   config.ssh.pty = true
   config.ssh.insert_key = false
   config.vm.synced_folder '.', '/vagrant', disabled: true
-  config.vm.provision "clean_kernel", type: "shell", inline: $script_clean_kernel
-  config.vm.provision "cleanup", type: "shell", inline: $script_cleanup
+  config.vm.provision "clean_kernel", type: "shell", inline: $script_clean_kernel, privileged: true
+  config.vm.provision "cleanup", type: "shell", inline: $script_cleanup, privileged: true
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.install = false
+    ansible.verbose = true
+    ansible.compatibility_mode = "2.0"
+    ansible.playbook = "provision.yml"
+    ansible.extra_vars = {
+		box_version: "#{ENV['BUILD_BOX_VERSION']}"
+	}
+  end
 end

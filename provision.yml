@@ -1,0 +1,8 @@
+---
+# Entry point for Vagrant provisioning
+- hosts: all
+  become: yes
+  become_method: sudo
+  user: vagrant
+  roles:
+    - common
