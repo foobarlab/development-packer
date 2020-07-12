@@ -45,7 +45,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
 #>=dev-lang/erlang-22
 DATA
 
-# always copy kernel.config
+# always copy kernel.config to current kernel src
 sudo cp -f /usr/src/kernel.config /usr/src/linux/.config
 
 sudo ego sync

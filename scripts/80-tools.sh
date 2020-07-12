@@ -8,5 +8,5 @@ fi
 # some network related utils
 sudo emerge -vt net-dns/bind-tools net-analyzer/iptraf-ng net-analyzer/nmap net-analyzer/openbsd-netcat net-analyzer/iftop
 
-# house keeping utils
+# housekeeping utils
 #sudo emerge -vt sys-apps/bleachbit
