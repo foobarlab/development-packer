@@ -46,7 +46,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
 DATA
 
 # always copy kernel.config
-cp -f /usr/src/kernel.config /usr/src/linux/.config
+sudo cp -f /usr/src/kernel.config /usr/src/linux/.config
 
 sudo ego sync
 sudo epro list
