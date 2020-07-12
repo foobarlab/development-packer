@@ -28,6 +28,17 @@ sudo sed -i 's/BUILD_BOX_VERSION/'$BUILD_BOX_VERSION'/g' /etc/issue
 sudo sed -i 's/BUILD_BOX_NAME/'$BUILD_BOX_NAME'/g' /etc/issue
 sudo cat /etc/issue
 
+sudo mkdir -p /etc/portage/package.use
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-openjdk
+dev-java/openjdk headless-awt
+>=app-text/ghostscript-gpl-9.26 cups
+DATA
+
+sudo mkdir -p /etc/portage/package.license
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-openjdk
+>=media-libs/libpng-1.6.37 libpng2
+DATA
+
 sudo ego sync
 sudo epro list
 sudo env-update

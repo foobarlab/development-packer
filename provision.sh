@@ -16,7 +16,10 @@ for script in \
   20-kernel \
   30-system-update \
   40-ansible \
-  50-software \
+  50-languages \
+  60-databases \
+  70-services \
+  80-tools \
   90-postprocess \
   99-cleanup
 do
