@@ -28,7 +28,7 @@ sudo sed -i 's/BUILD_BOX_VERSION/'$BUILD_BOX_VERSION'/g' /etc/issue
 sudo sed -i 's/BUILD_BOX_NAME/'$BUILD_BOX_NAME'/g' /etc/issue
 sudo cat /etc/issue
 
-sudo epro list
 sudo ego sync
+sudo epro list
 sudo env-update
 source /etc/profile
