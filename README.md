@@ -12,10 +12,10 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
  - NAT Networking using DHCP (virtio)
  - Vagrant user *vagrant* with password *vagrant* (can get superuser via sudo without password), additionally using the default SSH authorized keys provided by Vagrant (see https://github.com/hashicorp/vagrant/tree/master/keys) 
  - Optional: build your own Debian Kernel 5.4
- - *Ansible* (for automation, default: enabled)
  - List of installed software:
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
-	- TODO
+    - Optional: *Ansible* (for automation, default: enabled)
+    - *Elixir 1.8.2*, *Erlang OTP 22.0.2*
 
 ### Download pre-build images
 
