@@ -16,6 +16,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
     - *Elixir 1.8.2*, *Erlang OTP 22.0.2*
+    - *Node.js 12.9.0*
 
 ### Download pre-build images
 

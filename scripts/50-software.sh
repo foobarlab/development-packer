@@ -8,3 +8,5 @@ fi
 # TODO install more software, configure with ansible
 
 sudo emerge -vt dev-lang/elixir dev-lang/erlang
+
+sudo emerge -vt net-libs/nodejs
