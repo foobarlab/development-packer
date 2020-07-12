@@ -15,8 +15,12 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
  - List of installed software:
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
-    - *Elixir 1.8.2*, *Erlang OTP 22.0.2*
-    - *Node.js 12.9.0*
+    - Languages: *Elixir*, *Erlang OTP*, *Node.js/JavaScript*, *PHP*, *Go*, *Java*, *Rust*, *Ruby*, *Python*, *Lua*
+    - Build tools: *Ant*, *Maven*, *Ivy*
+    - Web Servers: *Apache*, *Nginx*, *Varnish*
+    - Databases: *MariaDB*, *PostgreSQL*, *Sqlite*, *Redis*, *CouchDB*
+    - Virtualization: *Docker*, *QEMU*
+    - Network tools: *iptraf-ng*, *nmap*, *bindtools*, *netcat*, *iftop*
 
 ### Download pre-build images
 

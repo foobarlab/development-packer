@@ -14,7 +14,7 @@ fi
 
 sudo emerge -vt dev-db/mariadb
 
-# PostgresSQL
+# PostgreSQL
 
 sudo emerge -vt dev-db/postgresql
 #sudo emerge -vt app-eselect/eselect-postgresql
@@ -22,5 +22,9 @@ sudo emerge -vt dev-db/postgresql
 # Sqlite
 
 sudo emerge -vt dev-db/sqlite
+
+# Redis
+
+sudo emerge -vt dev-db/redis
 
 # TODO couchdb

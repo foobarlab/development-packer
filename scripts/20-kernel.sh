@@ -17,6 +17,7 @@ else
     fi
 fi
 
+# FIXME copy only if file exists, otherwise skip?
 sudo mv -f /usr/src/kernel.config /usr/src/kernel.config.old
 sudo cp ${SCRIPTS}/scripts/kernel.config /usr/src
 

@@ -20,6 +20,7 @@ for script in \
   60-databases \
   70-services \
   80-tools \
+  85-docker \
   90-postprocess \
   99-cleanup
 do

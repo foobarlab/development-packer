@@ -39,6 +39,15 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-openjdk
 >=media-libs/libpng-1.6.37 libpng2
 DATA
 
+sudo mkdir -p /etc/portage/package.mask
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
+# FIXME testing
+#>=dev-lang/erlang-22
+DATA
+
+# always copy kernel.config
+cp -f /usr/src/kernel.config /usr/src/linux/.config
+
 sudo ego sync
 sudo epro list
 sudo env-update
