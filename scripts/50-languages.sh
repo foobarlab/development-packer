@@ -37,7 +37,7 @@ sudo emerge -vt app-vim/vim-go
 # Java
 
 sudo emerge -vt dev-java/openjdk
-sudo emerge -vt dev-java/ant dev-java/maven-bin dev-java/ant-ivy
+#sudo emerge -vt dev-java/ant dev-java/maven-bin dev-java/ant-ivy
 
 # LUA
 
