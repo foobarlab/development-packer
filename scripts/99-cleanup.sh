@@ -5,6 +5,9 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
+user_id=$(id -u)
+
 sudo env-update
 source /etc/profile
 
