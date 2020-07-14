@@ -19,8 +19,8 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Build tools: *Ant*, *Maven*, *Ivy*
     - Web Servers: *Apache*, *Nginx*, *Varnish*
     - Databases: *MariaDB*, *PostgreSQL*, *Sqlite*, *Redis*, *CouchDB*
-    - Virtualization: *Docker*, *QEMU*
-    - Network tools: *iptraf-ng*, *nmap*, *bindtools*, *netcat*, *iftop*
+    - Containers: *Docker*
+    - Network tools: *apachetop*, *iperf*, *ethtool*, *iptraf-ng*, *nmap*, *bindtools*, *netcat*, *iftop*
 
 ### Download pre-build images
 
