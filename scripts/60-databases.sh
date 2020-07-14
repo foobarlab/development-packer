@@ -5,20 +5,8 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-# MySQL (Maria DB)
-
 sudo emerge -vt dev-db/mariadb
-
-# PostgreSQL
-
 sudo emerge -vt dev-db/postgresql
-
-# Sqlite
-
 sudo emerge -vt dev-db/sqlite
-
-# Redis
-
-#sudo emerge -vt dev-db/redis	# FIXME
-
-# TODO couchdb
+#sudo emerge -vt dev-db/redis
+#sudo emerge -vt dev-db/couchdb

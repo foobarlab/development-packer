@@ -20,7 +20,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Web Servers: *Apache*, *Nginx*, *Varnish*
     - Databases: *MariaDB*, *PostgreSQL*, *Sqlite*, *Redis*, *CouchDB*
     - Containers: *Docker*
-    - Network tools: *apachetop*, *iperf*, *ethtool*, *iptraf-ng*, *nmap*, *bindtools*, *netcat*, *iftop*
+    - Network tools: *iperf*, *ethtool*, *iptraf-ng*, *nmap*, *bindtools*, *netcat*, *iftop*, *tcpdump*
 
 ### Download pre-build images
 

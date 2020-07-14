@@ -5,34 +5,37 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-# apache
+# ---- apache
 
 sudo emerge -vt www-servers/apache
+#sudo emerge -vt app-admin/apachetop
 
-# nginx
+
+# ---- nginx
 
 # workaround (FL-6798):
 cd /var/git/meta-repo/kits/core-server-kit/www-servers/nginx
 sudo ebuild nginx-1.17.5.ebuild manifest
 
 sudo emerge -vt www-servers/nginx
+#sudo emerge -vt app-admin/ngxtop
 
-# lighttpd (optional)
+# ---- lighttpd (optional)
 
 #sudo emerge -vt www-servers/lighttpd
 
-# varnish proxy cache
+# ---- varnish proxy cache
 
 sudo emerge -vt www-servers/varnish
 
-# message broker
+# ---- message broker
 
 #sudo emerge -vt net-misc/rabbitmq-server	# FIXME 3.7.14 does not compile, add overlay with custom ebuild
 
-# dnsmasq
+# ---- dnsmasq
 
 sudo emerge -vt net-dns/dnsmasq
 
-# procmail
+# ---- postfix
 
 sudo emerge -vt mail-mta/postfix
