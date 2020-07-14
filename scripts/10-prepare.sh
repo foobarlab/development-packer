@@ -117,6 +117,11 @@ media-gfx/imagemagick corefonts fontconfig graphviz jpeg2k postscript wmf raw he
 # required by media-gfx/graphviz, dev-php/phpDocumentor, dev-php/phing:
 media-libs/gd fontconfig
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-circular-temp-fix
+# resolve circular dependency during install:
+>=media-libs/libwebp-1.0.2 -tiff
+>=media-libs/libjpeg-turbo-2.0.2 -java
+DATA
 
 # package.license
 sudo mkdir -p /etc/portage/package.license
@@ -147,5 +152,9 @@ sudo cp -f /usr/src/kernel.config /usr/src/linux/.config
 
 sudo ego sync
 sudo epro list
+
+# FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
+user_id=$(id -u)
+
 sudo env-update
 source /etc/profile
