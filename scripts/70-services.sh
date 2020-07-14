@@ -10,6 +10,7 @@ fi
 sudo emerge -vt www-servers/apache
 #sudo emerge -vt app-admin/apachetop
 sudo emerge -vt www-apache/mod_security www-apache/modsecurity-crs
+sudo emerge -vt app-admin/apachetop
 
 # set global server name to avoid annoying warning message on startup
 cat <<'DATA' | sudo tee -a /etc/apache2/httpd.conf
@@ -35,7 +36,7 @@ cd /var/git/meta-repo/kits/core-server-kit/www-servers/nginx
 sudo ebuild nginx-1.17.5.ebuild manifest
 
 sudo emerge -vt www-servers/nginx
-#sudo emerge -vt app-admin/ngxtop
+sudo emerge -vt app-admin/ngxtop
 
 # ---- Lighttpd (optional)
 
