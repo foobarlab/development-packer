@@ -5,50 +5,56 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-# C / C++
+# ---- C / C++
 
 sudo emerge -vt dev-util/cmake
 
-# Python
+# ---- Python
 
 sudo emerge -vt app-vim/vimpython
 
-# Ruby
+# ---- Ruby
 
 sudo emerge -vt dev-lang/ruby
+sudo emerge -vt dev-ruby/rubygems
+## install gems
+#sudo gem install rdoc json rake racc
+# update gems
+sudo gem update --system
+sudo gem pristine --all
 
-# Elixir / Erlang OTP
+# ---- Elixir / Erlang OTP
 
 sudo emerge -vt dev-lang/elixir dev-lang/erlang
 
-# JavaScript / node.js
+# ---- JavaScript / node.js
 
 sudo emerge -vt net-libs/nodejs
 
-# PHP
+# ---- PHP
 
 sudo emerge -vt dev-lang/php
 
-# Go
+# ---- Go
 
 sudo emerge -vt dev-lang/go
 sudo emerge -vt app-vim/vim-go
 
-# Java
+# ---- Java
 
 sudo emerge -vt dev-java/openjdk
 #sudo emerge -vt dev-java/ant dev-java/maven-bin dev-java/ant-ivy
 
-# LUA
+# ---- LUA
 
 sudo emerge -vt dev-lang/lua dev-lua/lua
 #sudo emerge -vt app-eselect/eselect-lua
 
-# C#
+# ---- C#
 
 #sudo emerge -vt dev-lang/mono
 
-# Rust
+# ---- Rust
 
 #sudo emerge -vt dev-lang/rust
 #sudo emerge -vt app-vim/rust-vim

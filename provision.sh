@@ -15,7 +15,7 @@ for script in \
   10-prepare \
   20-kernel \
   30-system-update \
-  40-ansible \
+  40-automation \
   50-languages \
   60-databases \
   70-services \
