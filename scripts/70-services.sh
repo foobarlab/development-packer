@@ -57,3 +57,7 @@ sudo emerge -vt net-dns/dnsmasq
 # ---- Postfix
 
 sudo emerge -vt mail-mta/postfix
+
+# ---- Avahi / mDNS
+
+sudo emerge -vt net-dns/avahi sys-auth/nss-mdns

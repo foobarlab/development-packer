@@ -21,4 +21,7 @@ sudo emerge -vt \
  net-analyzer/iptraf-ng \
  net-analyzer/nmap \
  net-analyzer/openbsd-netcat \
- net-analyzer/iftop
+ net-analyzer/iftop \
+ net-dns/dnswalk \
+ net-dns/dnstop \
+ net-analyzer/dnstracer \
