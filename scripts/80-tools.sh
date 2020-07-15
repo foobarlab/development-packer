@@ -5,13 +5,13 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-#sudo emerge -vt app-misc/screenfetch
-#sudo screenfetch >> /etc/motd
+# ---- etckeeper
 
 #sudo emerge -vt sys-apps/etckeeper
 #sudo etckeeper init -d /etc
 
-# various network utils
+# ---- various network utils
+
 sudo emerge -vt \
  sys-apps/progress \
  net-analyzer/tcpdump \
