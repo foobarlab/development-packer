@@ -64,6 +64,7 @@ Vagrant.configure("2") do |config|
   config.ssh.pty = true
   config.ssh.insert_key = false
   config.vm.synced_folder '.', '/vagrant', disabled: false
+  # FIXME execute ansible only if BUILD_INCLUDE_ANSIBLE is set
   config.vm.provision "ansible_local" do |ansible|
     ansible.install = false
     ansible.verbose = true
