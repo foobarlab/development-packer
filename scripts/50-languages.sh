@@ -45,10 +45,11 @@ sudo emerge -vt sys-apps/yarn
 # ---- PHP
 
 sudo emerge -vt dev-lang/php
-sudo emerge -vt dev-php/phing
 sudo emerge -vt dev-php/xdebug
-sudo emerge -vt dev-php/phpunit dev-php/phpunit-mock-objects
 sudo emerge -vt dev-php/composer
+
+#sudo emerge -vt dev-php/phpunit dev-php/phpunit-mock-objects   # FIXME not compiling
+#sudo emerge -vt dev-php/phing   # FIXME not compiling
 
 # ---- Go
 
@@ -72,6 +73,8 @@ DATA
 # ---- Java
 
 sudo emerge -vt dev-java/openjdk
+#sudo emerge -vt dev-java/oracle-jdk-bin	# needs license: >=dev-java/oracle-jdk-bin-1.8.0.202 Oracle-BCLA-JavaSE
+sudo emerge -vt app-eselect/eselect-java
 
 sudo emerge -vt dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net
 sudo emerge -vt dev-java/maven-bin
