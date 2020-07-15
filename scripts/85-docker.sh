@@ -5,6 +5,8 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# TODO BUILD_INCLUDE_DOCKER option
+
 # Docker and tooling
 
 sudo emerge -vt app-emulation/docker
