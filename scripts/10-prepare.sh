@@ -37,9 +37,9 @@ sudo sed -i 's/USE=\"/USE="pcntl pcre /g' /etc/portage/make.conf
 sudo sed -i 's/USE=\"/USE="java jce /g' /etc/portage/make.conf
 
 # make.conf: Apache
-# TODO consider switching to mpm-event
 sudo sed -i 's/USE=\"/USE="apache2 /g' /etc/portage/make.conf
 # apache modules/mpm
+# TODO consider switching to mpm-event
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # Apache config, see: https://www.funtoo.org/Package:Apache
 APACHE2_MODULES="actions alias auth_basic auth_digest authn_alias authn_anon authn_core authn_dbm authn_file authz_core authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex cache cgi cgid dav dav_fs dav_lock deflate dir env expires ext_filter file_cache filter headers include info log_config logio mime mime_magic negotiation rewrite setenvif socache_shmcb speling status unique_id unixd userdir usertrack vhost_alias proxy proxy_fcgi"
@@ -85,7 +85,10 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-java
 # customize java-jre, make it headless, see: https://wiki.gentoo.org/wiki/Java
 dev-java/oracle-jre-bin headless-awt -alsa -awt -cups -fontconfig
 dev-java/oracle-jdk-bin headless-awt -alsa -awt -cups -fontconfig
-# FIXME set for OpenJDK
+dev-java/icedtea-bin headless-awt -gtk -alsa -cups -webstart
+dev-java/openjdk headless-awt -alsa -cups -webstart
+dev-java/openjdk-bin headless-awt -alsa -cups -webstart
+dev-java/openjdk-jre-bin headless-awt -alsa -cups -webstart
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-apache
 www-servers/apache ssl threads
@@ -121,12 +124,16 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-circular-temp-fix
 # resolve circular dependency during install:
 >=media-libs/libwebp-1.0.2 -tiff
 >=media-libs/libjpeg-turbo-2.0.2 -java
+>=dev-java/ant-1.9 -javamail
 DATA
 
 # package.license
 sudo mkdir -p /etc/portage/package.license
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-openjdk
 >=media-libs/libpng-1.6.37 libpng2
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-dnswalk
+>=net-dns/dnswalk-2.0.2 freedist
 DATA
 
 # package.mask
