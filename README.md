@@ -15,11 +15,11 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
  - List of installed software:
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
-    - Languages: *Elixir*, *Erlang OTP*, *Node.js/JavaScript*, *PHP*, *Go*, *Java*, *Rust*, *Ruby*, *Python*, *Lua*
+    - Optional: *Docker* (for containerization, default: enabled)
+    - Languages: *Elixir*, *Erlang OTP*, *Node.js/JavaScript*, *PHP*, *Go*, *Java*, *Ruby*, *Python*, *Lua*, *Rust*
     - Build tools: *Ant*, *Maven*, *Ivy*
     - Web Servers: *Apache*, *Nginx*, *Varnish*
     - Databases: *MariaDB*, *PostgreSQL*, *Sqlite*, *Redis*, *CouchDB*
-    - Containers: *Docker*
     - Network tools: *iperf*, *ethtool*, *iptraf-ng*, *nmap*, *bindtools*, *netcat*, *iftop*, *tcpdump*
 
 ### Download pre-build images
