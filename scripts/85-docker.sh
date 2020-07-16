@@ -18,7 +18,7 @@ fi
 # ---- Docker and tooling
 
 sudo emerge -vt app-emulation/docker
-sudo /usr/share/docker/contrib/check-config.sh
+#sudo /usr/share/docker/contrib/check-config.sh	# FIXME this will break
 
 cat <<'DATA' | sudo tee -a /etc/docker/daemon.json
 {
