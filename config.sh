@@ -28,7 +28,7 @@ export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to k
 
 # ----------------------------! do not edit below this line !----------------------------
 
-export BUILD_BOX_RELEASE_NOTES="Development environment for various programming languages and stacks. See README for details."     # edit this to reflect actual setup
+export BUILD_BOX_RELEASE_NOTES="Development environment for various programming languages and stacks. See README for details. Source code: https://github.com/foobarlab/development-packer"     # edit this to reflect actual setup
 
 export BUILD_TIMESTAMP="$(date --iso-8601=seconds)"
 
