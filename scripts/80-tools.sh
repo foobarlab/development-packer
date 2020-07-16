@@ -13,15 +13,25 @@ fi
 # ---- various network utils
 
 sudo emerge -vt \
- sys-apps/progress \
- net-analyzer/tcpdump \
- net-misc/iperf \
- sys-apps/ethtool \
- net-dns/bind-tools \
- net-analyzer/iptraf-ng \
- net-analyzer/nmap \
- net-analyzer/openbsd-netcat \
- net-analyzer/iftop \
- net-dns/dnswalk \
- net-dns/dnstop \
- net-analyzer/dnstracer \
+  sys-apps/progress \
+  net-analyzer/tcpdump \
+  net-misc/iperf \
+  sys-apps/ethtool \
+  net-dns/bind-tools \
+  net-analyzer/iptraf-ng \
+  net-analyzer/nmap \
+  net-analyzer/openbsd-netcat \
+  net-analyzer/iftop \
+  net-dns/dnswalk \
+  net-dns/dnstop \
+  net-analyzer/dnstracer \
+  net-analyzer/dhcpdump \
+  net-analyzer/traceroute
+
+# ---- video streaming utils
+
+#sudo emerge -vt \
+#  media-video/rtmpdump \
+#  media-video/ffmpeg
+
+# TODO OBS studio?
