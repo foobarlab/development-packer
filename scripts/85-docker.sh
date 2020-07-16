@@ -20,16 +20,17 @@ fi
 sudo emerge -vt app-emulation/docker
 #sudo /usr/share/docker/contrib/check-config.sh	# FIXME this will break
 
-cat <<'DATA' | sudo tee -a /etc/docker/daemon.json
-{
-    "debug": true
-}
-DATA
+#sudo mkdir -p /etc/docker
+#cat <<'DATA' | sudo tee -a /etc/docker/daemon.json
+#{
+#    "debug": true
+#}
+#DATA
 
 sudo usermod -aG docker vagrant
 
 #sudo rc-update add docker default
 
 #sudo emerge -vt app-emulation/docker-swarm
-sudo emerge -vt dev-util/docker-ls
-sudo emerge -vt app-emulation/docker-compose
+#sudo emerge -vt dev-util/docker-ls
+#sudo emerge -vt app-emulation/docker-compose
