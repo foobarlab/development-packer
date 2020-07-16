@@ -30,6 +30,8 @@ sudo sed -i 's/BUILD_BOX_NAME/'$BUILD_BOX_NAME'/g' /etc/issue
 sudo sed -i 's/BUILD_BOX_USERNAME/'"$BUILD_BOX_USERNAME"'/g' /etc/issue
 sudo cat /etc/issue
 
+# TODO add custom overlay
+
 # make.conf: common flags
 sudo sed -i 's/USE=\"/USE="pcntl pcre /g' /etc/portage/make.conf
 
@@ -135,6 +137,9 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-dnswalk
 >=net-dns/dnswalk-2.0.2 freedist
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-ffmpeg
+>=media-libs/quirc-1.0 AS-IS
+DATA
 
 # package.mask
 sudo mkdir -p /etc/portage/package.mask
@@ -158,6 +163,8 @@ DATA
 sudo cp -f /usr/src/kernel.config /usr/src/linux/.config
 
 sudo ego sync
+
+sudo epro mix-ins +media
 sudo epro list
 
 # FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
