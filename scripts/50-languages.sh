@@ -78,7 +78,7 @@ cat <<'DATA' | sudo tee -a ~vagrant/.bashrc
 export PATH=$PATH:/opt/go/bin
 DATA
 
-# ---- Java / Scala
+# ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy / Gradle
 
 sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java
 
@@ -87,6 +87,9 @@ sudo emerge -vt dev-java/maven-bin
 sudo emerge -vt dev-java/ant-ivy
 
 sudo emerge -vt dev-lang/scala-bin dev-java/sbt-bin app-eselect/eselect-scala
+
+sudo emerge -vt dev-java/groovy
+#sudo emerge -vt dev-java/gradle     # FIXME compile error
 
 # ---- Lua
 
