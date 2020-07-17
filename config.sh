@@ -28,7 +28,7 @@ export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to k
 
 # ----------------------------! do not edit below this line !----------------------------
 
-export BUILD_BOX_RELEASE_NOTES="Development environment for various programming languages and stacks. See README for details. Source code: https://github.com/foobarlab/development-packer"     # edit this to reflect actual setup
+export BUILD_BOX_RELEASE_NOTES="Development environment for various programming languages and stacks. See README for details."     # edit this to reflect actual setup
 
 export BUILD_TIMESTAMP="$(date --iso-8601=seconds)"
 
@@ -41,7 +41,7 @@ else
     # NOTE: for Jenkins builds we got some additional information: BUILD_NUMBER, BUILD_ID, BUILD_DISPLAY_NAME, BUILD_TAG, BUILD_URL
     BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION ($BUILD_TAG)"
 fi
-export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP"
+export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP<br><br>Source code: https://github.com/foobarlab/development-packer"
 
 export BUILD_OUTPUT_FILE="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.box"
 export BUILD_OUTPUT_FILE_TEMP="$BUILD_BOX_NAME.tmp.box"
