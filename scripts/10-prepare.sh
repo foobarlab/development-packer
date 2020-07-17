@@ -96,6 +96,11 @@ DATA
 # MySQL
 sudo sed -i 's/USE=\"/USE="mysql /g' /etc/portage/make.conf
 
+# LLVM
+cat <<'DATA' | sudo tee -a /etc/portage/make.conf
+LLVM_TARGETS="AMDGPU BPF NVPTX X86 AArch64 ARM WebAssembly"
+DATA
+
 # various media formats
 sudo sed -i 's/USE=\"/USE="imagemagick apng exif gif ico jpeg jpeg2k pdf png svg tiff truetype webp wmf mng pnm /g' /etc/portage/make.conf
 
@@ -104,8 +109,8 @@ sudo cat /etc/portage/make.conf
 # ---- package.use
 
 sudo mkdir -p /etc/portage/package.use
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-openjdk
-dev-java/openjdk headless-awt
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-ghostscript
+# required by openjdk:
 >=app-text/ghostscript-gpl-9.26 cups
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-avahi
@@ -161,7 +166,8 @@ DATA
 # ---- package.license
 
 sudo mkdir -p /etc/portage/package.license
-cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-openjdk
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-libpng
+# required by openjdk:
 >=media-libs/libpng-1.6.37 libpng2
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-dnswalk
