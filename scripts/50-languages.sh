@@ -9,28 +9,36 @@ fi
 
 sudo emerge -vt dev-util/cmake
 
+# ---- LLVM
+
+sudo emerge -vt sys-devel/llvm 
+
 # ---- Python
 
 sudo emerge -vt app-vim/vimpython
 
 # ---- Ruby
 
+# FIXME add to Ansible role
 # disable doc creation by default
-cat <<'DATA' | sudo tee -a /etc/gemrc
-# we do not want ruby docs or rake
-#gem: --no-rdoc --no-ri
-gem: --no-document
-DATA
+#cat <<'DATA' | sudo tee -a /etc/gemrc
+## we do not want ruby docs or rake
+##gem: --no-rdoc --no-ri
+#gem: --no-document
+#DATA
 
 sudo emerge -vt dev-lang/ruby
 sudo emerge -vt dev-ruby/rubygems
+
+# FIXME add to Ansible role
 ## install gems
 #sudo gem install rdoc json rake racc
 # update gems
-sudo gem update --system
-sudo gem pristine --all
+#sudo gem update --system
+#sudo gem pristine --all
 
-sudo emerge -vt dev-ruby/bundler
+# FIXME add to Ansible role?
+#sudo emerge -vt dev-ruby/bundler
 #sudo emerge -vt dev-ruby/sass
 
 # ---- Elixir / Erlang OTP
@@ -70,28 +78,21 @@ cat <<'DATA' | sudo tee -a ~vagrant/.bashrc
 export PATH=$PATH:/opt/go/bin
 DATA
 
-# ---- Java
+# ---- Java / Scala
 
-sudo emerge -vt dev-java/openjdk
-#sudo emerge -vt dev-java/oracle-jdk-bin	# needs license: >=dev-java/oracle-jdk-bin-1.8.0.202 Oracle-BCLA-JavaSE
-sudo emerge -vt app-eselect/eselect-java
+sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java
 
 sudo emerge -vt dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net
 sudo emerge -vt dev-java/maven-bin
-#sudo emerge -vt dev-java/ant-ivy
+sudo emerge -vt dev-java/ant-ivy
+
 sudo emerge -vt dev-lang/scala-bin dev-java/sbt-bin app-eselect/eselect-scala
 
-
-# ---- LUA
+# ---- Lua
 
 sudo emerge -vt dev-lang/lua dev-lua/lua
-#sudo emerge -vt app-eselect/eselect-lua
-
-# ---- C#
-
-#sudo emerge -vt dev-lang/mono
 
 # ---- Rust
 
-#sudo emerge -vt dev-lang/rust
-#sudo emerge -vt app-vim/rust-vim
+sudo emerge -vt dev-lang/rust
+sudo emerge -vt app-vim/rust-vim
