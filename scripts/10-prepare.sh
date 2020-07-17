@@ -40,7 +40,7 @@ if [ "$BUILD_CUSTOM_OVERLAY" = true ]; then
 	cd /var/git
 	sudo mkdir -p overlay
 	cd overlay
-	sudo git clone --depth 1 "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
+	sudo git clone --depth 1 -b $BUILD_CUSTOM_OVERLAY_BRANCH "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
 	sudo chown -R portage.portage /var/git/overlay
 	cat <<'DATA' | sudo tee -a /etc/portage/repos.conf/$BUILD_CUSTOM_OVERLAY_NAME
 [DEFAULT]
@@ -55,6 +55,9 @@ DATA
 fi
 
 # ---- make.conf
+
+# disable bindist USE flag (will make this 'non-free')
+#sudo sed -i 's/ bindist/ \-bindist/g' /etc/portage/make.conf
 
 # common flags
 sudo sed -i 's/USE=\"/USE="pcntl pcre /g' /etc/portage/make.conf
@@ -147,6 +150,7 @@ media-gfx/imagemagick corefonts fontconfig graphviz jpeg2k postscript wmf raw he
 # required by media-gfx/graphviz, dev-php/phpDocumentor, dev-php/phing:
 media-libs/gd fontconfig
 DATA
+# FIXME: revert circular fixes (step 90)?
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-circular-temp-fix
 # resolve circular dependency during install:
 >=media-libs/libwebp-1.0.2 -tiff
