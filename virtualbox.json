@@ -48,7 +48,11 @@
 		  "BUILD_TIMESTAMP={{user `timestamp`}}",
 		  "BUILD_KERNEL={{user `kernel`}}",
 		  "BUILD_INCLUDE_ANSIBLE={{user `include_ansible`}}",
-		  "BUILD_INCLUDE_DOCKER={{user `include_docker`}}"
+		  "BUILD_INCLUDE_DOCKER={{user `include_docker`}}",
+		  "BUILD_CUSTOM_OVERLAY={{user `custom_overlay`}}",
+		  "BUILD_CUSTOM_OVERLAY_NAME={{user `custom_overlay_name`}}",
+		  "BUILD_CUSTOM_OVERLAY_URL={{user `custom_overlay_url`}}",
+		  "BUILD_CUSTOM_OVERLAY_BRANCH={{user `custom_overlay_branch`}}"
       ],
       "expect_disconnect": false
   }],
@@ -72,6 +76,10 @@
     "kernel": "{{env `BUILD_KERNEL`}}",
     "include_ansible": "{{env `BUILD_INCLUDE_ANSIBLE`}}",
     "include_docker": "{{env `BUILD_INCLUDE_DOCKER`}}",
+    "custom_overlay": "{{env `BUILD_CUSTOM_OVERLAY`}}",
+    "custom_overlay_name": "{{env `BUILD_CUSTOM_OVERLAY_NAME`}}",
+    "custom_overlay_url": "{{env `BUILD_CUSTOM_OVERLAY_URL`}}",
+    "custom_overlay_branch": "{{env `BUILD_CUSTOM_OVERLAY_BRANCH`}}",
     "headless": "true",
     "username": "vagrant",
     "password": "vagrant"

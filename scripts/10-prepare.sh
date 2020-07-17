@@ -5,8 +5,12 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# ---- box name
+
 echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.$BUILD_BOX_NAME
 sed -i 's/<br>/\n/g' /home/vagrant/.$BUILD_BOX_NAME
+
+# ---- /etc/motd and /etc/issue
 
 sudo rm -f /etc/motd
 cat <<'DATA' | sudo tee -a /etc/motd
@@ -30,15 +34,35 @@ sudo sed -i 's/BUILD_BOX_NAME/'$BUILD_BOX_NAME'/g' /etc/issue
 sudo sed -i 's/BUILD_BOX_USERNAME/'"$BUILD_BOX_USERNAME"'/g' /etc/issue
 sudo cat /etc/issue
 
-# TODO add custom overlay
+# ---- custom overlay
 
-# make.conf: common flags
+if [ "$BUILD_CUSTOM_OVERLAY" = true ]; then
+	cd /var/git
+	sudo mkdir -p overlay
+	cd overlay
+	sudo git clone --depth 1 "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
+	sudo chown -R portage.portage /var/git/overlay
+	cat <<'DATA' | sudo tee -a /etc/portage/repos.conf/$BUILD_CUSTOM_OVERLAY_NAME
+[DEFAULT]
+main-repo = core-kit
+
+[BUILD_CUSTOM_OVERLAY_NAME]
+location = /var/git/overlay/BUILD_CUSTOM_OVERLAY_NAME
+auto-sync = no
+priority = 10
+DATA
+	sudo sed -i 's/BUILD_CUSTOM_OVERLAY_NAME/'"$BUILD_CUSTOM_OVERLAY_NAME"'/g' /etc/portage/repos.conf/$BUILD_CUSTOM_OVERLAY_NAME
+fi
+
+# ---- make.conf
+
+# common flags
 sudo sed -i 's/USE=\"/USE="pcntl pcre /g' /etc/portage/make.conf
 
-# make.conf: Java
+# Java
 sudo sed -i 's/USE=\"/USE="java jce /g' /etc/portage/make.conf
 
-# make.conf: Apache
+# Apache webserver
 sudo sed -i 's/USE=\"/USE="apache2 /g' /etc/portage/make.conf
 # apache modules/mpm
 # TODO consider switching to mpm-event
@@ -48,7 +72,7 @@ APACHE2_MODULES="actions alias auth_basic auth_digest authn_alias authn_anon aut
 APACHE2_MPMS="worker"
 DATA
 
-# make.conf: Nginx
+# Nginx
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # Nginx config
 # see: https://www.funtoo.org/Package:Nginx
@@ -57,7 +81,7 @@ NGINX_MODULES_HTTP="access auth_basic autoindex browser charset empty_gif fastcg
 NGINX_MODULES_EXTERNAL="accept_language cache_purge modsecurity upload_progress"
 DATA
 
-# make.conf: PHP
+# PHP
 sudo sed -i 's/USE=\"/USE="fpm php /g' /etc/portage/make.conf
 # php targets
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
@@ -66,15 +90,16 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 PHP_TARGETS="php7-3 php7-4"
 DATA
 
-# make.conf: MySQL
+# MySQL
 sudo sed -i 's/USE=\"/USE="mysql /g' /etc/portage/make.conf
 
-# make.conf: various media formats
+# various media formats
 sudo sed -i 's/USE=\"/USE="imagemagick apng exif gif ico jpeg jpeg2k pdf png svg tiff truetype webp wmf mng pnm /g' /etc/portage/make.conf
 
 sudo cat /etc/portage/make.conf
 
-# package.use
+# ---- package.use
+
 sudo mkdir -p /etc/portage/package.use
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-openjdk
 dev-java/openjdk headless-awt
@@ -129,7 +154,8 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-circular-temp-fix
 >=dev-java/ant-1.9 -javamail
 DATA
 
-# package.license
+# ---- package.license
+
 sudo mkdir -p /etc/portage/package.license
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-openjdk
 >=media-libs/libpng-1.6.37 libpng2
@@ -140,8 +166,12 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-ffmpeg
 >=media-libs/quirc-1.0 AS-IS
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-llvm
+>=sys-devel/llvm-9.0.1 Apache-2.0-with-LLVM-exceptions
+DATA
 
-# package.mask
+# ---- package.mask
+
 sudo mkdir -p /etc/portage/package.mask
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
 #>=dev-lang/erlang-22
@@ -151,7 +181,8 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-varnish
 >=www-servers/varnish-6.0.0
 DATA
 
-# packe.unmask
+# ---- package.unmask
+
 sudo mkdir -p /etc/portage/package.unmask
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/vbox-couchdb
 # unmask dev-db/couchdb as we use our own provided version (was masked because of gentoo bugs):
@@ -159,10 +190,15 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/vbox-couchdb
 >=dev-db/couchdb-2.3.0
 DATA
 
-# always copy kernel.config to current kernel src
+# --- always copy kernel.config to current kernel src
+
 sudo cp -f /usr/src/kernel.config /usr/src/linux/.config
 
+# --- sync
+
 sudo ego sync
+
+# --- mix-ins
 
 sudo epro mix-ins +media
 sudo epro list
