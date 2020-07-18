@@ -178,6 +178,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-ffmpeg
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-llvm
 >=sys-devel/llvm-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/llvm-common-9.0.1 Apache-2.0-with-LLVM-exceptions
 DATA
 
 # ---- package.mask
