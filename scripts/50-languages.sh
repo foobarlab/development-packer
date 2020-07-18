@@ -47,8 +47,10 @@ sudo emerge -vt dev-lang/elixir dev-lang/erlang
 
 # ---- JavaScript / node.js
 
-sudo emerge -vt net-libs/nodejs
-sudo emerge -vt sys-apps/yarn
+# FIXME incompatible with 'bindist'
+# FIXME add to ansible role
+#sudo emerge -vt net-libs/nodejs
+#sudo emerge -vt sys-apps/yarn
 
 # ---- PHP
 
