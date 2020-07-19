@@ -41,6 +41,8 @@ if [ "$BUILD_CUSTOM_OVERLAY" = true ]; then
 	sudo mkdir -p overlay
 	cd overlay
 	sudo git clone --depth 1 -b $BUILD_CUSTOM_OVERLAY_BRANCH "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
+	cd ./$BUILD_CUSTOM_OVERLAY_NAME
+	sudo git config pull.rebase true
 	sudo chown -R portage.portage /var/git/overlay
 	cat <<'DATA' | sudo tee -a /etc/portage/repos.conf/$BUILD_CUSTOM_OVERLAY_NAME
 [DEFAULT]
