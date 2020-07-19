@@ -112,6 +112,10 @@ sudo cat /etc/portage/make.conf
 # ---- package.use
 
 sudo mkdir -p /etc/portage/package.use
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-curl
+#net-misc/curl rtmp http2 brotli	# FIXME 'http2' requires '-bindist'
+net-misc/curl rtmp brotli
+DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-ghostscript
 # required by openjdk:
 >=app-text/ghostscript-gpl-9.26 cups
