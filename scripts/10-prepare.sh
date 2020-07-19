@@ -40,6 +40,7 @@ if [ "$BUILD_CUSTOM_OVERLAY" = true ]; then
 	cd /var/git
 	sudo mkdir -p overlay
 	cd overlay
+	# git clone -b development "https://github.com/foobarlab/foobarlab-overlay.git" ./foobarlab
 	sudo git clone --depth 1 -b $BUILD_CUSTOM_OVERLAY_BRANCH "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
 	cd ./$BUILD_CUSTOM_OVERLAY_NAME
 	sudo git config pull.rebase true
@@ -141,7 +142,7 @@ dev-lang/php curl pdo mysql mysqli xmlwriter xmlreader apache2 argon2 bcmath cal
 >=dev-lang/php-5.6 imap
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-erlang
-dev-lang/erlang kpoll hipe pgo odbc sctp smp -wxwidgets
+dev-lang/erlang kpoll -hipe pgo odbc sctp smp -wxwidgets
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kafka
 # use embedded zookeeper for kafka:
@@ -185,13 +186,16 @@ DATA
 
 # ---- package.mask
 
-sudo mkdir -p /etc/portage/package.mask
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
-#>=dev-lang/erlang-22
-DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-varnish
-# mask Varnish >= v6 (until v4 support is officially dropped and/or varnish-modules compiles with v6)
->=www-servers/varnish-6.0.0
+#sudo mkdir -p /etc/portage/package.mask
+#cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
+##>=dev-lang/erlang-23
+#DATA
+#cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-varnish
+# required by varnish-modules:
+##>=www-servers/varnish-6.2.0
+#DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-rabbitmq
+>=net-misc/rabbitmq-server-3.8.0
 DATA
 
 # ---- package.unmask
