@@ -48,7 +48,7 @@ sudo emerge -vt www-servers/varnish
 
 # ---- RabbitMQ
 
-#sudo emerge -vt net-misc/rabbitmq-server	# FIXME 3.7.14 does not compile, add overlay with custom ebuild
+sudo emerge -vt net-misc/rabbitmq-server
 
 # ---- DNSmasq
 
