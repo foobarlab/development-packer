@@ -40,7 +40,7 @@ if [ "$BUILD_CUSTOM_OVERLAY" = true ]; then
 	cd /var/git
 	sudo mkdir -p overlay
 	cd overlay
-	# git clone -b development "https://github.com/foobarlab/foobarlab-overlay.git" ./foobarlab
+	# example: git clone --depth 1 -b development "https://github.com/foobarlab/foobarlab-overlay.git" ./foobarlab
 	sudo git clone --depth 1 -b $BUILD_CUSTOM_OVERLAY_BRANCH "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
 	cd ./$BUILD_CUSTOM_OVERLAY_NAME
 	sudo git config pull.rebase true
