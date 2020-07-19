@@ -39,4 +39,4 @@ sudo emerge -vt dev-db/sqlite
 
 # ---- Couchdb
 
-#sudo emerge -vt dev-db/couchdb
+sudo emerge -vt dev-db/couchdb
