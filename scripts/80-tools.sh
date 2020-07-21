@@ -28,6 +28,10 @@ sudo emerge -vt \
   net-analyzer/dhcpdump \
   net-analyzer/traceroute
 
+# ---- inotify
+
+sudo emerge -vt sys-fs/inotify-tools
+
 # ---- video streaming utils
 
 #sudo emerge -vt media-video/ffmpeg      # FIXME: not compiling
