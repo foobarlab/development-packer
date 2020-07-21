@@ -30,9 +30,9 @@ sudo emerge -vt \
 
 # ---- video streaming utils
 
-sudo emerge -vt media-video/ffmpeg
+#sudo emerge -vt media-video/ffmpeg      # FIXME: not compiling
 #sudo emerge -vt media-video/rtmpdump    # already pulled in as dependency
 
 # ---- speech synthesis
 
-sudo emerge -vt app-accessibility/speech-dispatcher
+sudo emerge -vt app-accessibility/speech-dispatcher    # FIXME: enable kernel modules?
