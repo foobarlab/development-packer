@@ -35,7 +35,7 @@ sudo emerge -vt dev-db/sqlite
 
 # ---- Redis
 
-#sudo emerge -vt dev-db/redis
+sudo emerge -vt dev-db/redis
 
 # ---- Couchdb
 

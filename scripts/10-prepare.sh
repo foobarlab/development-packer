@@ -140,6 +140,9 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-nginx
 www-servers/nginx threads vim-syntax google_perftools
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-redis
+dev-db/redis luajit
+DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-php
 dev-lang/php curl pdo mysql mysqli xmlwriter xmlreader apache2 argon2 bcmath calendar cgi enchant flatfile fpm inifile mhash odbc postgres soap sockets sodium spell xmlrpc xslt zip zip-encryption sqlite phar opcache tidy xpm gmp ftp
 # required by www-apps/postfixadmin:
@@ -200,6 +203,10 @@ DATA
 #DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-rabbitmq
 >=net-misc/rabbitmq-server-3.8.0
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-redis
+# workaround: temporary mask
+>=dev-db/redis-6
 DATA
 
 # ---- package.unmask
