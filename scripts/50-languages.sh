@@ -82,7 +82,7 @@ DATA
 
 # ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy / Gradle
 
-sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java
+sudo emerge -vt dev-java/openjdk app-eselect/eselect-java
 
 sudo emerge -vt dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net
 sudo emerge -vt dev-java/maven-bin
