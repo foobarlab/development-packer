@@ -30,8 +30,9 @@ sudo emerge -vt \
 
 # ---- video streaming utils
 
-#sudo emerge -vt \
-#  media-video/rtmpdump \
-#  media-video/ffmpeg
+sudo emerge -vt media-video/ffmpeg
+#sudo emerge -vt media-video/rtmpdump    # already pulled in as dependency
 
-# TODO OBS studio?
+# ---- speech synthesis
+
+sudo emerge -vt app-accessibility/speech-dispatcher
