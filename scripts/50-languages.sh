@@ -7,11 +7,11 @@ fi
 
 # ---- C / C++
 
-sudo emerge -vt dev-util/cmake
+#sudo emerge -vt dev-util/cmake    # optional
 
 # ---- LLVM
 
-sudo emerge -vt sys-devel/llvm 
+#sudo emerge -vt sys-devel/llvm	   # optional
 
 # ---- Python
 
@@ -82,7 +82,7 @@ DATA
 
 # ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy / Gradle
 
-sudo emerge -vt dev-java/openjdk app-eselect/eselect-java
+sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java
 
 sudo emerge -vt dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net
 sudo emerge -vt dev-java/maven-bin
@@ -99,5 +99,5 @@ sudo emerge -vt dev-lang/lua dev-lua/lua
 
 # ---- Rust
 
-sudo emerge -vt dev-lang/rust
+#sudo emerge -vt dev-lang/rust    # optional
 sudo emerge -vt app-vim/rust-vim
