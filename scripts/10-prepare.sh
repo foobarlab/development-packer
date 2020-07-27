@@ -65,6 +65,9 @@ fi
 # common flags
 sudo sed -i 's/USE=\"/USE="pcntl pcre /g' /etc/portage/make.conf
 
+# shell completions
+sudo sed -i 's/USE=\"/USE="bash-completion zsh-completion /g' /etc/portage/make.conf
+
 # Java
 sudo sed -i 's/USE=\"/USE="java jce /g' /etc/portage/make.conf
 
