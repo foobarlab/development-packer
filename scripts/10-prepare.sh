@@ -131,6 +131,7 @@ dev-java/icedtea-bin headless-awt -gtk -alsa -cups -webstart
 dev-java/openjdk headless-awt -alsa -cups -webstart
 dev-java/openjdk-bin headless-awt -alsa -cups -webstart
 dev-java/openjdk-jre-bin headless-awt -alsa -cups -webstart
+dev-java/ant -javamail
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-apache
 www-servers/apache ssl threads
@@ -165,12 +166,16 @@ media-gfx/imagemagick corefonts fontconfig graphviz jpeg2k postscript wmf raw he
 # required by media-gfx/graphviz, dev-php/phpDocumentor, dev-php/phing:
 media-libs/gd fontconfig
 DATA
-# FIXME: revert circular fixes (step 90)?
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-circular-temp-fix
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-wireshark
+# customize wireshark:
+net-analyzer/wireshark -qt5 androiddump sshdump brotli tfshark adns lua smi
+DATA
+
+# temporary fixes (removed in 90-postprocess.sh)
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
 # resolve circular dependency during install:
 >=media-libs/libwebp-1.0.2 -tiff
 >=media-libs/libjpeg-turbo-2.0.2 -java
->=dev-java/ant-1.9 -javamail
 DATA
 
 # ---- package.license
