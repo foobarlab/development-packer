@@ -32,7 +32,6 @@ sudo emerge -vt \
 # ---- various file utils
 
 sudo emerge -vt \
-  sys-apps/progress \
   sys-fs/inotify-tools
 
 # ---- video streaming utils
