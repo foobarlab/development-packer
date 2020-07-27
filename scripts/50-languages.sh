@@ -5,10 +5,6 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-# ---- C / C++
-
-#sudo emerge -vt dev-util/cmake    # optional
-
 # ---- LLVM
 
 #sudo emerge -vt sys-devel/llvm	   # optional
