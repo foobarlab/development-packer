@@ -29,7 +29,7 @@ export BUILD_KERNEL=false                 # build a new kernel?
 export BUILD_INCLUDE_ANSIBLE=true         # include Ansible?
 export BUILD_INCLUDE_DOCKER=true          # include Docker?
 
-export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to keep in Vagrant Cloud
+export BUILD_KEEP_MAX_CLOUD_BOXES=1       # set the maximum number of boxes to keep in Vagrant Cloud
 
 # ----------------------------! do not edit below this line !----------------------------
 

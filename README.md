@@ -16,11 +16,13 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
     - Optional: *Docker* (for containerization, default: enabled)
-    - Languages: *Elixir*, *Erlang OTP*, *PHP*, *Go*, *Java*, *Ruby*, *Python*, *Lua*
-    - Build tools: *Ant*, *Maven*, *Ivy*
-    - Web Servers: *Apache*, *Nginx*, *Varnish*
-    - Databases: *MariaDB*, *PostgreSQL*, *Sqlite*, *Redis*, *CouchDB*
-    - Network tools: *iperf*, *ethtool*, *iptraf-ng*, *nmap*, *bindtools*, *netcat*, *iftop*, *tcpdump*
+    - Languages: *Elixir, Erlang OTP, PHP, Go, Java, Ruby, Python, Lua, Rust*
+    - Build tools: *Ant, Maven, Ivy*
+    - Web Servers: *Apache, Nginx, Varnish*
+    - Databases: *MariaDB, PostgreSQL, Sqlite, Redis, CouchDB*
+    - Commandline utils: *ripgrep, icdiff, inotify-tools, exa*
+    - Network tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump*
+    - Web tools: *shellinabox, phpmyadmin*
 
 ### Download pre-build images
 
