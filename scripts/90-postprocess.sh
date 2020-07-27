@@ -5,6 +5,12 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# remove any temp portage flags and update system
+for dir in /etc/portage/package.*; do
+  sudo rm -f ${dir##*/}/temp*
+done
+sudo emerge -vtuDN --with-bdeps=y @world
+
 # net-mail/mailbase: adjust permissions as recommended during install
 sudo chown root:mail /var/spool/mail/
 sudo chmod 03775 /var/spool/mail/
