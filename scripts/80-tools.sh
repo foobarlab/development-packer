@@ -13,6 +13,7 @@ fi
 # ---- various network utils
 
 sudo emerge -vt \
+  net-misc/aria2 \
   net-analyzer/tcpdump \
   net-misc/iperf \
   sys-apps/ethtool \
@@ -27,12 +28,19 @@ sudo emerge -vt \
   net-analyzer/dhcpdump \
   net-analyzer/traceroute \
   net-analyzer/snort \
-  net-analyzer/wireshark
+  net-analyzer/wireshark \
+  net-analyzer/mtr \
+  net-misc/httpie
 
 # ---- various file utils
 
 sudo emerge -vt \
-  sys-fs/inotify-tools
+  sys-fs/inotify-tools \
+  sys-apps/exa \
+  app-misc/icdiff \
+  sys-apps/ripgrep
+
+# TODO dev-util/diffoscope
 
 # ---- video streaming utils
 
