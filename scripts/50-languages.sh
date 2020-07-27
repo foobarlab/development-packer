@@ -95,5 +95,5 @@ sudo emerge -vt dev-lang/lua dev-lua/lua
 
 # ---- Rust
 
-#sudo emerge -vt dev-lang/rust    # optional
+sudo emerge -vt dev-lang/rust-bin
 sudo emerge -vt app-vim/rust-vim
