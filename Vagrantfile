@@ -10,11 +10,15 @@ ego boot update
 # clean kernel sources
 cd /usr/src/linux
 make distclean
+# copy latest kernel config
+cp /usr/src/kernel.config /usr/src/linux/.config
 SCRIPT
 
 $script_cleanup = <<SCRIPT
 # stop services
 /etc/init.d/rsyslog stop
+# ensure all file operations finished
+sync
 # run zerofree at last to squeeze the last bit
 # /boot (initially not mounted)
 mount -o ro /dev/sda1
