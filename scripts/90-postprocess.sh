@@ -7,7 +7,7 @@ fi
 
 # remove any temp portage flags and update system
 for dir in /etc/portage/package.*; do
-  sudo rm -f ${dir##*/}/temp*
+  sudo rm -f /etc/portage/${dir##*/}/temp*
 done
 sudo emerge -vtuDN --with-bdeps=y @world
 
