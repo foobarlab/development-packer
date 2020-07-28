@@ -1,0 +1,27 @@
+---
+# vim: syntax=yaml
+# ensure http2 prioritization works relieably, see: https://blog.cloudflare.com/http-2-prioritization-with-nginx/
+
+- name: sysctl - tweak http2 priorization - touch config file
+  file:
+    path: /etc/sysctl.d/tweak-http2.conf
+    state: touch
+    mode: u=rw,g=r,o=r
+
+- name: sysctl - tweak http2 priorization (1/3)
+  lineinfile:
+    path: /etc/sysctl.d/tweak-http2.conf
+    regexp: '^(#)?net.core.default_qdisc'
+    line: 'net.core.default_qdisc=fq'
+
+- name: sysctl - tweak http2 priorization (2/3)
+  lineinfile:
+    path: /etc/sysctl.d/tweak-http2.conf
+    regexp: '^(#)?net.ipv4.tcp_congestion_control'
+    line: 'net.ipv4.tcp_congestion_control=bbr'
+
+- name: sysctl - tweak http2 priorization (3/3)
+  lineinfile:
+    path: /etc/sysctl.d/tweak-http2.conf
+    regexp: '^(#)?net.ipv4.tcp_notsent_lowat'
+    line: 'net.ipv4.tcp_notsent_lowat=16384'
