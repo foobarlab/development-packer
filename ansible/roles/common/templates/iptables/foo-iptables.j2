@@ -1,0 +1,22 @@
+#!/bin/bash
+# this script sets your custom iptables and saves them to be reloaded on every system startup
+
+# the following is our IPv4 address on eth1 (external interface):
+EXTERNAL_IPADDR={{ ansible_eth1.ipv4.address }}
+
+# reset and clear all rules beforehand
+iptables -P INPUT ACCEPT
+iptables -P FORWARD ACCEPT
+iptables -P OUTPUT ACCEPT
+iptables -t nat -F
+iptables -t mangle -F
+iptables -F
+iptables -X
+
+# TODO add any rules here ...
+
+# DEBUG: display rules
+iptables -L -v -n -t nat
+
+# always save rules to be loaded automatically
+rc-service iptables save
