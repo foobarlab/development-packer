@@ -38,9 +38,9 @@ sudo ebuild nginx-1.17.5.ebuild manifest
 sudo emerge -vt www-servers/nginx
 sudo emerge -vt app-admin/ngxtop
 
-# ---- Lighttpd (optional)
+# ---- Lighttpd
 
-#sudo emerge -vt www-servers/lighttpd
+sudo emerge -vt www-servers/lighttpd
 
 # ---- Varnish proxy cache
 
