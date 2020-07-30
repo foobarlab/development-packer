@@ -28,10 +28,6 @@ sudo sed -i 's/BUILD_BOX_NAME/'"$BUILD_BOX_NAME"'/g' /etc/apache2/httpd.conf
 
 # ---- Nginx
 
-# workaround (FL-6798):
-cd /var/git/meta-repo/kits/core-server-kit/www-servers/nginx
-sudo ebuild nginx-1.17.5.ebuild manifest
-
 sudo emerge -vt www-servers/nginx app-admin/ngxtop
 
 # ---- Lighttpd
