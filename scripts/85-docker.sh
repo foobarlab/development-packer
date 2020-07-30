@@ -17,20 +17,7 @@ fi
 
 # ---- Docker and tooling
 
-sudo emerge -vt app-emulation/docker
+sudo emerge -vt app-emulation/docker dev-util/docker-ls app-emulation/docker-compose app-emulation/docker-swarm
 sudo /usr/share/docker/contrib/check-config.sh /usr/src/kernel.config || true
-
-#sudo mkdir -p /etc/docker
-#cat <<'DATA' | sudo tee -a /etc/docker/daemon.json
-#{
-#    "debug": true
-#}
-#DATA
-
 sudo usermod -aG docker vagrant
-
-sudo rc-update add docker default
-
-sudo emerge -vt dev-util/docker-ls
-sudo emerge -vt app-emulation/docker-compose
-sudo emerge -vt app-emulation/docker-swarm
+#sudo rc-update add docker default
