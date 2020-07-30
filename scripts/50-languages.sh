@@ -11,31 +11,20 @@ fi
 
 # ---- Python
 
-sudo emerge -vt app-vim/vimpython
+sudo emerge -vt dev-python/pip app-vim/vimpython
+#sudo emerge -vt dev-python/virtualenv
 
 # ---- Ruby
 
-# FIXME add to Ansible role
 # disable doc creation by default
-#cat <<'DATA' | sudo tee -a /etc/gemrc
-## we do not want ruby docs or rake
-##gem: --no-rdoc --no-ri
+cat <<'DATA' | sudo tee -a /etc/gemrc
+# if you do not want ruby docs or rake
+#gem: --no-rdoc --no-ri
+# or
 #gem: --no-document
-#DATA
+DATA
 
-sudo emerge -vt dev-lang/ruby
-sudo emerge -vt dev-ruby/rubygems
-
-# FIXME add to Ansible role
-## install gems
-#sudo gem install rdoc json rake racc
-# update gems
-#sudo gem update --system
-#sudo gem pristine --all
-
-# FIXME add to Ansible role?
-#sudo emerge -vt dev-ruby/bundler
-#sudo emerge -vt dev-ruby/sass
+sudo emerge -vt dev-lang/ruby dev-ruby/rubygems dev-ruby/bundler dev-ruby/sass
 
 # ---- Elixir / Erlang OTP
 
@@ -43,24 +32,20 @@ sudo emerge -vt dev-lang/elixir dev-lang/erlang
 
 # ---- JavaScript / node.js
 
-# FIXME incompatible with 'bindist'
-# FIXME add to ansible role
-#sudo emerge -vt net-libs/nodejs
-#sudo emerge -vt sys-apps/yarn
+# TODO try nodeenv (pip install)
+# see https://github.com/ekalinin/nodeenv
+
+# TODO try gentoo ebuild
+
+# TODO try src install with custom ebuild
 
 # ---- PHP
 
-sudo emerge -vt dev-lang/php
-sudo emerge -vt dev-php/xdebug
-sudo emerge -vt dev-php/composer
-
-#sudo emerge -vt dev-php/phpunit dev-php/phpunit-mock-objects   # FIXME not compiling
-#sudo emerge -vt dev-php/phing   # FIXME not compiling
+sudo emerge -vt dev-lang/php dev-php/xdebug dev-php/composer
 
 # ---- Go
 
-sudo emerge -vt dev-lang/go
-sudo emerge -vt app-vim/vim-go
+sudo emerge -vt dev-lang/go app-vim/vim-go
 
 # Go apps in /opt/go:
 sudo mkdir -p /opt/go
@@ -78,16 +63,11 @@ DATA
 
 # ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy / Gradle
 
-sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java
-
-sudo emerge -vt dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net
-sudo emerge -vt dev-java/maven-bin
-sudo emerge -vt dev-java/ant-ivy
-
-sudo emerge -vt dev-lang/scala-bin dev-java/sbt-bin app-eselect/eselect-scala
-
-sudo emerge -vt dev-java/groovy
-#sudo emerge -vt dev-java/gradle     # FIXME compile error
+sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java \
+                dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net \
+                dev-java/maven-bin dev-java/ant-ivy \
+                dev-lang/scala-bin dev-java/sbt-bin app-eselect/eselect-scala \
+                dev-java/groovy
 
 # ---- Lua
 
@@ -95,5 +75,4 @@ sudo emerge -vt dev-lang/lua dev-lua/lua
 
 # ---- Rust
 
-sudo emerge -vt dev-lang/rust-bin
-sudo emerge -vt app-vim/rust-vim
+sudo emerge -vt dev-lang/rust-bin app-vim/rust-vim
