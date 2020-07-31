@@ -1,0 +1,24 @@
+---
+# vim: syntax=yaml
+
+- name: iptables - setup rules
+  template:
+    src: iptables/foo-iptables.j2
+    dest: /usr/local/sbin/foo-iptables
+    backup: no
+
+- name: iptables - set rules permissions
+  file:
+    dest: /usr/local/sbin/foo-iptables
+    mode: 0750
+    owner: root
+    group: root
+
+- name: iptables - execute rules
+  shell: /usr/local/sbin/foo-iptables
+
+- name: iptables - save rules
+  shell: rc-service iptables save 
+
+- name: iptables - add to default runlevel
+  shell: rc-update add iptables default
