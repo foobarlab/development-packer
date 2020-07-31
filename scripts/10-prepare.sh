@@ -201,7 +201,7 @@ DATA
 
 # ---- package.mask
 
-#sudo mkdir -p /etc/portage/package.mask
+sudo mkdir -p /etc/portage/package.mask
 #cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
 ##>=dev-lang/erlang-23
 #DATA
