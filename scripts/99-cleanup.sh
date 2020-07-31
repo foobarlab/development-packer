@@ -15,7 +15,7 @@ sudo emerge --depclean
 
 sudo find /etc/ -name '._cfg*'				# DEBUG: list all config files needing an update
 sudo find /etc/ -name '._cfg*' -print -exec cat -n '{}' \;  # DEBUG: cat all config files needing an update
-sudo find /etc/ -name '._cfg*' -exec cp "{}" /vagrant \;	# backup ._cfg* files to /vagrant
+sudo find /etc/ -name '._cfg*' -exec cp "{}" /vagrant/temp \;	# backup ._cfg* files
 
 sudo etc-update --verbose --preen			# auto-merge trivial changes
 
@@ -39,7 +39,7 @@ sudo eix-update
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
 
-sudo cp -fR /var/log /vagrant	# backup all logs to /vagrant
+sudo cp -fR /var/log /vagrant/temp	# backup all logs
 
 sudo /usr/local/sbin/foo-cleanup
 
