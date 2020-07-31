@@ -30,7 +30,8 @@ sudo emerge -vt \
   net-analyzer/snort \
   net-analyzer/wireshark \
   net-analyzer/mtr \
-  net-misc/httpie
+  net-misc/httpie \
+  net-misc/geoipupdate
 
 # ---- various file utils
 
