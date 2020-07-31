@@ -28,6 +28,7 @@ sudo sed -i 's/BUILD_BOX_NAME/'"$BUILD_BOX_NAME"'/g' /etc/apache2/httpd.conf
 
 # ---- Nginx
 
+sudo emerge -vt media-libs/gd dev-libs/geoip          # workaround: deps needed for nginx install
 sudo emerge -vt www-servers/nginx app-admin/ngxtop
 
 # ---- Lighttpd
