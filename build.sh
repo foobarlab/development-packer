@@ -71,10 +71,6 @@ fi
 
 . config.sh
 
-# prepare temporary build dir
-rm -rf ./temp
-mkdir -p ./temp
-
 export PACKER_LOG_PATH="$PWD/packer.log"
 export PACKER_LOG="1"
 packer build virtualbox.json
