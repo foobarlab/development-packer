@@ -26,10 +26,12 @@ export BUILD_CUSTOM_OVERLAY_URL="https://github.com/foobarlab/foobarlab-overlay.
 export BUILD_CUSTOM_OVERLAY_BRANCH="development"
 
 export BUILD_KERNEL=false                 # build a new kernel?
-export BUILD_INCLUDE_ANSIBLE=true         # include Ansible?
+export BUILD_INCLUDE_ANSIBLE=false        # include Ansible? (already installed in funtoo-base)
 export BUILD_INCLUDE_DOCKER=true          # include Docker?
 
 export BUILD_KEEP_MAX_CLOUD_BOXES=1       # set the maximum number of boxes to keep in Vagrant Cloud
+
+export BUILD_MYSQL_ROOT_PASSWORD=changeme      # set the root password for MySQL/MariaDB 
 
 # ----------------------------! do not edit below this line !----------------------------
 

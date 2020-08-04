@@ -52,7 +52,8 @@
 		  "BUILD_CUSTOM_OVERLAY={{user `custom_overlay`}}",
 		  "BUILD_CUSTOM_OVERLAY_NAME={{user `custom_overlay_name`}}",
 		  "BUILD_CUSTOM_OVERLAY_URL={{user `custom_overlay_url`}}",
-		  "BUILD_CUSTOM_OVERLAY_BRANCH={{user `custom_overlay_branch`}}"
+		  "BUILD_CUSTOM_OVERLAY_BRANCH={{user `custom_overlay_branch`}}",
+		  "BUILD_MYSQL_ROOT_PASSWORD={{user `mysql_root_password`}}"
       ],
       "expect_disconnect": false
   }],
@@ -80,6 +81,7 @@
     "custom_overlay_name": "{{env `BUILD_CUSTOM_OVERLAY_NAME`}}",
     "custom_overlay_url": "{{env `BUILD_CUSTOM_OVERLAY_URL`}}",
     "custom_overlay_branch": "{{env `BUILD_CUSTOM_OVERLAY_BRANCH`}}",
+    "mysql_root_password": "{{env `BUILD_MYSQL_ROOT_PASSWORD`}}",
     "headless": "true",
     "username": "vagrant",
     "password": "vagrant"
