@@ -33,13 +33,18 @@ sudo emerge -vt \
   net-misc/httpie \
   net-misc/geoipupdate
 
+# install 'minica' in GOPATH
+sudo go get github.com/jsha/minica
+
 # ---- various file utils
 
 sudo emerge -vt \
   sys-fs/inotify-tools \
   sys-apps/exa \
   app-misc/icdiff \
-  sys-apps/ripgrep
+  sys-apps/ripgrep \
+  app-arch/pigz \
+  app-shells/fzf
 
 # TODO dev-util/diffoscope
 
@@ -50,4 +55,4 @@ sudo emerge -vt \
 
 # ---- speech synthesis
 
-sudo emerge -vt app-accessibility/speech-dispatcher    # FIXME: enable kernel modules?
+#sudo emerge -vt app-accessibility/speech-dispatcher    # FIXME: enable kernel modules?
