@@ -7,8 +7,8 @@ fi
 
 # ---- box name
 
-echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.$BUILD_BOX_NAME
-sed -i 's/<br>/\n/g' /home/vagrant/.$BUILD_BOX_NAME
+echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.release_$BUILD_BOX_NAME
+sed -i 's/<br>/\n/g' /home/vagrant/.release_$BUILD_BOX_NAME
 
 # ---- /etc/motd and /etc/issue
 
@@ -239,8 +239,6 @@ sudo ego sync
 sudo epro mix-ins +media
 sudo epro list
 
-# FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
-user_id=$(id -u)
-
+user_id=$(id -u)    # FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
 sudo env-update
 source /etc/profile

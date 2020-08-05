@@ -44,9 +44,7 @@ sudo genkernel all
 
 cd /usr/src
 
-# FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
-user_id=$(id -u)
-
+user_id=$(id -u)    # FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
 sudo env-update
 source /etc/profile
 

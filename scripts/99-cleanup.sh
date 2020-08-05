@@ -5,9 +5,7 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-# FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
-user_id=$(id -u)
-
+user_id=$(id -u)    # FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
 sudo env-update
 source /etc/profile
 
@@ -15,7 +13,6 @@ sudo emerge --depclean
 
 sudo find /etc/ -name '._cfg*'				# DEBUG: list all config files needing an update
 sudo find /etc/ -name '._cfg*' -print -exec cat -n '{}' \;  # DEBUG: cat all config files needing an update
-sudo find /etc/ -name '._cfg*' -exec cp "{}" /vagrant \;	# backup ._cfg* files to /vagrant
 
 sudo etc-update --verbose --preen			# auto-merge trivial changes
 
@@ -38,8 +35,6 @@ sudo eix-update
 
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
-
-sudo cp -fR /var/log /vagrant	# backup all logs to /vagrant
 
 sudo /usr/local/sbin/foo-cleanup
 
