@@ -34,11 +34,11 @@ sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java \
                 dev-lang/scala-bin dev-java/sbt-bin app-eselect/eselect-scala \
                 dev-java/groovy
 
-# set our default java vm (user/system)
+# show/set our default java vm (user/system)
 eselect java-vm show
-sudo eselect java-vm set system openjdk-bin-11
-eselect java-vm set user openjdk-bin-11
-eselect java-vm show
+#sudo eselect java-vm set system openjdk-bin-11
+#eselect java-vm set user openjdk-bin-11
+#eselect java-vm show
 
 # ---- Elixir / Erlang OTP
 
