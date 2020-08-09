@@ -34,7 +34,7 @@ sudo emerge -vt \
   net-misc/geoipupdate
 
 # install 'minica' in GOPATH
-sudo go get github.com/jsha/minica
+sudo GOPATH="/opt/go" go get github.com/jsha/minica
 
 # ---- various file utils
 
