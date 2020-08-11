@@ -31,7 +31,8 @@ sudo emerge -vt \
   net-analyzer/wireshark \
   net-analyzer/mtr \
   net-misc/httpie \
-  net-misc/geoipupdate
+  net-misc/geoipupdate \
+  net-analyzer/tsung
 
 # install 'minica' in GOPATH
 sudo GOPATH="/opt/go" go get github.com/jsha/minica
