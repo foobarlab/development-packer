@@ -96,7 +96,7 @@ sudo go env
 
 # ---- Lua
 
-sudo emerge -vt dev-lang/lua dev-lua/lua
+sudo emerge -vt dev-lang/lua dev-lang/luajit
 
 # ---- Rust
 
