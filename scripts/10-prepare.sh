@@ -216,6 +216,10 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-redis
 # workaround: temporary mask
 >=dev-db/redis-6
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-php
+# workaround: temporary mask PHp 7.4
+>=dev-lang/php-7.4
+DATA
 
 # ---- package.unmask
 
