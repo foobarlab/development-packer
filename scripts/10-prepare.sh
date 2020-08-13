@@ -151,6 +151,8 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-php
 dev-lang/php curl pdo mysql mysqli xmlwriter xmlreader apache2 argon2 bcmath calendar cgi enchant flatfile fpm inifile mhash odbc postgres soap sockets sodium spell xmlrpc xslt zip zip-encryption sqlite phar opcache tidy xpm gmp ftp
 # required by www-apps/postfixadmin:
 >=dev-lang/php-5.6 imap
+# various extensions:
+dev-php/pecl-redis igbinary
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-erlang
 dev-lang/erlang kpoll -hipe pgo odbc sctp smp -wxwidgets
@@ -202,13 +204,13 @@ DATA
 # ---- package.mask
 
 sudo mkdir -p /etc/portage/package.mask
-#cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
-##>=dev-lang/erlang-23
-#DATA
-#cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-varnish
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
+#>=dev-lang/erlang-23
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-varnish
 # required by varnish-modules:
-##>=www-servers/varnish-6.2.0
-#DATA
+#>=www-servers/varnish-6.2.0
+DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-rabbitmq
 >=net-misc/rabbitmq-server-3.8.0
 DATA
@@ -217,7 +219,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-redis
 >=dev-db/redis-6
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-php
-# workaround: temporary mask PHp 7.4
+# workaround: temporary mask PHP 7.4
 >=dev-lang/php-7.4
 DATA
 
