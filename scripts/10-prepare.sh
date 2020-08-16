@@ -7,8 +7,8 @@ fi
 
 # ---- box name
 
-echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.release_$BUILD_BOX_NAME
-sed -i 's/<br>/\n/g' /home/vagrant/.release_$BUILD_BOX_NAME
+echo "$BUILD_BOX_DESCRIPTION" >> ~vagrant/.release_$BUILD_BOX_NAME
+sed -i 's/<br>/\n/g' ~vagrant/.release_$BUILD_BOX_NAME
 
 # ---- /etc/motd and /etc/issue
 
