@@ -35,7 +35,7 @@ export BUILD_MYSQL_ROOT_PASSWORD=changeme      # set the root password for MySQL
 
 # ----------------------------! do not edit below this line !----------------------------
 
-export BUILD_BOX_RELEASE_NOTES="Development environment for various programming languages and stacks. See README for details."     # edit this to reflect actual setup
+export BUILD_BOX_RELEASE_NOTES="Development environment based on Funtoo Linux providing various programming languages and stacks. See README in sources for details."     # edit this to reflect actual setup
 
 export BUILD_TIMESTAMP="$(date --iso-8601=seconds)"
 
