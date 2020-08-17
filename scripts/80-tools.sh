@@ -47,13 +47,12 @@ sudo emerge -vt \
   app-arch/pigz \
   app-shells/fzf
 
-# TODO dev-util/diffoscope
+# ---- gfx/video utils
 
-# ---- video streaming utils
+sudo emerge -vt media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg media-video/rtmpdump
+# PHP imagick ext:
+sudo emerge -vt dev-php/pecl-imagick
 
-#sudo emerge -vt media-video/ffmpeg      # FIXME: not compiling
-#sudo emerge -vt media-video/rtmpdump    # already pulled in as dependency
+# ---- various libs
 
-# ---- speech synthesis
-
-#sudo emerge -vt app-accessibility/speech-dispatcher    # FIXME: enable kernel modules?
+sudo emerge -vt dev-libs/protobuf
