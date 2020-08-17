@@ -6,6 +6,7 @@
     src: iptables/foo-iptables.j2
     dest: /usr/local/sbin/foo-iptables
     backup: no
+    mode: 0750
 
 - name: iptables - set rules permissions
   file:

@@ -11,7 +11,7 @@ fi
 
 # ---- Python
 
-sudo emerge -vt dev-python/pip dev-python/sphinx app-vim/vimpython
+sudo emerge -vt dev-python/pip dev-python/sphinx app-vim/vimpython dev-python/numpy
 #sudo emerge -vt dev-python/virtualenv
 
 # ---- Ruby
@@ -58,7 +58,28 @@ sudo emerge -vt dev-lang/elixir dev-lang/erlang
 
 # ---- PHP
 
-sudo emerge -vt dev-lang/php dev-php/xdebug dev-php/composer
+# PHP and some tools/exts, see: https://wiki.gentoo.org/wiki/PHP
+sudo emerge -vt dev-lang/php dev-php/xdebug dev-php/composer dev-php/pecl-oauth dev-php/igbinary
+
+# deprecated extensions:
+#sudo emerge -vt dev-php/pecl-uploadprogress
+
+# extensions:
+#sudo emerge -vt dev-php/pecl-taint dev-php/pecl-memcached
+#sudo emerge -vt dev-php/pecl-geoip dev-php/pecl-timezonedb
+#sudo emerge -vt dev-php/pecl-yaml dev-php/pecl-raphf dev-php/pecl-mailparse dev-php/pecl-event dev-php/pecl-eio dev-php/pecl-redis
+#sudo emerge -vt dev-php/pecl-http
+#sudo emerge -vt dev-php/pecl-amqp
+#sudo emerge -vt dev-php/pecl-stomp
+#sudo emerge -vt dev-php/pecl-apcu dev-php/pecl-apcu_bc
+
+# update PEAR/PECL channels while online
+#sudo emerge -v --config PEAR-PEAR
+	
+# foobarlab overlay PECL packages:
+#sudo emerge -vt dev-php/pecl-solr
+# see: https://github.com/arnaud-lb/php-rdkafka
+#sudo emerge -vt dev-php/pecl-rdkafka
 
 # ---- Go
 
@@ -96,7 +117,7 @@ sudo go env
 
 # ---- Lua
 
-sudo emerge -vt dev-lang/lua dev-lua/lua
+sudo emerge -vt dev-lang/lua dev-lang/luajit
 
 # ---- Rust
 

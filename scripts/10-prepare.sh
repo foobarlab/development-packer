@@ -7,8 +7,8 @@ fi
 
 # ---- box name
 
-echo "$BUILD_BOX_DESCRIPTION" >> /home/vagrant/.release_$BUILD_BOX_NAME
-sed -i 's/<br>/\n/g' /home/vagrant/.release_$BUILD_BOX_NAME
+echo "$BUILD_BOX_DESCRIPTION" >> ~vagrant/.release_$BUILD_BOX_NAME
+sed -i 's/<br>/\n/g' ~vagrant/.release_$BUILD_BOX_NAME
 
 # ---- /etc/motd and /etc/issue
 
@@ -121,7 +121,7 @@ net-misc/curl rtmp brotli
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-ghostscript
 # required by openjdk:
->=app-text/ghostscript-gpl-9.26 cups
+#>=app-text/ghostscript-gpl-9.26 cups
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-avahi
 net-dns/avahi dbus mdnsresponder-compat
@@ -151,6 +151,8 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-php
 dev-lang/php curl pdo mysql mysqli xmlwriter xmlreader apache2 argon2 bcmath calendar cgi enchant flatfile fpm inifile mhash odbc postgres soap sockets sodium spell xmlrpc xslt zip zip-encryption sqlite phar opcache tidy xpm gmp ftp
 # required by www-apps/postfixadmin:
 >=dev-lang/php-5.6 imap
+# various extensions:
+dev-php/pecl-redis igbinary
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-erlang
 dev-lang/erlang kpoll -hipe pgo odbc sctp smp -wxwidgets
@@ -165,9 +167,12 @@ gnome-base/librsvg -tools
 # customize media-gfx/imagemagick (required by dev-php/pecl-imagick):
 media-gfx/imagemagick -openmp
 # additional supported libs for imagick:
-media-gfx/imagemagick corefonts fontconfig graphviz jpeg2k postscript wmf raw heif hdri fpx lqr
+media-gfx/imagemagick -corefonts fontconfig graphviz jpeg2k postscript wmf raw heif hdri fpx lqr
 # required by media-gfx/graphviz, dev-php/phpDocumentor, dev-php/phing:
 media-libs/gd fontconfig
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-ffmpeg
+media-video/ffmpeg -bluray -frei0r -ieee1394 cpudetection
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-wireshark
 # customize wireshark:
@@ -202,19 +207,23 @@ DATA
 # ---- package.mask
 
 sudo mkdir -p /etc/portage/package.mask
-#cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
-##>=dev-lang/erlang-23
-#DATA
-#cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-varnish
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
+#>=dev-lang/erlang-23
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-varnish
 # required by varnish-modules:
-##>=www-servers/varnish-6.2.0
-#DATA
+#>=www-servers/varnish-6.2.0
+DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-rabbitmq
 >=net-misc/rabbitmq-server-3.8.0
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-redis
 # workaround: temporary mask
 >=dev-db/redis-6
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-php
+# workaround: temporary mask PHP 7.4
+>=dev-lang/php-7.4
 DATA
 
 # ---- package.unmask

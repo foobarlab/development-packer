@@ -37,22 +37,19 @@ sudo sed -i 's/BUILD_BOX_NAME/'"$BUILD_BOX_NAME"'/g' /etc/apache2/httpd.conf
 #  STATUS       Enabled mod_status, a useful module for statistics
 #  SUEXEC       Enables running CGI scripts (in USERDIR) through suexec.
 #  USERDIR      Enables /~username mapping to /home/username/public_html
+
 sudo grep -e '-D LANGUAGE' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D LANGUAGE"/g' /etc/conf.d/apache2
-
-# configure apache to use PHP: enable '-D PHP' in APACHE2_OPTS if not already enabled ...
 sudo grep -e '-D PHP' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D PHP"/g' /etc/conf.d/apache2
-
-# configure apache to use PHP: enable '-D SECURITY' in APACHE2_OPTS if not already enabled ...
 sudo grep -e '-D SECURITY' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D SECURITY"/g' /etc/conf.d/apache2
+sudo grep -e '-D PROXY' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D PROXY"/g' /etc/conf.d/apache2
+sudo grep -e '-D STATUS' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D STATUS"/g' /etc/conf.d/apache2
+sudo grep -e '-D ERRORDOCS' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D ERRORDOCS"/g' /etc/conf.d/apache2
+sudo grep -e '-D AUTH_DIGEST' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D AUTH_DIGEST"/g' /etc/conf.d/apache2
+sudo grep -e '-D CACHE' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D CACHE"/g' /etc/conf.d/apache2
+sudo grep -e '-D FCGID' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D FCGID"/g' /etc/conf.d/apache2
 
 # hint: https://wiki.gentoo.org/wiki/Project:Apache/Troubleshooting
 # hint: https://wiki.gentoo.org/wiki/Project:Apache/Upgrading
-
-# configure apache to use PHP: enable '-D PHP' in APACHE2_OPTS if not already enabled ...
-#sudo grep -e '-D PHP' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D PHP"/g' /etc/conf.d/apache2
-
-# configure apache to use PHP: enable '-D PHP' in APACHE2_OPTS if not already enabled ...
-#sudo grep -e '-D SECURITY' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D SECURITY"/g' /etc/conf.d/apache2
 
 #sudo rc-update add apache2 default
 
