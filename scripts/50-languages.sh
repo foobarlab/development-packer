@@ -11,7 +11,7 @@ fi
 
 # ---- Python
 
-sudo emerge -vt dev-python/pip dev-python/sphinx app-vim/vimpython
+sudo emerge -vt dev-python/pip dev-python/sphinx app-vim/vimpython dev-python/numpy
 #sudo emerge -vt dev-python/virtualenv
 
 # ---- Ruby
@@ -72,7 +72,6 @@ sudo emerge -vt dev-lang/php dev-php/xdebug dev-php/composer dev-php/pecl-oauth 
 #sudo emerge -vt dev-php/pecl-amqp
 #sudo emerge -vt dev-php/pecl-stomp
 #sudo emerge -vt dev-php/pecl-apcu dev-php/pecl-apcu_bc
-#sudo emerge -vt media-gfx/imagemagick dev-php/pecl-imagick
 
 # update PEAR/PECL channels while online
 #sudo emerge -v --config PEAR-PEAR
