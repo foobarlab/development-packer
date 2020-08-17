@@ -121,7 +121,7 @@ net-misc/curl rtmp brotli
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-ghostscript
 # required by openjdk:
->=app-text/ghostscript-gpl-9.26 cups
+#>=app-text/ghostscript-gpl-9.26 cups
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-avahi
 net-dns/avahi dbus mdnsresponder-compat
@@ -167,9 +167,12 @@ gnome-base/librsvg -tools
 # customize media-gfx/imagemagick (required by dev-php/pecl-imagick):
 media-gfx/imagemagick -openmp
 # additional supported libs for imagick:
-media-gfx/imagemagick corefonts fontconfig graphviz jpeg2k postscript wmf raw heif hdri fpx lqr
+media-gfx/imagemagick -corefonts fontconfig graphviz jpeg2k postscript wmf raw heif hdri fpx lqr
 # required by media-gfx/graphviz, dev-php/phpDocumentor, dev-php/phing:
 media-libs/gd fontconfig
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-ffmpeg
+media-video/ffmpeg -bluray -frei0r -ieee1394 cpudetection
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-wireshark
 # customize wireshark:
