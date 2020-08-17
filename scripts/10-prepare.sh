@@ -178,6 +178,9 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-wireshark
 # customize wireshark:
 net-analyzer/wireshark -qt5 androiddump sshdump brotli tfshark adns lua smi
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-nodejs
+net-libs/nghttp2 libressl
+DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
@@ -233,6 +236,12 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/vbox-couchdb
 # unmask dev-db/couchdb as we use our own provided version (was masked because of gentoo bugs):
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
+DATA
+
+# ---- package.accept_keywords
+
+cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords
+dev-libs/libressl **
 DATA
 
 # --- always copy kernel.config to current kernel src
