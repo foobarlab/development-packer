@@ -49,7 +49,7 @@ sudo emerge -vt dev-lang/elixir dev-lang/erlang
 
 # ---- JavaScript / node.js
 
-sudo emerge -vt net-libs/nodejs
+sudo emerge -vt net-libs/nodejs sys-apps/yarn
 
 # TODO try nodeenv (pip install)
 # see https://github.com/ekalinin/nodeenv
