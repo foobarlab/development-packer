@@ -16,9 +16,10 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
     - Optional: *Docker* (for containerization, default: enabled)
-    - Languages: *Elixir, Erlang OTP, PHP, Go, Java, Ruby, Python, Lua, Rust*
+    - Languages: *Elixir, Erlang, PHP, Go, Java, Ruby, Python, Lua, Rust, Node.js*
     - Build tools: *Ant, Maven, Ivy*
-    - Web Servers: *Apache, Nginx, Varnish*
+    - Mail servers: *Postfix*
+    - Web Servers: *Apache, Nginx, Caddy, Varnish*
     - Databases: *MariaDB, PostgreSQL, Sqlite, Redis, CouchDB*
     - Commandline utils: *ripgrep, icdiff, inotify-tools, exa*
     - Network tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump*
@@ -28,7 +29,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
 
 ### Download pre-build images
 
-Get the latest build from Vagrant Cloud: [foobarlab/development](https://app.vagrantup.com/foobarlab/boxes/development)
+Get the latest nightly build from Vagrant Cloud: [foobarlab/development](https://app.vagrantup.com/foobarlab/boxes/development)
 
 ### Build your own using Packer
 
