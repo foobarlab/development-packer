@@ -115,18 +115,18 @@ sudo cat /etc/portage/make.conf
 # ---- package.use
 
 sudo mkdir -p /etc/portage/package.use
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-curl
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-curl
 #net-misc/curl rtmp http2 brotli	# FIXME 'http2' requires '-bindist'
 net-misc/curl rtmp brotli
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-ghostscript
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-ghostscript
 # required by openjdk:
 #>=app-text/ghostscript-gpl-9.26 cups
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-avahi
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-avahi
 net-dns/avahi dbus mdnsresponder-compat
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-java
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-java
 # customize java-jre, make it headless, see: https://wiki.gentoo.org/wiki/Java
 dev-java/oracle-jre-bin headless-awt -alsa -awt -cups -fontconfig
 dev-java/oracle-jdk-bin headless-awt -alsa -awt -cups -fontconfig
@@ -136,32 +136,32 @@ dev-java/openjdk-bin headless-awt -alsa -cups -webstart
 dev-java/openjdk-jre-bin headless-awt -alsa -cups -webstart
 dev-java/ant -javamail
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-apache
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-apache
 www-servers/apache ssl threads
 # required by www-apache/mod_security www-apache/modsecurity-crs:
 dev-libs/apr-util openssl
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-nginx
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-nginx
 www-servers/nginx threads vim-syntax google_perftools
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-redis
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-redis
 dev-db/redis luajit
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-php
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-php
 dev-lang/php curl pdo mysql mysqli xmlwriter xmlreader apache2 argon2 bcmath calendar cgi enchant flatfile fpm inifile mhash odbc postgres soap sockets sodium spell xmlrpc xslt zip zip-encryption sqlite phar opcache tidy xpm gmp ftp
 # required by www-apps/postfixadmin:
 >=dev-lang/php-5.6 imap
 # various extensions:
 dev-php/pecl-redis igbinary
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-erlang
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-erlang
 dev-lang/erlang kpoll -hipe pgo odbc sctp smp -wxwidgets
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-kafka
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-kafka
 # use embedded zookeeper for kafka:
 net-misc/kafka-bin internal-zookeeper
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-imagick
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-imagick
 # customize gnome-base/librsvg (pulled by media-gfx/imagemagick): prevent emerge of X11
 gnome-base/librsvg -tools
 # customize media-gfx/imagemagick (required by dev-php/pecl-imagick):
@@ -171,12 +171,15 @@ media-gfx/imagemagick -corefonts fontconfig graphviz jpeg2k postscript wmf raw h
 # required by media-gfx/graphviz, dev-php/phpDocumentor, dev-php/phing:
 media-libs/gd fontconfig
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-ffmpeg
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-ffmpeg
 media-video/ffmpeg -bluray -frei0r -ieee1394 cpudetection
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/vbox-wireshark
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-wireshark
 # customize wireshark:
 net-analyzer/wireshark -qt5 androiddump sshdump brotli tfshark adns lua smi
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-nodejs
+net-libs/nghttp2 libressl
 DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
@@ -189,17 +192,17 @@ DATA
 # ---- package.license
 
 sudo mkdir -p /etc/portage/package.license
-cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-libpng
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-libpng
 # required by openjdk:
 >=media-libs/libpng-1.6.37 libpng2
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-dnswalk
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-dnswalk
 >=net-dns/dnswalk-2.0.2 freedist
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-ffmpeg
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-ffmpeg
 >=media-libs/quirc-1.0 AS-IS
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.license/vbox-llvm
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
 >=sys-devel/llvm-9.0.1 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/llvm-common-9.0.1 Apache-2.0-with-LLVM-exceptions
 DATA
@@ -207,21 +210,21 @@ DATA
 # ---- package.mask
 
 sudo mkdir -p /etc/portage/package.mask
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-erlang
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
 #>=dev-lang/erlang-23
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-varnish
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-varnish
 # required by varnish-modules:
 #>=www-servers/varnish-6.2.0
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-rabbitmq
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-rabbitmq
 >=net-misc/rabbitmq-server-3.8.0
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-redis
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-redis
 # workaround: temporary mask
 >=dev-db/redis-6
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/vbox-php
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
 # workaround: temporary mask PHP 7.4
 >=dev-lang/php-7.4
 DATA
@@ -229,10 +232,17 @@ DATA
 # ---- package.unmask
 
 sudo mkdir -p /etc/portage/package.unmask
-cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/vbox-couchdb
+cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
 # unmask dev-db/couchdb as we use our own provided version (was masked because of gentoo bugs):
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
+DATA
+
+# ---- package.accept_keywords
+
+sudo mkdir -p /etc/portage/package.accept_keywords
+cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/dev-libressl
+dev-libs/libressl **
 DATA
 
 # --- always copy kernel.config to current kernel src

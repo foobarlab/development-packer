@@ -49,12 +49,10 @@ sudo emerge -vt dev-lang/elixir dev-lang/erlang
 
 # ---- JavaScript / node.js
 
+sudo emerge -vt net-libs/nodejs sys-apps/yarn
+
 # TODO try nodeenv (pip install)
 # see https://github.com/ekalinin/nodeenv
-
-# TODO try gentoo ebuild
-
-# TODO try src install with custom ebuild
 
 # ---- PHP
 

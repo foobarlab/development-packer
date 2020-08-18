@@ -7,6 +7,7 @@ fi
 
 # ---- etckeeper
 
+# see: https://etckeeper.branchable.com/
 #sudo emerge -vt sys-apps/etckeeper
 #sudo etckeeper init -d /etc
 
@@ -45,14 +46,17 @@ sudo emerge -vt \
   app-misc/icdiff \
   sys-apps/ripgrep \
   app-arch/pigz \
-  app-shells/fzf
+  app-shells/fzf \
+  app-text/multitail
 
 # ---- gfx/video utils
 
-sudo emerge -vt media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg media-video/rtmpdump
+sudo emerge -vt media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg
+#sudo emerge -vt media-video/rtmpdump    # pulled in by dependency
 # PHP imagick ext:
 sudo emerge -vt dev-php/pecl-imagick
 
-# ---- various libs
+# ---- various
 
-sudo emerge -vt dev-libs/protobuf
+#sudo emerge -vt dev-libs/protobuf  # TODO enable when needed
+sudo emerge -vt dev-util/strace		# strace for debugging
