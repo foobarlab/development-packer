@@ -81,6 +81,7 @@ sudo emerge -vt net-misc/rabbitmq-server
 # ---- DNSmasq
 
 sudo emerge -vt net-dns/dnsmasq
+#sudo rc-update add dnsmasq default
 
 # ---- Postfix
 
