@@ -42,7 +42,7 @@ eselect java-vm show
 
 # ---- Elixir / Erlang OTP
 
-sudo emerge -vt dev-lang/elixir dev-lang/erlang
+sudo emerge -vt dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
 
 # add epmd to default runlevel (needed for couchdb/rabbitmq)
 #sudo rc-update add epmd default
