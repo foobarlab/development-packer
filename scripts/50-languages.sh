@@ -26,7 +26,7 @@ DATA
 
 sudo emerge -vt dev-lang/ruby dev-ruby/rubygems dev-ruby/bundler dev-ruby/sass
 
-# ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy / Gradle
+# ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy
 
 sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java \
                 dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net \
@@ -39,6 +39,10 @@ eselect java-vm show
 #sudo eselect java-vm set system openjdk-bin-11
 #eselect java-vm set user openjdk-bin-11
 #eselect java-vm show
+
+# ---- Kotlin
+
+sudo emerge -vt dev-lang/kotlin-bin
 
 # ---- Elixir / Erlang OTP
 
