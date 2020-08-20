@@ -70,16 +70,18 @@ Vagrant.configure("2") do |config|
   config.ssh.pty = true
   config.ssh.insert_key = false
   config.vm.synced_folder '.', '/vagrant', disabled: false
-  # FIXME execute ansible only if BUILD_INCLUDE_ANSIBLE is set
-  config.vm.provision "ansible_local" do |ansible|
-    ansible.install = false
-    ansible.verbose = true
-    ansible.compatibility_mode = "2.0"
-    ansible.playbook = "provision.yml"
-    #ansible.extra_vars = {
-    #  box_version: "#{ENV['BUILD_BOX_VERSION']}"
-    #}
-  end
+  
+  # TODO make ansible provisioning optional + test scripts
+  #config.vm.provision "ansible_local" do |ansible|
+  #  ansible.install = false
+  #  ansible.verbose = true
+  #  ansible.compatibility_mode = "2.0"
+  #  ansible.playbook = "provision.yml"
+  #  #ansible.extra_vars = {
+  #  #  box_version: "#{ENV['BUILD_BOX_VERSION']}"
+  #  #}
+  #end
+  
   config.vm.provision "clean_kernel", type: "shell", inline: $script_clean_kernel, privileged: true
   config.vm.provision "cleanup", type: "shell", inline: $script_cleanup, privileged: true
 end
