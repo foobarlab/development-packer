@@ -21,7 +21,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Mail servers: *Postfix*
     - Web Servers: *Apache, Nginx, Caddy, Varnish*
     - Databases: *MariaDB, PostgreSQL, Sqlite, Redis, CouchDB*
-    - Commandline utils: *ripgrep, icdiff, inotify-tools, exa*
+    - Commandline utils: *ripgrep, icdiff, inotify-tools, exa, strace*
     - Network tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump*
     - Web tools: *shellinabox, phpmyadmin*
  - Scripts for system administration in /usr/local/sbin:
