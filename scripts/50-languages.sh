@@ -49,14 +49,13 @@ sudo emerge -vt dev-lang/kotlin-bin
 sudo emerge -vt dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
 
 # add epmd to default runlevel (needed for couchdb/rabbitmq)
-#sudo rc-update add epmd default
+sudo rc-update add epmd default
 
 # ---- JavaScript / node.js
 
 sudo emerge -vt net-libs/nodejs sys-apps/yarn
 
-# TODO try nodeenv (pip install)
-# see https://github.com/ekalinin/nodeenv
+# TODO try nodeenv (pip install), see https://github.com/ekalinin/nodeenv
 
 # ---- PHP
 
