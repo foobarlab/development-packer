@@ -26,7 +26,7 @@ DATA
 
 sudo emerge -vt dev-lang/ruby dev-ruby/rubygems dev-ruby/bundler dev-ruby/sass
 
-# ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy / Gradle
+# ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy
 
 sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java \
                 dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net \
@@ -40,19 +40,22 @@ eselect java-vm show
 #eselect java-vm set user openjdk-bin-11
 #eselect java-vm show
 
+# ---- Kotlin
+
+sudo emerge -vt dev-lang/kotlin-bin
+
 # ---- Elixir / Erlang OTP
 
-sudo emerge -vt dev-lang/elixir dev-lang/erlang
+sudo emerge -vt dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
 
 # add epmd to default runlevel (needed for couchdb/rabbitmq)
-#sudo rc-update add epmd default
+sudo rc-update add epmd default
 
 # ---- JavaScript / node.js
 
 sudo emerge -vt net-libs/nodejs sys-apps/yarn
 
-# TODO try nodeenv (pip install)
-# see https://github.com/ekalinin/nodeenv
+# TODO try nodeenv (pip install), see https://github.com/ekalinin/nodeenv
 
 # ---- PHP
 
