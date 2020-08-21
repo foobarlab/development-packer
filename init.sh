@@ -17,7 +17,7 @@ then
 	echo "Adding '$BUILD_BOX_NAME' ..."
 	vagrant box add --name "$BUILD_BOX_NAME" "$BUILD_OUTPUT_FILE"
 else
-	echo "There is no box file '$BUILD_OUTPUT_FILE' in the current directory. Please run './build.sh' before to build the box."
+	echo "There is no box file '$BUILD_OUTPUT_FILE' in the current directory. Please run './build.sh' and './finalize.sh' before to build the box."
 	exit 1
 fi
 

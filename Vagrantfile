@@ -11,7 +11,7 @@ ego boot update
 cd /usr/src/linux
 make distclean
 # copy latest kernel config
-cp /usr/src/kernel.config /usr/src/linux/.config
+cp -f /usr/src/kernel.config /usr/src/linux/.config
 SCRIPT
 
 $script_cleanup = <<SCRIPT
@@ -71,16 +71,16 @@ Vagrant.configure("2") do |config|
   config.ssh.insert_key = false
   config.vm.synced_folder '.', '/vagrant', disabled: false
   
-  # TODO make ansible provisioning optional + test scripts
-  #config.vm.provision "ansible_local" do |ansible|
-  #  ansible.install = false
-  #  ansible.verbose = true
-  #  ansible.compatibility_mode = "2.0"
-  #  ansible.playbook = "provision.yml"
-  #  #ansible.extra_vars = {
-  #  #  box_version: "#{ENV['BUILD_BOX_VERSION']}"
-  #  #}
-  #end
+  # ansible provisioning executed only in finalizing step (finalize.sh)
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.install = false
+    ansible.verbose = true
+    ansible.compatibility_mode = "2.0"
+    ansible.playbook = "provision.yml"
+    #ansible.extra_vars = {
+    #  box_version: "#{ENV['BUILD_BOX_VERSION']}"
+    #}
+  end
   
   config.vm.provision "clean_kernel", type: "shell", inline: $script_clean_kernel, privileged: true
   config.vm.provision "cleanup", type: "shell", inline: $script_cleanup, privileged: true

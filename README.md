@@ -39,11 +39,15 @@ Get the latest nightly build from Vagrant Cloud: [foobarlab/development](https:/
 
 #### Build a fresh VirtualBox box
 
- - Run ```./build.sh```
+ - Run ```./build.sh```, followed by ```./finalize.sh```
  
 #### Quick test the box file
 
  - Run ```./test.sh```
+
+#### Test Ansible provisioning (for development only)
+
+ - Run ```./test_ansible.sh```
 
 #### Upload the box to Vagrant Cloud (experimental)
 
@@ -65,7 +69,7 @@ Get the latest nightly build from Vagrant Cloud: [foobarlab/development](https:/
 
  - Run ```./config.sh```
 
-#### Cleanup build environment (poweroff all Vagrant and VirtualBox machines)
+#### Cleanup build environment (poweroff any Vagrant and VirtualBox machines)
 
  - Run ```./clean_env.sh```
 

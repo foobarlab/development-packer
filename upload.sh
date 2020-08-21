@@ -7,7 +7,7 @@ if [ -f "$BUILD_OUTPUT_FILE" ];
 then
 	echo "Found box file '$BUILD_OUTPUT_FILE' in the current directory ..."
 else
-	echo "There is no box file '$BUILD_OUTPUT_FILE' in the current directory. Please run './build.sh' before to build the box."
+	echo "There is no box file '$BUILD_OUTPUT_FILE' in the current directory! Please run './build.sh' and './finalize.sh' to create the box file and try again."
 	if [ $# -eq 0 ]; then
 		exit 1	# exit with error when running without param
 	else
