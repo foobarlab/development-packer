@@ -6,7 +6,7 @@ command -v vagrant >/dev/null 2>&1 || { echo "Command 'vagrant' required but it'
 
 echo "==> Initializing a fresh '$BUILD_BOX_NAME' box ..."
 
-if [ -f "$BUILD_OUTPUT_FILE" ]
+if [ -f "$BUILD_OUTPUT_FILE_FINAL" ]
 then
 	echo "Suspending any running instances ..."
 	vagrant suspend
@@ -15,9 +15,9 @@ then
 	echo "Removing '$BUILD_BOX_NAME' ..."
 	vagrant box remove -f "$BUILD_BOX_NAME" 2>/dev/null || true
 	echo "Adding '$BUILD_BOX_NAME' ..."
-	vagrant box add --name "$BUILD_BOX_NAME" "$BUILD_OUTPUT_FILE"
+	vagrant box add --name "$BUILD_BOX_NAME" "$BUILD_OUTPUT_FILE_FINAL"
 else
-	echo "There is no box file '$BUILD_OUTPUT_FILE' in the current directory. Please run './build.sh' and './finalize.sh' before to build the box."
+	echo "There is no box file '$BUILD_OUTPUT_FILE_FINAL' in the current directory. Please run './build.sh' and './finalize.sh' before to build the box."
 	exit 1
 fi
 

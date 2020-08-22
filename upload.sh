@@ -3,11 +3,11 @@
 
 . config.sh
 
-if [ -f "$BUILD_OUTPUT_FILE" ];
+if [ -f "$BUILD_OUTPUT_FILE_FINAL" ];
 then
-	echo "Found box file '$BUILD_OUTPUT_FILE' in the current directory ..."
+	echo "Found box file '$BUILD_OUTPUT_FILE_FINAL' in the current directory ..."
 else
-	echo "There is no box file '$BUILD_OUTPUT_FILE' in the current directory! Please run './build.sh' and './finalize.sh' to create the box file and try again."
+	echo "There is no box file '$BUILD_OUTPUT_FILE_FINAL' in the current directory! Please run './build.sh' and './finalize.sh' to create the box file and try again."
 	if [ $# -eq 0 ]; then
 		exit 1	# exit with error when running without param
 	else
@@ -25,7 +25,7 @@ echo "User:     $BUILD_BOX_USERNAME"
 echo "Box:      $BUILD_BOX_NAME"
 echo "Provider: $BUILD_BOX_PROVIDER"
 echo "Version:  $BUILD_BOX_VERSION"
-echo "File:     $BUILD_OUTPUT_FILE"
+echo "File:     $BUILD_OUTPUT_FILE_FINAL"
 echo
 echo "Please verify if above information is correct."
 echo
@@ -167,7 +167,7 @@ UPLOAD_URL=$(echo "$UPLOAD_PREPARE_UPLOADURL" | jq '.upload_path' | tr -d '"')
 echo "Trying to upload ... This may take a while ..."
 curl $UPLOAD_URL \
      --request PUT \
-     --upload-file $BUILD_OUTPUT_FILE
+     --upload-file $BUILD_OUTPUT_FILE_FINAL
 
 # FIXME: validate successful upload (curl exit code?)
 echo "Upload finished with exit code $?."
