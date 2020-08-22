@@ -237,6 +237,10 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-libvpx
+# unmask media-libs/libvpx (dependency for FFmpeg), this might break Firefox compile
+>=media-libs/libvpx-1.8
+DATA
 
 # ---- package.accept_keywords
 
