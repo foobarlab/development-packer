@@ -92,6 +92,7 @@ if [ -f "$BUILD_OUTPUT_FILE_TEMP" ]; then
     vagrant package --output "$BUILD_OUTPUT_FILE_INTERMEDIATE"
 	echo "Removing temporary box file ..."
 	rm -f  "$BUILD_OUTPUT_FILE_TEMP"
+	# TODO rename packer.log for backup
 	echo "Please run 'finalize.sh' to finish configuration and create the final box file."
 else
     echo "There is no box file '$BUILD_OUTPUT_FILE_TEMP' in the current directory."

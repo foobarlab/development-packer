@@ -10,6 +10,7 @@ command -v vagrant >/dev/null 2>&1 || { echo "Command 'vagrant' required but it'
 
 echo "Finalizing box ..."
 
+# FIXME if finalized box exists, ask if delete and continue, or abort
 echo "Deleting previous finalized box if any ..."
 rm -f $BUILD_OUTPUT_FILE_FINAL
 
