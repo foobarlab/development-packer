@@ -16,13 +16,13 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
     - Optional: *Docker* (for containerization, default: enabled)
-    - Languages: *Elixir, Erlang, PHP, Go, Java, Kotlin, Ruby, Python, Lua, Rust, Node.js*
+    - Programming languages: *Elixir, Erlang, PHP, Go, Java, Kotlin, Ruby, Python, Lua, Rust, Node.js*
     - Build tools: *Ant, Maven, Ivy*
     - Mail servers: *Postfix*
     - Web Servers: *Apache, Nginx, Caddy, Varnish*
     - Databases: *MariaDB, PostgreSQL, Sqlite, Redis, CouchDB*
-    - Commandline utils: *ripgrep, icdiff, inotify-tools, exa, strace*
-    - Network tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump*
+    - File utils: *ripgrep, icdiff, inotify-tools, exa, strace*
+    - Networking tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump* and more
     - Web tools: *shellinabox, phpmyadmin*
  - Scripts for system administration in /usr/local/sbin:
     - foo-iptables: custom iptables firewall rules (restored on reboot)
