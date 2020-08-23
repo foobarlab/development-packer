@@ -7,7 +7,7 @@ fi
 
 # ---- MariaDB (MySQL)
 
-sudo emerge -vt dev-db/mariadb
+sudo emerge -vt dev-db/mariadb dev-db/mysqltuner
 #sudo rc-update add mysql default
 
 # initially configure mariadb (create initial databases, set root passwd)
@@ -26,8 +26,8 @@ sudo rm -f /root/.my.cnf
 # TODO questionaire and secures the mariadb installation, see: https://www.funtoo.org/Package:MariaDB
 #sudo mysql_secure_installation
 
-# for ansible mysql integration we need python-mysql
-#sudo emerge -vt dev-python/mysql-python
+# various mysql integrations
+sudo emerge -vt dev-python/pymysql dev-python/mysqlclient
 
 # ---- PostgreSQL
 

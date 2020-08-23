@@ -52,11 +52,12 @@ sudo emerge -vt \
 # ---- gfx/video utils
 
 sudo emerge -vt media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg
-#sudo emerge -vt media-video/rtmpdump    # pulled in by dependency
+#sudo emerge -vt media-video/rtmpdump    # already pulled in by dependency
 # PHP imagick ext:
 sudo emerge -vt dev-php/pecl-imagick
 
 # ---- various
 
-#sudo emerge -vt dev-libs/protobuf  # TODO enable when needed
-sudo emerge -vt dev-util/strace		# strace for debugging
+#sudo emerge -vt dev-libs/protobuf          # TODO enable when needed
+sudo emerge -vt dev-util/strace		        # strace for debugging
+sudo emerge -vt dev-db/mysql-super-smack    # benchmark mysql/postgresql

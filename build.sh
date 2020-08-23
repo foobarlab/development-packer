@@ -86,12 +86,14 @@ if [ -f "$BUILD_OUTPUT_FILE_TEMP" ]; then
     vagrant box remove -f "$BUILD_BOX_NAME" 2>/dev/null || true
     echo "Adding '$BUILD_BOX_NAME' ..."
     vagrant box add --name "$BUILD_BOX_NAME" "$BUILD_OUTPUT_FILE_TEMP"
-    echo "Powerup and provision '$BUILD_BOX_NAME' ..."
-    vagrant --provision up || true
-    echo "Exporting base box ..."
-    vagrant package --output "$BUILD_OUTPUT_FILE"
+    echo "Powerup and provision '$BUILD_BOX_NAME' (running only 'shell' scripts) ..."
+    vagrant --provision up --provision-with shell || { echo "Unable to startup '$BUILD_BOX_NAME'."; exit 1; }
+    echo "Exporting intermediate box to '$BUILD_OUTPUT_FILE_INTERMEDIATE' ..."
+    vagrant package --output "$BUILD_OUTPUT_FILE_INTERMEDIATE"
 	echo "Removing temporary box file ..."
 	rm -f  "$BUILD_OUTPUT_FILE_TEMP"
+	# TODO rename packer.log for backup
+	echo "Please run 'finalize.sh' to finish configuration and create the final box file."
 else
     echo "There is no box file '$BUILD_OUTPUT_FILE_TEMP' in the current directory."
     exit 1

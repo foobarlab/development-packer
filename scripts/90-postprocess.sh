@@ -5,6 +5,12 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# sanitize perl packages
+sudo perl-cleaner --all
+
+# update haskell packages
+#sudo haskell-updater
+
 # remove any temp portage flags and update system
 for dir in /etc/portage/package.*; do
   sudo rm -f /etc/portage/${dir##*/}/temp*

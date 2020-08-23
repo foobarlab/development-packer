@@ -22,6 +22,9 @@ cat <<'DATA' | sudo tee -a /etc/gemrc
 #gem: --no-rdoc --no-ri
 # or
 #gem: --no-document
+
+gem: --no-rdoc --no-ri
+
 DATA
 
 sudo emerge -vt dev-lang/ruby dev-ruby/rubygems dev-ruby/bundler dev-ruby/sass
@@ -42,7 +45,7 @@ eselect java-vm show
 
 # ---- Kotlin
 
-sudo emerge -vt dev-lang/kotlin-bin
+#sudo emerge -vt dev-lang/kotlin-bin
 
 # ---- Elixir / Erlang OTP
 
@@ -50,6 +53,18 @@ sudo emerge -vt dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
 
 # add epmd to default runlevel (needed for couchdb/rabbitmq)
 sudo rc-update add epmd default
+
+# ---- Haskell
+
+#sudo emerge -vt dev-haskell/haskell-platform
+
+# ---- Clojure
+
+#sudo emerge -vt dev-lang/clojure
+
+# ---- OCaml
+
+#sudo emerge -vt dev-lang/ocaml
 
 # ---- JavaScript / node.js
 
@@ -123,3 +138,7 @@ sudo emerge -vt dev-lang/lua dev-lang/luajit
 # ---- Rust
 
 sudo emerge -vt dev-lang/rust-bin app-vim/rust-vim
+
+# ---- Whitespace
+
+#sudo emerge -vt dev-lang/whitespace

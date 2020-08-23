@@ -16,13 +16,13 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
     - Optional: *Docker* (for containerization, default: enabled)
-    - Languages: *Elixir, Erlang, PHP, Go, Java, Kotlin, Ruby, Python, Lua, Rust, Node.js*
+    - Programming languages: *Python, Ruby, Java, (Kotlin), Scala, Groovy, (Clojure), Rust, PHP, Javascript with Node.js, Perl, Go, Elixir, Erlang, (OCaml), (Haskell), Lua, (Whitespace)*
     - Build tools: *Ant, Maven, Ivy*
     - Mail servers: *Postfix*
     - Web Servers: *Apache, Nginx, Caddy, Varnish*
     - Databases: *MariaDB, PostgreSQL, Sqlite, Redis, CouchDB*
-    - Commandline utils: *ripgrep, icdiff, inotify-tools, exa, strace*
-    - Network tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump*
+    - File utils: *ripgrep, icdiff, inotify-tools, exa, strace*
+    - Networking tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump* and more
     - Web tools: *shellinabox, phpmyadmin*
  - Scripts for system administration in /usr/local/sbin:
     - foo-iptables: custom iptables firewall rules (restored on reboot)
@@ -39,11 +39,15 @@ Get the latest nightly build from Vagrant Cloud: [foobarlab/development](https:/
 
 #### Build a fresh VirtualBox box
 
- - Run ```./build.sh```
+ - Run ```./build.sh```, followed by ```./finalize.sh```
  
 #### Quick test the box file
 
  - Run ```./test.sh```
+
+#### Test Ansible provisioning (for development only)
+
+ - Run ```./test_ansible.sh```
 
 #### Upload the box to Vagrant Cloud (experimental)
 
@@ -65,7 +69,7 @@ Get the latest nightly build from Vagrant Cloud: [foobarlab/development](https:/
 
  - Run ```./config.sh```
 
-#### Cleanup build environment (poweroff all Vagrant and VirtualBox machines)
+#### Cleanup build environment (poweroff any Vagrant and VirtualBox machines)
 
  - Run ```./clean_env.sh```
 

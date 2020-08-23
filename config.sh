@@ -25,6 +25,9 @@ export BUILD_CUSTOM_OVERLAY_NAME="foobarlab"
 export BUILD_CUSTOM_OVERLAY_URL="https://github.com/foobarlab/foobarlab-overlay.git"
 export BUILD_CUSTOM_OVERLAY_BRANCH="development"
 
+# TODO make finalize step optional, like:
+#export BUILD_AUTO_FINALIZE=false  # if 'true' automatically run finalize.sh script
+
 export BUILD_KERNEL=false                 # build a new kernel?
 export BUILD_INCLUDE_ANSIBLE=false        # include Ansible? (already installed in funtoo-base)
 export BUILD_INCLUDE_DOCKER=true          # include Docker?
@@ -50,8 +53,9 @@ else
 fi
 export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP<br><br>Source code: https://github.com/foobarlab/development-packer"
 
-export BUILD_OUTPUT_FILE="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.box"
-export BUILD_OUTPUT_FILE_TEMP="$BUILD_BOX_NAME.tmp.box"
+export BUILD_OUTPUT_FILE_TEMP="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.tmp.box"
+export BUILD_OUTPUT_FILE_INTERMEDIATE="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.raw.box"
+export BUILD_OUTPUT_FILE_FINAL="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.box"
 
 # get the latest parent version from Vagrant Cloud API call:
 . parent_version.sh
