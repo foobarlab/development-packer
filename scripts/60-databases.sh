@@ -7,7 +7,7 @@ fi
 
 # ---- MariaDB (MySQL)
 
-sudo emerge -vt dev-db/mariadb dev-db/mysqltuner 
+sudo emerge -vt dev-db/mariadb dev-db/mysqltuner
 #sudo rc-update add mysql default
 
 # initially configure mariadb (create initial databases, set root passwd)
