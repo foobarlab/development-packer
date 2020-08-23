@@ -102,6 +102,9 @@ DATA
 # MySQL
 sudo sed -i 's/USE=\"/USE="mysql /g' /etc/portage/make.conf
 
+# PostgreSQL
+sudo sed -i 's/USE=\"/USE="postgres /g' /etc/portage/make.conf
+
 # LLVM
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 LLVM_TARGETS="AMDGPU BPF NVPTX X86 AArch64 ARM WebAssembly"
@@ -225,8 +228,12 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-redis
 >=dev-db/redis-6
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
-# workaround: temporary mask PHP 7.4
+# workaround: temporary mask
 >=dev-lang/php-7.4
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
+# workaround: temporary mask
+>=dev-lang/clojure-1.9.0
 DATA
 
 # ---- package.unmask
