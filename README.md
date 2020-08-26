@@ -16,7 +16,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
     - Optional: *Docker* (for containerization, default: enabled)
-    - Programming languages: *Python, Ruby, Java, (Kotlin), Scala, Groovy, (Clojure), Rust, PHP, Javascript with Node.js, Perl, Go, Elixir, Erlang, (OCaml), (Haskell), Lua, (Whitespace)*
+    - Programming languages: *Python, Ruby, Java, (Kotlin), Scala, Groovy, (Clojure), Rust, PHP, Javascript with Node.js, Perl, Go, Elixir, Erlang, (OCaml), (Haskell), Lua, (Whitespace), (LLVM)*
     - Build tools: *Ant, Maven, Ivy*
     - Mail servers: *Postfix*
     - Web Servers: *Apache, Nginx, Caddy, Varnish*
