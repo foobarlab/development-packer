@@ -21,12 +21,12 @@ sudo sed -i 's/BUILD_MYSQL_ROOT_PASSWORD/'"$BUILD_MYSQL_ROOT_PASSWORD"'/g' /root
 sudo emerge --config dev-db/mariadb || true    # FIXME this actually fails, but /var/lib/mysql is populated ...
 sudo rm -f /root/.my.cnf
 
-# various mysql integrations
+# various mysql integrations (pymysql needed for Ansible mysql_* modules)
 sudo emerge -vt dev-python/pymysql dev-python/mysqlclient
 
 # ---- PostgreSQL
 
-sudo emerge -vt dev-db/postgresql app-eselect/eselect-postgresql
+sudo emerge -vt dev-db/postgresql app-eselect/eselect-postgresql    # FIXME already installed in system update?
 
 # basic configuration
 sudo emerge --config dev-db/postgresql || true
