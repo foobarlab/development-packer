@@ -92,6 +92,7 @@ sudo GOPATH="/opt/go" go get github.com/jsha/minica
 # ---- various file utils
 
 sudo emerge -vt \
+  app-misc/colordiff \
   sys-fs/inotify-tools \
   sys-apps/exa \
   app-misc/icdiff \
