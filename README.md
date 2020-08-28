@@ -26,6 +26,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Networking tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump* and more
     - Web tools: *shellinabox, phpmyadmin*
     - Various *vim* plugins
+    - Arduino/AVR Development: *AVRDUDE, AVRA, Arduino Builder*
  - Scripts for system administration in /usr/local/sbin:
     - foo-iptables: custom iptables firewall rules (restored on reboot)
 

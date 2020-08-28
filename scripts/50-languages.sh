@@ -7,7 +7,7 @@ fi
 
 # ---- LLVM
 
-sudo emerge -vt sys-devel/llvm
+sudo emerge -vt sys-devel/llvm sys-devel/llvm-common sys-devel/llvmgold
 
 # ---- Python
 
@@ -64,7 +64,7 @@ sudo emerge -vt dev-lang/clojure
 
 # ---- OCaml
 
-sudo emerge -vt dev-lang/ocaml
+sudo emerge -vt dev-lang/ocaml dev-ml/llvm-ocaml
 
 # ---- JavaScript / node.js
 
@@ -142,3 +142,7 @@ sudo emerge -vt dev-lang/rust-bin
 # ---- Whitespace
 
 sudo emerge -vt dev-lang/whitespace
+
+# ---- ARM / AVR / Arduino
+
+sudo emerge -vt dev-embedded/avrdude dev-embedded/avra dev-embedded/arduino-builder sys-devel/crossdev
