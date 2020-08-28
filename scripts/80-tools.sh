@@ -54,6 +54,15 @@ sudo emerge -vt \
   app-vim/vim-spell-en \
   app-vim/vim-spell-fr \
   app-vim/vim-spell-pt \
+  app-vim/vim-spell-nl \
+  app-vim/vim-spell-pl \
+  app-vim/vim-spell-cs \
+  app-vim/vim-spell-da \
+  app-vim/vim-spell-el \
+  app-vim/vim-spell-es \
+  app-vim/vim-spell-he \
+  app-vim/vim-spell-hu \
+  app-vim/vim-spell-it \
   app-vim/vimcommander \
   app-vim/vimoutliner \
   app-vim/wikipedia-syntax \
