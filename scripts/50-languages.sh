@@ -7,7 +7,7 @@ fi
 
 # ---- LLVM
 
-#sudo emerge -vt sys-devel/llvm	   # optional
+sudo emerge -vt sys-devel/llvm
 
 # ---- Python
 
@@ -45,7 +45,7 @@ eselect java-vm show
 
 # ---- Kotlin
 
-#sudo emerge -vt dev-lang/kotlin-bin
+sudo emerge -vt dev-lang/kotlin-bin
 
 # ---- Elixir / Erlang OTP
 
@@ -56,15 +56,15 @@ sudo rc-update add epmd default
 
 # ---- Haskell
 
-#sudo emerge -vt dev-haskell/haskell-platform
+sudo emerge -vt dev-haskell/haskell-platform
 
 # ---- Clojure
 
-#sudo emerge -vt dev-lang/clojure
+sudo emerge -vt dev-lang/clojure
 
 # ---- OCaml
 
-#sudo emerge -vt dev-lang/ocaml
+sudo emerge -vt dev-lang/ocaml
 
 # ---- JavaScript / node.js
 
@@ -141,4 +141,4 @@ sudo emerge -vt dev-lang/rust-bin
 
 # ---- Whitespace
 
-#sudo emerge -vt dev-lang/whitespace
+sudo emerge -vt dev-lang/whitespace

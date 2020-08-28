@@ -58,9 +58,9 @@ sudo emerge -vt \
   app-vim/vimoutliner \
   app-vim/wikipedia-syntax \
   app-vim/xsl-syntax \
-  app-vim/webapi
-
-# TODO add: app-vim/vim2hs, app-vim/vimclojure, app-vim/notes
+  app-vim/webapi \
+  app-vim/vim2hs \
+  app-vim/vimclojure
 
 # ---- various network utils
 
