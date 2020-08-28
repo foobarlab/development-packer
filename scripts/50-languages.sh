@@ -11,7 +11,7 @@ fi
 
 # ---- Python
 
-sudo emerge -vt dev-python/pip dev-python/sphinx app-vim/vimpython dev-python/numpy
+sudo emerge -vt dev-python/pip dev-python/sphinx dev-python/numpy
 #sudo emerge -vt dev-python/virtualenv
 
 # ---- Ruby
@@ -99,7 +99,7 @@ sudo emerge -vt dev-lang/php dev-php/xdebug dev-php/composer dev-php/pecl-oauth 
 
 # ---- Go
 
-sudo emerge -vt dev-lang/go app-vim/vim-go
+sudo emerge -vt dev-lang/go
 
 # Go apps in /opt/go:
 sudo mkdir -p /opt/go
@@ -137,7 +137,7 @@ sudo emerge -vt dev-lang/lua dev-lang/luajit
 
 # ---- Rust
 
-sudo emerge -vt dev-lang/rust-bin app-vim/rust-vim
+sudo emerge -vt dev-lang/rust-bin
 
 # ---- Whitespace
 
