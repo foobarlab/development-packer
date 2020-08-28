@@ -38,7 +38,6 @@ sudo emerge -vt \
   app-vim/gitlog \
   app-vim/greputils \
   app-vim/json \
-  app-vim/notes \
   app-vim/rails \
   app-vim/scala-syntax \
   app-vim/screen \
@@ -61,7 +60,7 @@ sudo emerge -vt \
   app-vim/xsl-syntax \
   app-vim/webapi
 
-# TODO add: app-vim/vim2hs, app-vim/vimclojure,  
+# TODO add: app-vim/vim2hs, app-vim/vimclojure, app-vim/notes
 
 # ---- various network utils
 
