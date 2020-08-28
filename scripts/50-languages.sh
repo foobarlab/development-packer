@@ -64,7 +64,8 @@ sudo emerge -vt dev-lang/clojure
 
 # ---- OCaml
 
-sudo emerge -vt dev-lang/ocaml dev-ml/llvm-ocaml
+sudo emerge -vt dev-lang/ocaml
+#sudo emerge -vt dev-ml/llvm-ocaml  # FIXME
 
 # ---- JavaScript / node.js
 
