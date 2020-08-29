@@ -7,11 +7,11 @@ fi
 
 # ---- LLVM
 
-#sudo emerge -vt sys-devel/llvm	   # optional
+sudo emerge -vt sys-devel/llvm sys-devel/llvm-common sys-devel/llvmgold
 
 # ---- Python
 
-sudo emerge -vt dev-python/pip dev-python/sphinx app-vim/vimpython dev-python/numpy
+sudo emerge -vt dev-python/pip dev-python/sphinx dev-python/numpy
 #sudo emerge -vt dev-python/virtualenv
 
 # ---- Ruby
@@ -45,7 +45,7 @@ eselect java-vm show
 
 # ---- Kotlin
 
-#sudo emerge -vt dev-lang/kotlin-bin
+sudo emerge -vt dev-lang/kotlin-bin
 
 # ---- Elixir / Erlang OTP
 
@@ -56,15 +56,16 @@ sudo rc-update add epmd default
 
 # ---- Haskell
 
-#sudo emerge -vt dev-haskell/haskell-platform
+sudo emerge -vt dev-haskell/haskell-platform
 
 # ---- Clojure
 
-#sudo emerge -vt dev-lang/clojure
+sudo emerge -vt dev-lang/clojure
 
 # ---- OCaml
 
-#sudo emerge -vt dev-lang/ocaml
+sudo emerge -vt dev-lang/ocaml
+#sudo emerge -vt dev-ml/llvm-ocaml  # FIXME
 
 # ---- JavaScript / node.js
 
@@ -99,7 +100,7 @@ sudo emerge -vt dev-lang/php dev-php/xdebug dev-php/composer dev-php/pecl-oauth 
 
 # ---- Go
 
-sudo emerge -vt dev-lang/go app-vim/vim-go
+sudo emerge -vt dev-lang/go
 
 # Go apps in /opt/go:
 sudo mkdir -p /opt/go
@@ -137,8 +138,12 @@ sudo emerge -vt dev-lang/lua dev-lang/luajit
 
 # ---- Rust
 
-sudo emerge -vt dev-lang/rust-bin app-vim/rust-vim
+sudo emerge -vt dev-lang/rust-bin
 
 # ---- Whitespace
 
-#sudo emerge -vt dev-lang/whitespace
+sudo emerge -vt dev-lang/whitespace
+
+# ---- ARM / AVR / Arduino
+
+sudo emerge -vt dev-embedded/avrdude dev-embedded/avra dev-embedded/arduino-builder sys-devel/crossdev
