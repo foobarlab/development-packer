@@ -147,3 +147,7 @@ sudo emerge -vt dev-lang/whitespace
 # ---- ARM / AVR / Arduino
 
 sudo emerge -vt dev-embedded/avrdude dev-embedded/avra dev-embedded/arduino-builder sys-devel/crossdev
+
+# ---- ESP8266/ ESP32
+
+emerge -vt dev-embedded/esptool
