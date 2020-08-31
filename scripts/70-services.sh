@@ -10,7 +10,7 @@ fi
 sudo emerge -vt www-servers/apache www-apache/mod_security www-apache/modsecurity-crs app-admin/apachetop
 
 # add some more (optional) modules
-sudo emerge -vt www-apache/mod_bw www-apache/mod_common_redirect www-apache/mod_dnsbl_lookup www-apache/mod_evasive www-apache/mod_fastcgi_handler www-apache/mod_fcgid www-apache/mod_geoip2 www-apache/mod_limitipconn www-apache/mod_log_sql www-apache/mod_qos www-apache/mod_tidy www-apache/mod_umask www-apache/mod_xsendfile
+sudo emerge -vt www-apache/mod_bw www-apache/mod_common_redirect www-apache/mod_dnsbl_lookup www-apache/mod_evasive www-apache/mod_fcgid www-apache/mod_geoip2 www-apache/mod_limitipconn www-apache/mod_log_sql www-apache/mod_qos www-apache/mod_tidy www-apache/mod_umask www-apache/mod_xsendfile
 
 # set global server name to avoid annoying warning message on startup
 cat <<'DATA' | sudo tee -a /etc/apache2/httpd.conf
