@@ -158,7 +158,7 @@ dev-lang/php curl pdo mysql mysqli xmlwriter xmlreader apache2 argon2 bcmath cal
 dev-php/pecl-redis igbinary
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-erlang
-dev-lang/erlang kpoll -hipe pgo odbc sctp smp -wxwidgets
+>=dev-lang/erlang-22.3 hipe kpoll odbc sctp -wxwidgets -tk doc
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-kafka
 # use embedded zookeeper for kafka:
@@ -214,7 +214,7 @@ DATA
 
 sudo mkdir -p /etc/portage/package.mask
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
-#>=dev-lang/erlang-23
+>=dev-lang/erlang-23.0
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-varnish
 # required by varnish-modules:
