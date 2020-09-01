@@ -214,14 +214,12 @@ DATA
 
 sudo mkdir -p /etc/portage/package.mask
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
+# workaround: temporary mask
 >=dev-lang/erlang-23.0
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-varnish
 # required by varnish-modules:
 #>=www-servers/varnish-6.2.0
-DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-rabbitmq
->=net-misc/rabbitmq-server-3.8.0
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-redis
 # workaround: temporary mask
@@ -240,12 +238,12 @@ DATA
 
 sudo mkdir -p /etc/portage/package.unmask
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
-# unmask dev-db/couchdb as we use our own provided version (was masked because of gentoo bugs):
+# unmask dev-db/couchdb as we use our own version (foobarlab overlay):
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-libvpx
-# unmask media-libs/libvpx (dependency for FFmpeg), this might break Firefox compile
+# workaround: unmask media-libs/libvpx (dependency for FFmpeg), this might break Firefox compile
 >=media-libs/libvpx-1.8
 DATA
 
