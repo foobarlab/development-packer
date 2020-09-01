@@ -92,7 +92,8 @@ sudo emerge -vt \
   net-analyzer/mtr \
   net-misc/httpie \
   net-misc/geoipupdate \
-  net-analyzer/tsung
+  net-analyzer/tsung \
+  net-misc/keychain
 
 # install 'minica' in GOPATH
 sudo GOPATH="/opt/go" go get github.com/jsha/minica
