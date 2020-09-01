@@ -72,7 +72,7 @@ sudo emerge -vt app-crypt/certbot app-crypt/certbot-apache app-crypt/certbot-ngi
 
 # ---- Varnish proxy cache
 
-sudo emerge -vt www-servers/varnish
+sudo emerge -vt www-servers/varnish www-misc/varnish-modules
 
 # ---- RabbitMQ
 
