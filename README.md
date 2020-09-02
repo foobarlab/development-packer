@@ -20,7 +20,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Programming languages: *Python, Ruby, Java, (Kotlin), Scala, Groovy, (Clojure), Rust, PHP, Javascript with Node.js, Perl, Go, Elixir, Erlang, (OCaml), (Haskell), Lua, (Whitespace), (LLVM)*
     - Build tools: *Ant, Maven, Ivy*
     - Mail servers: *Postfix*
-    - Web Servers: *Apache, Nginx, Caddy, Varnish*
+    - Web Servers: *Apache, Nginx, Varnish*
     - Databases: *MariaDB, PostgreSQL, Sqlite, Redis, CouchDB, Solr*
     - File utils: *ripgrep, colordiff, icdiff, inotify-tools, exa, strace*
     - Networking tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump* and more

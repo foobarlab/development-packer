@@ -62,10 +62,6 @@ sudo emerge -vt www-servers/nginx app-admin/ngxtop
 
 sudo emerge -vt www-servers/lighttpd
 
-# ---- Caddy
-
-sudo emerge -vt www-servers/caddy
-
 # ---- Let's encrypt
 
 sudo emerge -vt app-crypt/certbot app-crypt/certbot-apache app-crypt/certbot-nginx
