@@ -79,6 +79,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # Apache config, see: https://www.funtoo.org/Package:Apache
 APACHE2_MODULES="actions alias auth_basic auth_digest authn_alias authn_anon authn_core authn_dbm authn_file authz_core authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex cache cgi cgid dav dav_fs dav_lock deflate dir env expires ext_filter file_cache filter headers include info log_config logio mime mime_magic negotiation rewrite setenvif socache_shmcb speling status unique_id unixd userdir usertrack vhost_alias proxy proxy_fcgi"
 APACHE2_MPMS="worker"
+
 DATA
 
 # Nginx
@@ -88,6 +89,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # see: https://wiki.gentoo.org/wiki/Nginx
 NGINX_MODULES_HTTP="access auth_basic autoindex browser charset empty_gif fastcgi geo gzip limit_conn limit_req map memcached proxy realip referer rewrite scgi split_clients secure_link spdy ssi ssl upstream_hash upstream_ip_hash upstream_keepalive upstream_least_conn upstream_zone userid uwsgi"
 NGINX_MODULES_EXTERNAL="accept_language cache_purge modsecurity upload_progress"
+
 DATA
 
 # PHP
@@ -97,6 +99,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # PHP_TARGETS / PHP_TARGETS USE_EXPAND will build extensions, see: https://wiki.gentoo.org/wiki/PHP
 #PHP_TARGETS="php5-6 php7-0 php7-1 php7-2 php7-3 php7-4"
 PHP_TARGETS="php7-3 php7-4"
+
 DATA
 
 # MySQL
@@ -107,6 +110,7 @@ sudo sed -i 's/USE=\"/USE="postgres /g' /etc/portage/make.conf
 
 # LLVM
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
+
 LLVM_TARGETS="AMDGPU BPF NVPTX X86 AArch64 ARM WebAssembly"
 DATA
 
@@ -217,14 +221,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
 # workaround: temporary mask
 >=dev-lang/erlang-23.0
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-varnish
-# required by varnish-modules:
-#>=www-servers/varnish-6.2.0
-DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-redis
-# workaround: temporary mask
->=dev-db/redis-6
-DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
 # workaround: temporary mask
 >=dev-lang/php-7.4
@@ -244,7 +240,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-libvpx
 # workaround: unmask media-libs/libvpx (dependency for FFmpeg), this might break Firefox compile
->=media-libs/libvpx-1.8
+#>=media-libs/libvpx-1.8
 DATA
 
 # ---- package.accept_keywords
