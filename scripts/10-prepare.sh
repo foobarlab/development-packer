@@ -229,6 +229,11 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
 # workaround: temporary mask
 >=dev-lang/clojure-1.9.0
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/temp-redis
+# workaround: temporary mask (need to install 5.x first, then 6.x)
+# this bug is not reported yet, user creation fails in 6.0.5
+>=dev-db/redis-6
+DATA
 
 # ---- package.unmask
 
