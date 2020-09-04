@@ -15,4 +15,4 @@ sudo emerge -vt dev-embedded/avrdude dev-embedded/avra dev-embedded/arduino-buil
 
 # ---- ESP8266/ ESP32 / STM32
 
-emerge -vt dev-embedded/esptool dev-embedded/nodemcu-uploader dev-embedded/stm32flash
+sudo emerge -vt dev-embedded/esptool dev-embedded/nodemcu-uploader dev-embedded/stm32flash
