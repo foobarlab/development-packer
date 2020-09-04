@@ -42,3 +42,7 @@ sudo emerge -vt dev-db/redis
 # ---- Couchdb
 
 sudo emerge -vt dev-db/couchdb
+
+# ---- Solr
+
+sudo emerge -vt dev-db/apache-solr-bin 

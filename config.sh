@@ -20,10 +20,10 @@ export BUILD_BOX_MEMORY="4096"
 
 export BUILD_BOX_PROVIDER="virtualbox"
 
-export BUILD_CUSTOM_OVERLAY=true          # portage: enable custom overlay?
+export BUILD_CUSTOM_OVERLAY=true
 export BUILD_CUSTOM_OVERLAY_NAME="foobarlab"
 export BUILD_CUSTOM_OVERLAY_URL="https://github.com/foobarlab/foobarlab-overlay.git"
-export BUILD_CUSTOM_OVERLAY_BRANCH="development"
+export BUILD_CUSTOM_OVERLAY_BRANCH="master"
 
 # TODO make finalize step optional, like:
 #export BUILD_AUTO_FINALIZE=false  # if 'true' automatically run finalize.sh script

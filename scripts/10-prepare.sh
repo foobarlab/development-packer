@@ -79,6 +79,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # Apache config, see: https://www.funtoo.org/Package:Apache
 APACHE2_MODULES="actions alias auth_basic auth_digest authn_alias authn_anon authn_core authn_dbm authn_file authz_core authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex cache cgi cgid dav dav_fs dav_lock deflate dir env expires ext_filter file_cache filter headers include info log_config logio mime mime_magic negotiation rewrite setenvif socache_shmcb speling status unique_id unixd userdir usertrack vhost_alias proxy proxy_fcgi"
 APACHE2_MPMS="worker"
+
 DATA
 
 # Nginx
@@ -88,6 +89,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # see: https://wiki.gentoo.org/wiki/Nginx
 NGINX_MODULES_HTTP="access auth_basic autoindex browser charset empty_gif fastcgi geo gzip limit_conn limit_req map memcached proxy realip referer rewrite scgi split_clients secure_link spdy ssi ssl upstream_hash upstream_ip_hash upstream_keepalive upstream_least_conn upstream_zone userid uwsgi"
 NGINX_MODULES_EXTERNAL="accept_language cache_purge modsecurity upload_progress"
+
 DATA
 
 # PHP
@@ -97,6 +99,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # PHP_TARGETS / PHP_TARGETS USE_EXPAND will build extensions, see: https://wiki.gentoo.org/wiki/PHP
 #PHP_TARGETS="php5-6 php7-0 php7-1 php7-2 php7-3 php7-4"
 PHP_TARGETS="php7-3 php7-4"
+
 DATA
 
 # MySQL
@@ -107,6 +110,7 @@ sudo sed -i 's/USE=\"/USE="postgres /g' /etc/portage/make.conf
 
 # LLVM
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
+
 LLVM_TARGETS="AMDGPU BPF NVPTX X86 AArch64 ARM WebAssembly"
 DATA
 
@@ -158,7 +162,7 @@ dev-lang/php curl pdo mysql mysqli xmlwriter xmlreader apache2 argon2 bcmath cal
 dev-php/pecl-redis igbinary
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-erlang
-dev-lang/erlang kpoll -hipe pgo odbc sctp smp -wxwidgets
+>=dev-lang/erlang-22.3 hipe kpoll odbc sctp -wxwidgets -tk doc
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-kafka
 # use embedded zookeeper for kafka:
@@ -214,18 +218,8 @@ DATA
 
 sudo mkdir -p /etc/portage/package.mask
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
-#>=dev-lang/erlang-23
-DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-varnish
-# required by varnish-modules:
-#>=www-servers/varnish-6.2.0
-DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-rabbitmq
->=net-misc/rabbitmq-server-3.8.0
-DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-redis
 # workaround: temporary mask
->=dev-db/redis-6
+>=dev-lang/erlang-23.0
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
 # workaround: temporary mask
@@ -235,18 +229,23 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
 # workaround: temporary mask
 >=dev-lang/clojure-1.9.0
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/temp-redis
+# workaround: temporary mask (need to install 5.x first, then 6.x)
+# this bug is not reported yet, user creation fails in 6.0.5
+>=dev-db/redis-6
+DATA
 
 # ---- package.unmask
 
 sudo mkdir -p /etc/portage/package.unmask
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
-# unmask dev-db/couchdb as we use our own provided version (was masked because of gentoo bugs):
+# unmask dev-db/couchdb as we use our own version (foobarlab overlay):
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-libvpx
-# unmask media-libs/libvpx (dependency for FFmpeg), this might break Firefox compile
->=media-libs/libvpx-1.8
+# workaround: unmask media-libs/libvpx (dependency for FFmpeg), this might break Firefox compile
+#>=media-libs/libvpx-1.8
 DATA
 
 # ---- package.accept_keywords

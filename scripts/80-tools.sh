@@ -92,7 +92,9 @@ sudo emerge -vt \
   net-analyzer/mtr \
   net-misc/httpie \
   net-misc/geoipupdate \
-  net-analyzer/tsung
+  net-analyzer/tsung \
+  net-misc/keychain \
+  net-analyzer/cbm
 
 # install 'minica' in GOPATH
 sudo GOPATH="/opt/go" go get github.com/jsha/minica
@@ -119,6 +121,14 @@ sudo emerge -vt dev-php/pecl-imagick
 
 # ---- various
 
-#sudo emerge -vt dev-libs/protobuf          # TODO enable when needed
+sudo emerge -vt \
+  dev-libs/protobuf \
+  dev-python/protobuf-python \
+  dev-libs/protobuf-c \
+  dev-java/protobuf-java \
+  dev-erlang/protobuffs \
+  dev-go/go-protobuf \
+  dev-ruby/google-protobuf
+
 sudo emerge -vt dev-util/strace		        # strace for debugging
-sudo emerge -vt dev-db/mysql-super-smack    # benchmark mysql/postgresql
+#sudo emerge -vt dev-db/mysql-super-smack    # benchmark mysql/postgresql
