@@ -194,6 +194,10 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-krb5
 app-crypt/mit-krb5 keyutils libressl
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-dnsmasq
+# required by app-emulation/libvirt:
+>=net-dns/dnsmasq-2.81 script
+DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
