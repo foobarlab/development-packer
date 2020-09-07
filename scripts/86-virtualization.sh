@@ -106,4 +106,4 @@ sudo emerge -vt app-emulation/lxc
 # * installed. Please look at /usr/share/doc/libvirt-6.7.0/README.gentoo*
 # * for future reference)
 
-sudo emerge -vt app-emulation/libvirt
+sudo emerge -vt app-emulation/libvirt app-emulation/spice

@@ -114,6 +114,14 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 LLVM_TARGETS="AMDGPU BPF NVPTX X86 AArch64 ARM WebAssembly"
 DATA
 
+# QEMU
+cat <<'DATA' | sudo tee -a /etc/portage/make.conf
+
+# experimental:
+QEMU_SOFTMMU_TARGETS="i386 x86_64 aarch64 arm"
+QEMU_USER_TARGETS="i386 x86_64"
+DATA
+
 # various media formats
 sudo sed -i 's/USE=\"/USE="imagemagick apng exif gif ico jpeg jpeg2k pdf png svg tiff truetype webp wmf mng pnm /g' /etc/portage/make.conf
 
@@ -194,9 +202,12 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-krb5
 app-crypt/mit-krb5 keyutils libressl
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-dnsmasq
-# required by app-emulation/libvirt:
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-libvirt
+>=app-emulation/libvirt-6.7.0 lxc fuse parted policykit wireshark-plugins
 >=net-dns/dnsmasq-2.81 script
+>=sys-block/parted-3.2_p25 device-mapper
+>=sys-auth/consolekit-1.2.1 policykit
+>=dev-libs/glib-2.64.2 dbus
 DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
