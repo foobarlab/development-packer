@@ -7,7 +7,16 @@ fi
 
 # ---- LLVM
 
-sudo emerge -vt sys-devel/llvm sys-devel/llvm-common sys-devel/llvmgold
+sudo emerge -vt \
+	sys-devel/llvm \
+	sys-devel/llvm-common \
+	sys-devel/llvmgold \
+	sys-devel/lld \
+	dev-util/lldb
+
+# disabled for now:
+#sudo emerge -vt \
+#	sys-libs/llvm-libunwind
 
 # ---- Python
 
@@ -52,7 +61,7 @@ sudo emerge -vt dev-lang/kotlin-bin
 sudo emerge -vt dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
 
 # add epmd to default runlevel (needed for couchdb/rabbitmq)
-sudo rc-update add epmd default
+#sudo rc-update add epmd default
 
 # ---- Haskell
 
@@ -69,7 +78,7 @@ sudo emerge -vt dev-lang/ocaml
 
 # ---- JavaScript / node.js
 
-sudo emerge -vt net-libs/nodejs sys-apps/yarn
+sudo emerge -vt net-libs/nodejs
 
 # TODO try nodeenv (pip install), see https://github.com/ekalinin/nodeenv
 
@@ -138,7 +147,8 @@ sudo emerge -vt dev-lang/lua dev-lang/luajit
 
 # ---- Rust
 
-sudo emerge -vt dev-lang/rust-bin
+#sudo emerge -vt dev-lang/rust-bin
+sudo emerge -vt dev-lang/rust
 
 # ---- Whitespace
 

@@ -5,3 +5,4 @@
 - include: sysctl.yml
 - include: iptables.yml
 - include: users-and-groups.yml
+- include: fix-dirs.yml
