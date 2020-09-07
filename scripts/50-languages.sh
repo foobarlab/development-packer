@@ -78,7 +78,7 @@ sudo emerge -vt dev-lang/ocaml
 
 # ---- JavaScript / node.js
 
-sudo emerge -vt net-libs/nodejs sys-apps/yarn
+sudo emerge -vt net-libs/nodejs
 
 # TODO try nodeenv (pip install), see https://github.com/ekalinin/nodeenv
 
