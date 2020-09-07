@@ -130,5 +130,10 @@ sudo emerge -vt \
   dev-go/go-protobuf \
   dev-ruby/google-protobuf
 
-sudo emerge -vt dev-util/strace		        # strace for debugging
+# ---- debugging / profiling / benchmark
+
+sudo emerge -vt \
+	dev-util/strace \
+	dev-util/systemtap
+
 #sudo emerge -vt dev-db/mysql-super-smack    # benchmark mysql/postgresql
