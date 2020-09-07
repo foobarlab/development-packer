@@ -62,8 +62,8 @@ fi
 # disable bindist USE flag (will make this 'non-free')
 #sudo sed -i 's/ bindist/ \-bindist/g' /etc/portage/make.conf
 
-# common flags
-sudo sed -i 's/USE=\"/USE="pcntl pcre /g' /etc/portage/make.conf
+# various flags
+sudo sed -i 's/USE=\"/USE="hscolour profile systemtap jit pgo pcntl pcre /g' /etc/portage/make.conf
 
 # shell completions
 sudo sed -i 's/USE=\"/USE="bash-completion zsh-completion /g' /etc/portage/make.conf
@@ -149,7 +149,7 @@ www-servers/apache ssl threads
 dev-libs/apr-util openssl
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-nginx
-www-servers/nginx threads vim-syntax google_perftools
+www-servers/nginx threads vim-syntax
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-redis
 dev-db/redis luajit
@@ -188,6 +188,9 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-nodejs
 net-libs/nghttp2 libressl
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-rust
+dev-lang/rust clippy libressl rls rustfmt wasm
+DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
@@ -212,6 +215,14 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
 >=sys-devel/llvm-9.0.1 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/llvm-common-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/lld-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=dev-util/lldb-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/clang-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/compiler-rt-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/compiler-rt-sanitizers-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/libomp-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/clang-common-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/llvm-libunwind-9.0.1 Apache-2.0-with-LLVM-exceptions
 DATA
 
 # ---- package.mask
