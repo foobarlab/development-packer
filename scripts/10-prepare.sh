@@ -191,6 +191,9 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-rust
 dev-lang/rust clippy libressl rls rustfmt wasm
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-krb5
+app-crypt/mit-krb5 keyutils libressl
+DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
