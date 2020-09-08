@@ -59,8 +59,15 @@ fi
 
 # ---- make.conf
 
-# disable bindist USE flag (will make this 'non-free')
-#sudo sed -i 's/ bindist/ \-bindist/g' /etc/portage/make.conf
+# TODO experimental
+cat <<'DATA' | sudo tee -a /etc/portage/make.conf
+
+# experimental: add some flags for CPUs after 2011 (intel-nehalem/amd-bulldozer)
+#CPU_FLAGS_X86="${CPU_FLAGS_X86} popcnt sse3 sse4_1 sse4_2 ssse3"
+
+# testing: save some space: just install locales "en", "en_US", "de", "fr"
+#INSTALL_MASK="/usr/share/locale -/usr/share/locale/en -/usr/share/locale/en_US -/usr/share/locale/de -/usr/share/locale/fr"
+DATA
 
 # various flags
 sudo sed -i 's/USE=\"/USE="hscolour profile systemtap jit pgo pcntl pcre /g' /etc/portage/make.conf
