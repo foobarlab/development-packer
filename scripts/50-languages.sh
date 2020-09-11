@@ -147,8 +147,8 @@ sudo emerge -vt dev-lang/lua dev-lang/luajit
 
 # ---- Rust
 
-#sudo emerge -vt dev-lang/rust-bin
-sudo emerge -vt dev-lang/rust
+sudo emerge -vt dev-lang/rust-bin
+#sudo emerge -vt dev-lang/rust
 
 # ---- Whitespace
 

@@ -5,7 +5,9 @@ system("./config.sh >/dev/null")
 
 $script_clean_kernel = <<SCRIPT
 # clean stale kernel files
-eclean-kernel
+mount /boot || true
+eclean-kernel -l
+eclean-kernel -n 1
 ego boot update
 # clean kernel sources
 cd /usr/src/linux
@@ -15,13 +17,24 @@ cp -f /usr/src/kernel.config /usr/src/linux/.config
 SCRIPT
 
 $script_cleanup = <<SCRIPT
+# debug: list running services
+# rc-status
 # stop services
 /etc/init.d/rsyslog stop
+/etc/init.d/dbus -D stop
+/etc/init.d/haveged stop
+/etc/init.d/udev stop
+/etc/init.d/vixie-cron stop
+/etc/init.d/dhcpcd stop
+/etc/init.d/local stop
+/etc/init.d/acpid stop
+# debug: list running services
+rc-status
 # ensure all file operations finished
-sync
+sync && sleep 15
 # run zerofree at last to squeeze the last bit
-# /boot (initially not mounted)
-mount -o ro /dev/sda1
+# /boot
+mount -o remount,ro /dev/sda1
 zerofree -v /dev/sda1
 # /
 mount -o remount,ro /dev/sda4
@@ -82,6 +95,7 @@ Vagrant.configure("2") do |config|
     #}
   end
   
+  # FIXME single script is sufficient
   config.vm.provision "clean_kernel", type: "shell", inline: $script_clean_kernel, privileged: true
   config.vm.provision "cleanup", type: "shell", inline: $script_cleanup, privileged: true
 end

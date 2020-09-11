@@ -29,6 +29,7 @@ sudo find /etc/ -name '._cfg*' -print -exec cat -n '{}' \;  # DEBUG: cat all con
 sudo etc-update --verbose --automode -5		# force 'auto-merge' for remaining configs
 
 sudo eselect kernel list
+sudo eclean-kernel -l
 sudo ego boot update
 
 sudo eix-update
@@ -36,7 +37,7 @@ sudo eix-update
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak
 
-sudo rc-update       # show final runlevels
+sudo rc-update -v    # show final runlevels
 sudo genlop -u -l    # show (un)merged packages before logs are cleared
 
 sudo /usr/local/sbin/foo-cleanup

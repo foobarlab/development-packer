@@ -119,7 +119,7 @@ sudo emerge -vt media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gp
 # PHP imagick ext:
 sudo emerge -vt dev-php/pecl-imagick
 
-# ---- various
+# ---- protobuf
 
 sudo emerge -vt \
   dev-libs/protobuf \
@@ -137,3 +137,7 @@ sudo emerge -vt \
 	dev-util/systemtap
 
 #sudo emerge -vt dev-db/mysql-super-smack    # benchmark mysql/postgresql
+
+# ---- Kerberos V
+
+sudo emerge -vt app-crypt/mit-krb5
