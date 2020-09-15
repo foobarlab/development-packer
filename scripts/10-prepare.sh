@@ -249,6 +249,9 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
 >=sys-devel/clang-common-9.0.1 Apache-2.0-with-LLVM-exceptions
 >=sys-libs/llvm-libunwind-9.0.1 Apache-2.0-with-LLVM-exceptions
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-orion
+www-apps/eclipse-orion-bin EPL-2.0
+DATA
 
 # ---- package.mask
 
