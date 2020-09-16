@@ -12,5 +12,4 @@ sudo emerge -vt \
     www-misc/shellinabox \
     dev-db/phpmyadmin \
     www-apps/phpsysinfo \
-    www-apps/postfixadmin \
-    www-apps/eclipse-orion-bin
+    www-apps/postfixadmin
