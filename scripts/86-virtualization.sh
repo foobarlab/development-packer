@@ -20,6 +20,8 @@ sudo udevadm trigger -c add /dev/kvm || true
 #sudo rc-update add qemu-binfmt default
 #sudo rc-update add qemu-guest-agent default
 
+# TODO https://wiki.qemu.org/Documentation/9psetup
+
 # ---- LXC
 
 # 'criu' provides checkpoint/restore functionality
