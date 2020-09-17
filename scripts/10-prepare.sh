@@ -210,11 +210,14 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-krb5
 app-crypt/mit-krb5 keyutils libressl
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-libvirt
->=app-emulation/libvirt-6.7.0 lxc fuse parted policykit wireshark-plugins
+>=app-emulation/libvirt-6.7.0 lxc fuse nfs parted policykit wireshark-plugins
 >=net-dns/dnsmasq-2.81 script
 >=sys-block/parted-3.2_p25 device-mapper
 >=sys-auth/consolekit-1.2.1 policykit
 >=dev-libs/glib-2.64.2 dbus
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-quemu
+>=app-emulation/qemu-5.0.0-r2 gnutls lzo nfs plugins spice snappy vhost-user-fs virtfs
 DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
