@@ -22,8 +22,9 @@ sudo emerge -vt \
 	www-apache/mod_qos \
 	www-apache/mod_tidy \
 	www-apache/mod_umask \
-	www-apache/mod_xsendfile \
-	www-apache/mod_dnssd
+	www-apache/mod_xsendfile
+
+# TESTING: www-apache/mod_dnssd
 
 # set global server name to avoid annoying warning message on startup
 cat <<'DATA' | sudo tee -a /etc/apache2/httpd.conf
@@ -60,7 +61,7 @@ sudo grep -e '-D ERRORDOCS' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/A
 sudo grep -e '-D AUTH_DIGEST' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D AUTH_DIGEST"/g' /etc/conf.d/apache2
 sudo grep -e '-D CACHE' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D CACHE"/g' /etc/conf.d/apache2
 sudo grep -e '-D FCGID' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D FCGID"/g' /etc/conf.d/apache2
-sudo grep -e '-D DNSSD' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D DNSSD"/g' /etc/conf.d/apache2
+#sudo grep -e '-D DNSSD' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACHE2_OPTS="\(.*\)"/APACHE2_OPTS="\1 -D DNSSD"/g' /etc/conf.d/apache2	# TESTING
 
 # hint: https://wiki.gentoo.org/wiki/Project:Apache/Troubleshooting
 # hint: https://wiki.gentoo.org/wiki/Project:Apache/Upgrading
@@ -69,8 +70,14 @@ sudo grep -e '-D DNSSD' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACH
 
 # ---- Nginx
 
-sudo emerge -vt media-libs/gd dev-libs/geoip          # workaround: deps needed for nginx install
-sudo emerge -vt www-servers/nginx app-admin/ngxtop
+# workaround: deps needed for nginx install
+sudo emerge -vt \
+	media-libs/gd \
+	dev-libs/geoip
+
+sudo emerge -vt \
+	www-servers/nginx \
+	app-admin/ngxtop
 
 # ---- Lighttpd
 
@@ -78,11 +85,16 @@ sudo emerge -vt www-servers/lighttpd
 
 # ---- Let's encrypt
 
-sudo emerge -vt app-crypt/certbot app-crypt/certbot-apache app-crypt/certbot-nginx
+sudo emerge -vt \
+	app-crypt/certbot \
+	app-crypt/certbot-apache \
+	app-crypt/certbot-nginx
 
 # ---- Varnish proxy cache
 
-sudo emerge -vt www-servers/varnish www-misc/varnish-modules
+sudo emerge -vt \
+	www-servers/varnish \
+	www-misc/varnish-modules
 
 # ---- RabbitMQ
 
@@ -99,4 +111,7 @@ sudo emerge -vt mail-mta/postfix
 
 # ---- Avahi / mDNS
 
-sudo emerge -vt net-dns/avahi sys-auth/nss-mdns dev-python/zeroconf
+sudo emerge -vt \
+	net-dns/avahi \
+	sys-auth/nss-mdns \
+	dev-python/zeroconf
