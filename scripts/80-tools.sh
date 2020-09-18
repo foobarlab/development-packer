@@ -133,6 +133,7 @@ sudo emerge -vt \
 # ---- debugging / profiling / benchmark
 
 sudo emerge -vt \
+	sys-devel/gdb \
 	dev-util/strace \
 	dev-util/systemtap
 
