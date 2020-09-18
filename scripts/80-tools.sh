@@ -110,7 +110,8 @@ sudo emerge -vt \
   app-arch/pigz \
   app-shells/fzf \
   app-text/multitail \
-  app-misc/jq
+  app-misc/jq \
+  sys-process/iotop
 
 # ---- gfx/video utils
 
