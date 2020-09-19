@@ -203,9 +203,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-wireshark
 # customize wireshark:
 net-analyzer/wireshark -qt5 androiddump sshdump brotli tfshark adns lua smi
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-nodejs
-net-libs/nghttp2 libressl
-DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-rust
 dev-lang/rust clippy libressl rls rustfmt wasm
 DATA
@@ -279,13 +276,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
 # unmask dev-db/couchdb as we use our own version (foobarlab overlay):
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
-DATA
-
-# ---- package.accept_keywords
-
-sudo mkdir -p /etc/portage/package.accept_keywords
-cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/dev-libressl
-dev-libs/libressl **
 DATA
 
 # --- always copy kernel.config to current kernel src
