@@ -32,7 +32,7 @@ export BUILD_KERNEL=false                 # build a new kernel?
 export BUILD_INCLUDE_ANSIBLE=false        # include Ansible? (already installed in funtoo-base)
 export BUILD_INCLUDE_DOCKER=true          # include Docker?
 
-export BUILD_KEEP_MAX_CLOUD_BOXES=1       # set the maximum number of boxes to keep in Vagrant Cloud
+export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to keep in Vagrant Cloud
 
 export BUILD_MYSQL_ROOT_PASSWORD=changeme      # set the root password for MySQL/MariaDB 
 
