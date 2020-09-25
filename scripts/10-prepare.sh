@@ -241,16 +241,16 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-ffmpeg
 >=media-libs/quirc-1.0 AS-IS
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
->=sys-devel/llvm-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-devel/llvm-common-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-devel/lld-9.0.1 Apache-2.0-with-LLVM-exceptions
->=dev-util/lldb-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-devel/clang-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-libs/compiler-rt-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-libs/compiler-rt-sanitizers-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-libs/libomp-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-devel/clang-common-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-libs/llvm-libunwind-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/llvm-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/llvm-common-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/clang-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/clang-common-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/compiler-rt-sanitizers-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/compiler-rt-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/libomp-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/llvm-libunwind-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/lld-9.0 Apache-2.0-with-LLVM-exceptions
+>=dev-util/lldb-9.0 Apache-2.0-with-LLVM-exceptions
 DATA
 
 # ---- package.mask
