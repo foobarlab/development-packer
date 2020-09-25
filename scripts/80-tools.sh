@@ -111,7 +111,8 @@ sudo emerge -vt \
   app-shells/fzf \
   app-text/multitail \
   app-misc/jq \
-  sys-process/iotop
+  sys-process/iotop \
+  app-editors/curses-hexedit
 
 # ---- gfx/video utils
 
