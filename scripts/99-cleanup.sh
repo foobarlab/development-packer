@@ -18,8 +18,8 @@ sudo find /etc/ -name '._cfg*' -print -exec cat -n '{}' \;  # DEBUG: cat all con
 sudo rm -f /etc/._cfg0000_boot.conf
 sudo rm -f /etc/._cfg0000_genkernel.conf
 sudo rm -f /etc/._cfg0000_updatedb.conf
-#sudo rm -f /etc/conf.d/._cfg0000_consolefont  # TODO remove?
-#sudo rm -f /etc/conf.d/._cfg0000_hostname     # TODO remove?
+sudo rm -f /etc/conf.d/._cfg0000_consolefont
+sudo rm -f /etc/conf.d/._cfg0000_hostname
 
 sudo etc-update --verbose --preen    # auto-merge trivial changes
 

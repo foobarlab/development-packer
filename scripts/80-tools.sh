@@ -110,7 +110,9 @@ sudo emerge -vt \
   app-arch/pigz \
   app-shells/fzf \
   app-text/multitail \
-  app-misc/jq
+  app-misc/jq \
+  sys-process/iotop \
+  app-editors/curses-hexedit
 
 # ---- gfx/video utils
 
@@ -133,6 +135,7 @@ sudo emerge -vt \
 # ---- debugging / profiling / benchmark
 
 sudo emerge -vt \
+	sys-devel/gdb \
 	dev-util/strace \
 	dev-util/systemtap
 

@@ -61,13 +61,16 @@ fi
 
 # TODO experimental
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
-
 # experimental: add some flags for CPUs after 2011 (intel-nehalem/amd-bulldozer)
 #CPU_FLAGS_X86="${CPU_FLAGS_X86} popcnt sse3 sse4_1 sse4_2 ssse3"
 
 # testing: save some space: just install locales "en", "en_US", "de", "fr"
 #INSTALL_MASK="/usr/share/locale -/usr/share/locale/en -/usr/share/locale/en_US -/usr/share/locale/de -/usr/share/locale/fr"
+
 DATA
+
+# experimental
+#sudo sed -i 's/USE=\"/USE="gold /g' /etc/portage/make.conf
 
 # various flags
 sudo sed -i 's/USE=\"/USE="hscolour profile systemtap jit pgo pcntl pcre /g' /etc/portage/make.conf
@@ -200,9 +203,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-wireshark
 # customize wireshark:
 net-analyzer/wireshark -qt5 androiddump sshdump brotli tfshark adns lua smi
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-nodejs
-net-libs/nghttp2 libressl
-DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-rust
 dev-lang/rust clippy libressl rls rustfmt wasm
 DATA
@@ -210,11 +210,14 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-krb5
 app-crypt/mit-krb5 keyutils libressl
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-libvirt
->=app-emulation/libvirt-6.7.0 lxc fuse parted policykit wireshark-plugins
+>=app-emulation/libvirt-6.7.0 lxc fuse nfs parted policykit wireshark-plugins
 >=net-dns/dnsmasq-2.81 script
 >=sys-block/parted-3.2_p25 device-mapper
 >=sys-auth/consolekit-1.2.1 policykit
 >=dev-libs/glib-2.64.2 dbus
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-quemu
+>=app-emulation/qemu-5.0.0-r2 gnutls lzo nfs plugins spice snappy vhost-user-fs virtfs
 DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
@@ -238,16 +241,16 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-ffmpeg
 >=media-libs/quirc-1.0 AS-IS
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
->=sys-devel/llvm-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-devel/llvm-common-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-devel/lld-9.0.1 Apache-2.0-with-LLVM-exceptions
->=dev-util/lldb-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-devel/clang-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-libs/compiler-rt-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-libs/compiler-rt-sanitizers-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-libs/libomp-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-devel/clang-common-9.0.1 Apache-2.0-with-LLVM-exceptions
->=sys-libs/llvm-libunwind-9.0.1 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/llvm-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/llvm-common-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/clang-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/clang-common-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/compiler-rt-sanitizers-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/compiler-rt-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/libomp-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-libs/llvm-libunwind-9.0 Apache-2.0-with-LLVM-exceptions
+>=sys-devel/lld-9.0 Apache-2.0-with-LLVM-exceptions
+>=dev-util/lldb-9.0 Apache-2.0-with-LLVM-exceptions
 DATA
 
 # ---- package.mask
@@ -265,11 +268,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
 # workaround: temporary mask
 >=dev-lang/clojure-1.9.0
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/temp-redis
-# workaround: temporary mask (need to install 5.x first, then 6.x)
-# this bug is not reported yet, user creation fails in 6.0.5
->=dev-db/redis-6
-DATA
 
 # ---- package.unmask
 
@@ -278,13 +276,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
 # unmask dev-db/couchdb as we use our own version (foobarlab overlay):
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
-DATA
-
-# ---- package.accept_keywords
-
-sudo mkdir -p /etc/portage/package.accept_keywords
-cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/dev-libressl
-dev-libs/libressl **
 DATA
 
 # --- always copy kernel.config to current kernel src
