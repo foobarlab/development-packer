@@ -7,7 +7,7 @@ fi
 
 # ---- QEMU
 
-sudo emerge -vt \
+sudo emerge -uvt \
 	app-emulation/qemu \
 	app-emulation/qemu-guest-agent
 
@@ -25,13 +25,13 @@ sudo udevadm trigger -c add /dev/kvm || true
 # ---- LXC
 
 # 'criu' provides checkpoint/restore functionality
-sudo emerge -vt \
+sudo emerge -uvt \
 	sys-process/criu \
 	app-emulation/lxc
 
 # ---- LibVirt
 
-sudo emerge -vt \
+sudo emerge -uvt \
 	app-emulation/libvirt \
 	app-emulation/spice
 

@@ -7,10 +7,10 @@ fi
 
 # ---- Apache
 
-sudo emerge -vt www-servers/apache www-apache/mod_security www-apache/modsecurity-crs app-admin/apachetop
+sudo emerge -uvt www-servers/apache www-apache/mod_security www-apache/modsecurity-crs app-admin/apachetop
 
 # add some more (optional) modules
-sudo emerge -vt \
+sudo emerge -uvt \
 	www-apache/mod_bw \
 	www-apache/mod_common_redirect \
 	www-apache/mod_dnsbl_lookup \
@@ -71,47 +71,47 @@ sudo grep -e '-D FCGID' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACH
 # ---- Nginx
 
 # workaround: deps needed for nginx install
-sudo emerge -vt \
+sudo emerge -uvt \
 	media-libs/gd \
 	dev-libs/geoip
 
-sudo emerge -vt \
+sudo emerge -uvt \
 	www-servers/nginx \
 	app-admin/ngxtop
 
 # ---- Lighttpd
 
-sudo emerge -vt www-servers/lighttpd
+sudo emerge -uvt www-servers/lighttpd
 
 # ---- Let's encrypt
 
-sudo emerge -vt \
+sudo emerge -uvt \
 	app-crypt/certbot \
 	app-crypt/certbot-apache \
 	app-crypt/certbot-nginx
 
 # ---- Varnish proxy cache
 
-sudo emerge -vt \
+sudo emerge -uvt \
 	www-servers/varnish \
 	www-misc/varnish-modules
 
 # ---- RabbitMQ
 
-sudo emerge -vt net-misc/rabbitmq-server
+sudo emerge -uvt net-misc/rabbitmq-server
 
 # ---- DNSmasq
 
-sudo emerge -vt net-dns/dnsmasq
+sudo emerge -uvt net-dns/dnsmasq
 #sudo rc-update add dnsmasq default
 
 # ---- Postfix
 
-sudo emerge -vt mail-mta/postfix
+sudo emerge -uvt mail-mta/postfix
 
 # ---- Avahi / mDNS
 
-sudo emerge -vt \
+sudo emerge -uvt \
 	net-dns/avahi \
 	sys-auth/nss-mdns \
 	dev-python/zeroconf

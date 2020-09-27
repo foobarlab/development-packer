@@ -8,19 +8,19 @@ fi
 # ---- etckeeper
 
 # see: https://etckeeper.branchable.com/
-#sudo emerge -vt sys-apps/etckeeper
+#sudo emerge -uvt sys-apps/etckeeper
 #sudo etckeeper init -d /etc
 
 # ---- various version control systems (other than Git)
 
-sudo emerge -vt \
+sudo emerge -uvt \
   dev-vcs/subversion \
   dev-vcs/mercurial \
   dev-vcs/cvs
 
 # ---- various vim plugins
 
-sudo emerge -vt \
+sudo emerge -uvt \
   app-vim/bash-support \
   app-vim/vimpython \
   app-vim/vim-go \
@@ -73,7 +73,7 @@ sudo emerge -vt \
 
 # ---- various network utils
 
-sudo emerge -vt \
+sudo emerge -uvt \
   net-misc/aria2 \
   net-analyzer/tcpdump \
   net-misc/iperf \
@@ -101,7 +101,7 @@ sudo GOPATH="/opt/go" go get github.com/jsha/minica
 
 # ---- various file utils
 
-sudo emerge -vt \
+sudo emerge -uvt \
   app-misc/colordiff \
   sys-fs/inotify-tools \
   sys-apps/exa \
@@ -116,14 +116,14 @@ sudo emerge -vt \
 
 # ---- gfx/video utils
 
-sudo emerge -vt media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg
+sudo emerge -uvt media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg
 #sudo emerge -vt media-video/rtmpdump    # already pulled in by dependency
 # PHP imagick ext:
-sudo emerge -vt dev-php/pecl-imagick
+sudo emerge -uvt dev-php/pecl-imagick
 
 # ---- protobuf
 
-sudo emerge -vt \
+sudo emerge -uvt \
   dev-libs/protobuf \
   dev-python/protobuf-python \
   dev-libs/protobuf-c \
@@ -134,13 +134,13 @@ sudo emerge -vt \
 
 # ---- debugging / profiling / benchmark
 
-sudo emerge -vt \
+sudo emerge -uvt \
 	sys-devel/gdb \
 	dev-util/strace \
 	dev-util/systemtap
 
-#sudo emerge -vt dev-db/mysql-super-smack    # benchmark mysql/postgresql
+#sudo emerge -uvt dev-db/mysql-super-smack    # benchmark mysql/postgresql
 
 # ---- Kerberos V
 
-sudo emerge -vt app-crypt/mit-krb5
+sudo emerge -uvt app-crypt/mit-krb5

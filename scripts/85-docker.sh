@@ -17,7 +17,7 @@ fi
 
 # ---- Docker and tooling
 
-sudo emerge -vt app-emulation/docker dev-util/docker-ls app-emulation/docker-compose app-emulation/docker-swarm dev-python/docker-py
+sudo emerge -uvt app-emulation/docker dev-util/docker-ls app-emulation/docker-compose app-emulation/docker-swarm dev-python/docker-py
 sudo /usr/share/docker/contrib/check-config.sh /usr/src/kernel.config || true
 sudo usermod -aG docker vagrant
 #sudo rc-update add docker default

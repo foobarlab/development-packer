@@ -7,12 +7,12 @@ fi
 
 # ---- Cross-tooling
 
-sudo emerge -vt sys-devel/crossdev
+sudo emerge -uvt sys-devel/crossdev
 
 # ---- ARM / AVR / Arduino
 
-sudo emerge -vt dev-embedded/avrdude dev-embedded/avra dev-embedded/arduino-builder
+sudo emerge -uvt dev-embedded/avrdude dev-embedded/avra dev-embedded/arduino-builder
 
 # ---- ESP8266/ ESP32 / STM32
 
-sudo emerge -vt dev-embedded/esptool dev-embedded/nodemcu-uploader dev-embedded/stm32flash
+sudo emerge -uvt dev-embedded/esptool dev-embedded/nodemcu-uploader dev-embedded/stm32flash

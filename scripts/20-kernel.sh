@@ -26,7 +26,7 @@ if [ -f ${SCRIPTS}/scripts/kernel.config ]; then
 fi
 
 sudo eselect kernel list
-sudo emerge -vt sys-kernel/debian-sources
+sudo emerge -uvt sys-kernel/debian-sources
 
 sudo eselect kernel list
 sudo eselect kernel set 1

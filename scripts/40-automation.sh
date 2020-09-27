@@ -17,7 +17,7 @@ fi
 
 # ---- Ansible
 
-sudo emerge -vt app-admin/ansible
+sudo emerge -uvt app-admin/ansible
 sudo mkdir -p /etc/ansible
 cat <<'DATA' | sudo tee -a /etc/ansible/ansible.cfg
 [defaults]
