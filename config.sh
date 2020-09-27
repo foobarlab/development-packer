@@ -16,7 +16,7 @@ export BUILD_GUEST_MEMORY="8192"
 
 # memory/cpus used for final box:
 export BUILD_BOX_CPUS="2"
-export BUILD_BOX_MEMORY="4096"
+export BUILD_BOX_MEMORY="2048"
 
 export BUILD_BOX_PROVIDER="virtualbox"
 
