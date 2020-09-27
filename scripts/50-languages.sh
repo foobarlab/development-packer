@@ -10,13 +10,13 @@ fi
 sudo emerge -uvt \
 	sys-devel/llvm \
 	sys-devel/llvm-common \
-	sys-devel/llvmgold \
-	sys-devel/lld \
-	dev-util/lldb
+	sys-devel/lld
 
 # disabled for now:
 #sudo emerge -uvt \
-#	sys-libs/llvm-libunwind
+#	sys-devel/llvmgold \
+#	sys-libs/llvm-libunwind \
+#	dev-util/lldb
 
 # ---- Python
 
@@ -74,7 +74,7 @@ sudo emerge -uvt dev-lang/clojure
 # ---- OCaml
 
 sudo emerge -uvt dev-lang/ocaml
-#sudo emerge -uvt dev-ml/llvm-ocaml  # FIXME
+#sudo emerge -uvt dev-ml/llvm-ocaml  # TODO
 
 # ---- JavaScript / node.js
 
