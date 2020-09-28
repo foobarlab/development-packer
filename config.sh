@@ -31,6 +31,9 @@ export BUILD_CUSTOM_OVERLAY_BRANCH="master"
 export BUILD_KERNEL=false                 # build a new kernel?
 export BUILD_INCLUDE_ANSIBLE=true         # include Ansible?
 export BUILD_INCLUDE_DOCKER=true          # include Docker?
+export BUILD_HEADLESS=false               # if false, gui will be shown
+
+# TODO flag for xorg (BUILD_WINDOW_SYSTEM)?
 
 export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to keep in Vagrant Cloud
 

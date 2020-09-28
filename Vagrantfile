@@ -50,7 +50,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "#{ENV['BUILD_BOX_NAME']}"
   config.vm.hostname = "#{ENV['BUILD_BOX_NAME']}"
   config.vm.provider "virtualbox" do |vb|
-    vb.gui = false
+    vb.gui = (ENV['BUILD_HEADLESS'] == "false")
     vb.memory = "#{ENV['BUILD_BOX_MEMORY']}"
     vb.cpus = "#{ENV['BUILD_BOX_CPUS']}"
     # customize VirtualBox settings, see also 'virtualbox.json'
@@ -60,13 +60,15 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--usb", "off"]
     vb.customize ["modifyvm", :id, "--rtcuseutc", "on"]
     vb.customize ["modifyvm", :id, "--chipset", "ich9"]
-    vb.customize ["modifyvm", :id, "--vram", "12"]
+    vb.customize ["modifyvm", :id, "--vram", "64"]
     vb.customize ["modifyvm", :id, "--vrde", "off"]
     vb.customize ["modifyvm", :id, "--hpet", "on"]
     vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
     vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
     vb.customize ["modifyvm", :id, "--largepages", "on"]
-    # spectre meltdown mitigations, see https://www.virtualbox.org/ticket/17987
+    vb.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
+    vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
+ 	# spectre meltdown mitigations, see https://www.virtualbox.org/ticket/17987
     #vb.customize ["modifyvm", :id, "--largepages", "off"]
     #vb.customize ["modifyvm", :id, "--spec-ctrl", "on"]
     #vb.customize ["modifyvm", :id, "--ibpb-on-vm-entry", "on"]
@@ -74,9 +76,9 @@ Vagrant.configure("2") do |config|
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-sched", "off"]
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-vm-entry", "on"]
     #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
-  end
+ end
   # public network (bridged)
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true, mac: "0800273CA134", bridge: [
+  config.vm.network "public_network", use_dhcp_assigned_default_route: true, bridge: [   # TODO read .mac-address and insert e.g. 'mac: "0800273CA134"' 
     "eth0",
     # TODO add alternative network cards here, see: https://www.vagrantup.com/docs/networking/public_network.html
   ]
