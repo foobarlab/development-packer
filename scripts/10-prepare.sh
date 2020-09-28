@@ -219,6 +219,10 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-quemu
 >=app-emulation/qemu-5.0.0-r2 gnutls lzo nfs plugins spice snappy vhost-user-fs virtfs
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-ant
+# FIXME temporary added here, pulls in jython (build failing)
+dev-java/ant -bsf
+DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
