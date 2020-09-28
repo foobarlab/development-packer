@@ -8,19 +8,19 @@ fi
 # ---- etckeeper
 
 # see: https://etckeeper.branchable.com/
-#sudo emerge -uvt sys-apps/etckeeper
+#sudo emerge -nuvtND --with-bdeps=y sys-apps/etckeeper
 #sudo etckeeper init -d /etc
 
 # ---- various version control systems (other than Git)
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
   dev-vcs/subversion \
   dev-vcs/mercurial \
   dev-vcs/cvs
 
 # ---- various vim plugins
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
   app-vim/bash-support \
   app-vim/vimpython \
   app-vim/vim-go \
@@ -73,7 +73,7 @@ sudo emerge -uvt \
 
 # ---- various network utils
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
   net-misc/aria2 \
   net-analyzer/tcpdump \
   net-misc/iperf \
@@ -101,29 +101,30 @@ sudo GOPATH="/opt/go" go get github.com/jsha/minica
 
 # ---- various file utils
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
   app-misc/colordiff \
   sys-fs/inotify-tools \
   sys-apps/exa \
   app-misc/icdiff \
   sys-apps/ripgrep \
   app-arch/pigz \
-  app-shells/fzf \
   app-text/multitail \
   app-misc/jq \
   sys-process/iotop \
   app-editors/curses-hexedit
 
+# FIXME app-shells/fzf no more in portage tree
+
 # ---- gfx/video utils
 
-sudo emerge -uvt media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg
-#sudo emerge -vt media-video/rtmpdump    # already pulled in by dependency
+sudo emerge -nuvtND --with-bdeps=y media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg media-video/rtmpdump
+
 # PHP imagick ext:
-sudo emerge -uvt dev-php/pecl-imagick
+sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-imagick
 
 # ---- protobuf
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
   dev-libs/protobuf \
   dev-python/protobuf-python \
   dev-libs/protobuf-c \
@@ -134,13 +135,13 @@ sudo emerge -uvt \
 
 # ---- debugging / profiling / benchmark
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
 	sys-devel/gdb \
 	dev-util/strace \
 	dev-util/systemtap
 
-#sudo emerge -uvt dev-db/mysql-super-smack    # benchmark mysql/postgresql
+#sudo emerge -nuvtND --with-bdeps=y dev-db/mysql-super-smack    # benchmark mysql/postgresql
 
 # ---- Kerberos V
 
-sudo emerge -uvt app-crypt/mit-krb5
+sudo emerge -nuvtND --with-bdeps=y app-crypt/mit-krb5

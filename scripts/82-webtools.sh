@@ -7,7 +7,7 @@ fi
 
 # ---- various webtools
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
     app-admin/webapp-config \
     www-misc/shellinabox \
     dev-db/phpmyadmin \

@@ -7,10 +7,10 @@ fi
 
 # ---- Apache
 
-sudo emerge -uvt www-servers/apache www-apache/mod_security www-apache/modsecurity-crs app-admin/apachetop
+sudo emerge -nuvtND --with-bdeps=y www-servers/apache www-apache/mod_security www-apache/modsecurity-crs app-admin/apachetop
 
 # add some more (optional) modules
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
 	www-apache/mod_bw \
 	www-apache/mod_common_redirect \
 	www-apache/mod_dnsbl_lookup \
@@ -71,48 +71,48 @@ sudo grep -e '-D FCGID' /etc/conf.d/apache2 > /dev/null || sudo sed -ir 's/APACH
 # ---- Nginx
 
 # workaround: deps needed for nginx install
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
 	media-libs/gd \
 	dev-libs/geoip
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
 	www-servers/nginx \
 	app-admin/ngxtop
 
 # ---- Lighttpd
 
-sudo emerge -uvt www-servers/lighttpd
+sudo emerge -nuvtND --with-bdeps=y www-servers/lighttpd
 
 # ---- Let's encrypt
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
 	app-crypt/certbot \
 	app-crypt/certbot-apache \
 	app-crypt/certbot-nginx
 
 # ---- Varnish proxy cache
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
 	www-servers/varnish
 
 # www-misc/varnish-modules # FIXME works in varnish 6.4 but not 6.5
 
 # ---- RabbitMQ
 
-sudo emerge -uvt net-misc/rabbitmq-server
+sudo emerge -nuvtND --with-bdeps=y net-misc/rabbitmq-server
 
 # ---- DNSmasq
 
-sudo emerge -uvt net-dns/dnsmasq
+sudo emerge -nuvtND --with-bdeps=y net-dns/dnsmasq
 #sudo rc-update add dnsmasq default
 
 # ---- Postfix
 
-sudo emerge -uvt mail-mta/postfix
+sudo emerge -nuvtND --with-bdeps=y mail-mta/postfix
 
 # ---- Avahi / mDNS
 
-sudo emerge -uvt \
+sudo emerge -nuvtND --with-bdeps=y \
 	net-dns/avahi \
 	sys-auth/nss-mdns \
 	dev-python/zeroconf
