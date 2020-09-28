@@ -93,8 +93,9 @@ sudo emerge -uvt \
 # ---- Varnish proxy cache
 
 sudo emerge -uvt \
-	www-servers/varnish \
-	www-misc/varnish-modules
+	www-servers/varnish
+
+# www-misc/varnish-modules # FIXME works in varnish 6.4 but not 6.5
 
 # ---- RabbitMQ
 
