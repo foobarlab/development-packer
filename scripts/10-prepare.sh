@@ -273,7 +273,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
 >=dev-lang/clojure-1.9.0
 DATA
 
-rm -rf /etc/portage/package.mask/base-ansible
+sudo rm -f /etc/portage/package.mask/base-ansible
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-ansible
 >=app-admin/ansible-2.10.0
 DATA
