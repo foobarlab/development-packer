@@ -4,6 +4,7 @@
 
 export BUILD_BOX_NAME="development"
 export BUILD_BOX_USERNAME="foobarlab"
+export BUILD_BOX_SOURCES="https://github.com/foobarlab/development-packer"
 
 export BUILD_PARENT_BOX_NAME="funtoo-base"
 export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="$BUILD_BOX_USERNAME/$BUILD_PARENT_BOX_NAME"
@@ -32,12 +33,10 @@ export BUILD_KERNEL=false                 # build a new kernel?
 export BUILD_INCLUDE_ANSIBLE=true         # include Ansible?
 export BUILD_INCLUDE_DOCKER=true          # include Docker?
 export BUILD_HEADLESS=false               # if false, gui will be shown
-
+export BUILD_MYSQL_ROOT_PASSWORD=changeme # set the root password for MySQL/MariaDB
 # TODO flag for xorg (BUILD_WINDOW_SYSTEM)?
 
 export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to keep in Vagrant Cloud
-
-export BUILD_MYSQL_ROOT_PASSWORD=changeme      # set the root password for MySQL/MariaDB 
 
 # ----------------------------! do not edit below this line !----------------------------
 
@@ -54,7 +53,7 @@ else
     # NOTE: for Jenkins builds we got some additional information: BUILD_NUMBER, BUILD_ID, BUILD_DISPLAY_NAME, BUILD_TAG, BUILD_URL
     BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION ($BUILD_TAG)"
 fi
-export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP<br><br>Source code: https://github.com/foobarlab/development-packer"
+export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP<br><br>Source code: $BUILD_BOX_SOURCES"
 
 export BUILD_OUTPUT_FILE_TEMP="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.tmp.box"
 export BUILD_OUTPUT_FILE_INTERMEDIATE="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.raw.box"
