@@ -14,12 +14,19 @@ cd /usr/src/linux
 make distclean
 # copy latest kernel config
 cp -f /usr/src/kernel.config /usr/src/linux/.config
+# prepare for module compiles
+make olddefconfig
+make modules_prepare
 SCRIPT
 
 $script_cleanup = <<SCRIPT
 # debug: list running services
-# rc-status
+rc-status
 # stop services
+/etc/init.d/xdm stop || true
+/etc/init.d/xdm-setup stop || true
+/etc/init.d/elogind stop || true
+/etc/init.d/gpm stop || true
 /etc/init.d/rsyslog stop
 /etc/init.d/dbus -D stop
 /etc/init.d/haveged stop
@@ -28,10 +35,10 @@ $script_cleanup = <<SCRIPT
 /etc/init.d/dhcpcd stop
 /etc/init.d/local stop
 /etc/init.d/acpid stop
+# let it settle
+sync && sleep 15
 # debug: list running services
 rc-status
-# ensure all file operations finished
-sync && sleep 15
 # run zerofree at last to squeeze the last bit
 # /boot
 mount -o remount,ro /dev/sda1
@@ -78,14 +85,15 @@ Vagrant.configure("2") do |config|
     #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
  end
   # public network (bridged)
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true, bridge: [   # TODO read .mac-address and insert e.g. 'mac: "0800273CA134"' 
+  # TODO read file '.mac-address' and insert dynamically? autogenerate?
+  config.vm.network "public_network", use_dhcp_assigned_default_route: true, mac: "0800273CA135", bridge: [ 
     "eth0",
     # TODO add alternative network cards here, see: https://www.vagrantup.com/docs/networking/public_network.html
   ]
   config.ssh.pty = true
   config.ssh.insert_key = false
   config.vm.synced_folder '.', '/vagrant', disabled: false
-  
+
   # ansible provisioning executed only in finalizing step (finalize.sh)
   config.vm.provision "ansible_local" do |ansible|
     ansible.install = false
@@ -96,8 +104,7 @@ Vagrant.configure("2") do |config|
     #  box_version: "#{ENV['BUILD_BOX_VERSION']}"
     #}
   end
-  
-  # FIXME single script is sufficient
+
   config.vm.provision "clean_kernel", type: "shell", inline: $script_clean_kernel, privileged: true
   config.vm.provision "cleanup", type: "shell", inline: $script_cleanup, privileged: true
 end
