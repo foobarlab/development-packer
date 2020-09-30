@@ -104,7 +104,6 @@ sudo GOPATH="/opt/go" go get github.com/jsha/minica
 sudo emerge -nuvtND --with-bdeps=y \
   app-misc/colordiff \
   sys-fs/inotify-tools \
-  sys-apps/exa \
   app-misc/icdiff \
   sys-apps/ripgrep \
   app-arch/pigz \
@@ -114,6 +113,7 @@ sudo emerge -nuvtND --with-bdeps=y \
   app-editors/curses-hexedit
 
 # FIXME app-shells/fzf no more in portage tree
+# FIXME sys-apps/exa fails to build
 
 # ---- gfx/video utils
 
