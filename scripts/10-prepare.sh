@@ -5,6 +5,16 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# ---- import binary packages
+
+sudo chown root:portage /tmp/packages
+sudo chmod 775 /tmp/packages
+sudo chown -R root:root /tmp/packages/*
+sudo find /tmp/packages/ -type d -exec chmod 755 {} +
+sudo find /tmp/packages/ -type f -exec chmod 644 {} +
+sudo rm -rf /var/cache/portage/packages
+sudo cp -rf /tmp/packages /var/cache/portage/
+
 # ---- box name
 
 echo "$BUILD_BOX_DESCRIPTION" >> ~vagrant/.release_$BUILD_BOX_NAME

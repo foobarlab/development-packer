@@ -9,6 +9,8 @@ user_id=$(id -u)    # FIX: because of "/etc/profile.d/java-config-2.sh: line 22:
 sudo env-update
 source /etc/profile
 
+sudo eclean packages
+
 sudo emerge --depclean
 
 sudo find /etc/ -name '._cfg*'				# DEBUG: list all config files needing an update
