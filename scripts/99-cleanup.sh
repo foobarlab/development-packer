@@ -20,7 +20,7 @@ sudo find /etc/ -name '._cfg*' -print -exec cat -n '{}' \;  # DEBUG: cat all con
 sudo rm -f /etc/._cfg0000_boot.conf
 sudo rm -f /etc/._cfg0000_genkernel.conf
 sudo rm -f /etc/._cfg0000_updatedb.conf
-#sudo rm -f /etc/ssh/._cfg0000_sshd_config   # TODO
+sudo rm -f /etc/ssh/._cfg0000_sshd_config
 sudo rm -f /etc/conf.d/._cfg0000_consolefont
 sudo rm -f /etc/conf.d/._cfg0000_hostname
 
