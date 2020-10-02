@@ -7,11 +7,13 @@ fi
 
 # ---- import binary packages
 
-sudo chown root:portage /tmp/packages
-sudo chmod 775 /tmp/packages
-sudo chown -R root:root /tmp/packages/*
+mkdir -p /tmp/packages || true
+echo "$BUILD_BOX_DESCRIPTION" >> /tmp/packages/.release_$BUILD_BOX_NAME-$BUILD_BOX_VERSION
+sudo chown -R root:root /tmp/packages
 sudo find /tmp/packages/ -type d -exec chmod 755 {} +
 sudo find /tmp/packages/ -type f -exec chmod 644 {} +
+sudo chown root:portage /tmp/packages
+sudo chmod 775 /tmp/packages
 sudo rm -rf /var/cache/portage/packages
 sudo cp -rf /tmp/packages /var/cache/portage/
 
@@ -73,9 +75,6 @@ fi
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # experimental: add some flags for CPUs after 2011 (intel-nehalem/amd-bulldozer)
 #CPU_FLAGS_X86="${CPU_FLAGS_X86} popcnt sse3 sse4_1 sse4_2 ssse3"
-
-# testing: save some space: just install locales "en", "en_US", "de", "fr"
-#INSTALL_MASK="/usr/share/locale -/usr/share/locale/en -/usr/share/locale/en_US -/usr/share/locale/de -/usr/share/locale/fr"
 
 DATA
 
