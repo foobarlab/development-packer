@@ -147,9 +147,6 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/lua dev-lang/luajit
 
 # ---- Rust
 
-#sudo emerge --unmerge dev-lang/rust || true
-#sudo emerge -nuvtND --with-bdeps=y dev-lang/rust-bin
-
 sudo emerge --unmerge dev-lang/rust-bin || true
 sudo emerge -nuvtND --with-bdeps=y dev-lang/rust
 
