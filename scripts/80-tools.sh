@@ -16,7 +16,8 @@ fi
 sudo emerge -nuvtND --with-bdeps=y \
   dev-vcs/subversion \
   dev-vcs/mercurial \
-  dev-vcs/cvs
+  dev-vcs/cvs \
+  dev-vcs/git-lfs
 
 # ---- various vim plugins
 
