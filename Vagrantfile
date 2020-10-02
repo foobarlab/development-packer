@@ -6,10 +6,16 @@ system("./config.sh >/dev/null")
 $script_export_packages = <<SCRIPT
 # clean host packages dir
 rm -rf /vagrant/packages/*
-# move guest packages to host
-mv -rf /var/cache/portage/packages/* /vagrant/packages/
 # let it settle
-sync && sleep 5
+sync && sleep 15
+# copy guest packages to host
+cp -rf /var/cache/portage/packages/* /vagrant/packages/
+# let it settle
+sync && sleep 15
+# clean guest packages
+rm -rf /var/cache/portage/packages/*
+# let it settle
+sync && sleep 30
 SCRIPT
 
 $script_clean_kernel = <<SCRIPT
@@ -45,7 +51,7 @@ rc-status
 /etc/init.d/local stop
 /etc/init.d/acpid stop
 # let it settle
-sync && sleep 15
+sync && sleep 30
 # debug: list running services
 rc-status
 # run zerofree at last to squeeze the last bit
