@@ -76,7 +76,10 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # experimental: add some flags for CPUs after 2011 (intel-nehalem/amd-bulldozer)
 #CPU_FLAGS_X86="${CPU_FLAGS_X86} popcnt sse3 sse4_1 sse4_2 ssse3"
 
+MAKEOPTS="BUILD_MAKEOPTS"
+
 DATA
+sudo sed -i 's/BUILD_MAKEOPTS/'"$BUILD_MAKEOPTS"'/g' /etc/portage/make.conf
 
 # experimental
 #sudo sed -i 's/USE=\"/USE="gold /g' /etc/portage/make.conf

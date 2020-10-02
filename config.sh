@@ -4,6 +4,9 @@
 
 export BUILD_BOX_NAME="development"
 export BUILD_BOX_USERNAME="foobarlab"
+
+export BUILD_BOX_PROVIDER="virtualbox"
+
 export BUILD_BOX_SOURCES="https://github.com/foobarlab/development-packer"
 
 export BUILD_PARENT_BOX_NAME="funtoo-base"
@@ -11,15 +14,12 @@ export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="$BUILD_BOX_USERNAME/$BUILD_PARENT_BOX
 
 export BUILD_GUEST_TYPE="Gentoo_64"
 
-# memory/cpus used during box creation:
-export BUILD_GUEST_CPUS="4"
-export BUILD_GUEST_MEMORY="8192"
+# number of cores used during box creation (memory is calculated automatically):
+export BUILD_CPUS="4"
 
-# memory/cpus used for final box:
+# default memory/cpus used for final created box:
 export BUILD_BOX_CPUS="2"
 export BUILD_BOX_MEMORY="2048"
-
-export BUILD_BOX_PROVIDER="virtualbox"
 
 export BUILD_CUSTOM_OVERLAY=true
 export BUILD_CUSTOM_OVERLAY_NAME="foobarlab"
@@ -39,6 +39,11 @@ export BUILD_MYSQL_ROOT_PASSWORD=changeme # set the root password for MySQL/Mari
 export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to keep in Vagrant Cloud
 
 # ----------------------------! do not edit below this line !----------------------------
+
+let "jobs = $BUILD_CPUS + 1"       # calculate number of jobs (threads + 1)
+export BUILD_MAKEOPTS="-j${jobs}"
+let "memory = $jobs * 2048"        # recommended 2GB for each job
+export BUILD_MEMORY="${memory}"
 
 export BUILD_BOX_RELEASE_NOTES="Development environment based on Funtoo Linux providing various programming languages and stacks. See README in sources for details."     # edit this to reflect actual setup
 
