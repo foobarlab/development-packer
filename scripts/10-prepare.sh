@@ -230,6 +230,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-libvirt
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-quemu
 >=app-emulation/qemu-5.0.0-r2 gnutls lzo nfs plugins spice snappy vhost-user-fs virtfs
+>=x11-libs/libxcb-1.14 xkb
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-ant
 # FIXME temporary added here, pulls in jython (build failing)
