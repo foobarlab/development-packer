@@ -30,8 +30,8 @@ export BUILD_CUSTOM_OVERLAY_BRANCH="master"
 #export BUILD_AUTO_FINALIZE=false  # if 'true' automatically run finalize.sh script
 
 export BUILD_KERNEL=false                 # build a new kernel?
-export BUILD_INCLUDE_ANSIBLE=true         # include Ansible?
-export BUILD_INCLUDE_DOCKER=true          # include Docker?
+export BUILD_INCLUDE_ANSIBLE=false        # include Ansible build? (already enabled in funtoo-base)
+export BUILD_INCLUDE_DOCKER=true          # include Docker build?
 export BUILD_HEADLESS=false               # if false, gui will be shown
 export BUILD_MYSQL_ROOT_PASSWORD=changeme # set the root password for MySQL/MariaDB
 # TODO flag for xorg (BUILD_WINDOW_SYSTEM)?
