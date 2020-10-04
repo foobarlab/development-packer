@@ -5,6 +5,8 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# TODO disable 'sendfile' option in any webserver, see https://www.vagrantup.com/docs/synced-folders/virtualbox#caveats
+
 # ---- Apache
 
 sudo emerge -nuvtND --with-bdeps=y www-servers/apache www-apache/mod_security www-apache/modsecurity-crs app-admin/apachetop
@@ -20,11 +22,10 @@ sudo emerge -nuvtND --with-bdeps=y \
 	www-apache/mod_limitipconn \
 	www-apache/mod_log_sql \
 	www-apache/mod_qos \
-	www-apache/mod_tidy \
 	www-apache/mod_umask \
 	www-apache/mod_xsendfile
 
-# TESTING: www-apache/mod_dnssd
+# TESTING: www-apache/mod_dnssd www-apache/mod_tidy
 
 # set global server name to avoid annoying warning message on startup
 cat <<'DATA' | sudo tee -a /etc/apache2/httpd.conf
