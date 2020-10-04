@@ -115,7 +115,7 @@ Vagrant.configure("2") do |config|
   ]
   config.ssh.pty = true
   config.ssh.insert_key = false
-  config.vm.synced_folder '.', '/vagrant', disabled: false
+  config.vm.synced_folder '.', '/vagrant', disabled: false, automount: true
 
   # ansible provisioning executed only in finalizing step (finalize.sh)
   config.vm.provision "ansible_local" do |ansible|
