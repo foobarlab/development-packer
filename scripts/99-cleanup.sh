@@ -12,6 +12,7 @@ source /etc/profile
 sudo eclean packages
 
 sudo emerge --depclean
+sudo emerge -vt @preserved-rebuild
 
 sudo bash -c "sed -i '/^MAKEOPTS/d' /etc/portage/make.conf"           # delete MAKEOPTS (make.conf)
 #sudo bash -c "sed -i 's/^\(MAKEOPTS.*\)/#\1/g' /etc/genkernel.conf"   # comment-in MAKEOPTS (genkernel) # FIXME do when genkernel was invoked in 20-kernel.sh
