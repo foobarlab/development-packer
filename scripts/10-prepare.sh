@@ -258,8 +258,8 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-ffmpeg
 >=media-libs/quirc-1.0 AS-IS
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
->=sys-devel/llvm-9.0 Apache-2.0-with-LLVM-exceptions
->=sys-devel/llvm-common-9.0 Apache-2.0-with-LLVM-exceptions
+#>=sys-devel/llvm-9.0 Apache-2.0-with-LLVM-exceptions
+#>=sys-devel/llvm-common-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/clang-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/clang-common-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-libs/compiler-rt-sanitizers-9.0 Apache-2.0-with-LLVM-exceptions
@@ -284,11 +284,6 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
 # workaround: temporary mask
 >=dev-lang/clojure-1.9.0
-DATA
-
-sudo rm -f /etc/portage/package.mask/base-ansible
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-ansible
->=app-admin/ansible-2.10.0
 DATA
 
 # ---- package.unmask
