@@ -36,7 +36,7 @@ export BUILD_HEADLESS=false               # if false, gui will be shown
 export BUILD_MYSQL_ROOT_PASSWORD=changeme # set the root password for MySQL/MariaDB
 # TODO flag for xorg (BUILD_WINDOW_SYSTEM)?
 
-export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to keep in Vagrant Cloud
+export BUILD_KEEP_MAX_CLOUD_BOXES=1       # set the maximum number of boxes to keep in Vagrant Cloud
 
 # ----------------------------! do not edit below this line !----------------------------
 
