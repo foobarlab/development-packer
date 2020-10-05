@@ -1,7 +1,7 @@
 ---
 # vim: syntax=yaml
 
-- include: security-limits.yml
+#- include: security-limits.yml
 - include: sysctl.yml
 - include: iptables.yml
 - include: users-and-groups.yml
