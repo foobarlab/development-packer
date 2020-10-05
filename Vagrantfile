@@ -63,8 +63,10 @@ sync && sleep 30
 # debug: list running services
 rc-status
 # clean shell history
+set +o history
 rm -f /home/vagrant/.bash_history
 rm -f /root/.bash_history
+sync
 # run zerofree at last to squeeze the last bit
 # /boot
 mount -v -n -o remount,ro /dev/sda1
@@ -109,19 +111,20 @@ Vagrant.configure("2") do |config|
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-sched", "off"]
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-vm-entry", "on"]
     #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
- end
-  # public network (bridged)
-  # TODO read file '.mac-address' and insert dynamically? autogenerate?
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true, mac: "0800273CA135", bridge: [ 
-    "eth0",
-    # TODO add alternative network cards here, see: https://www.vagrantup.com/docs/networking/public_network.html
-  ]
+  end
+  
+  # adapter 1 (eth0): private network (NAT with forwarding)
+  config.vm.network "forwarded_port", guest: 80, host: 8000
+  
+  # adapter 2 (eth1): public network (bridged)
+  config.vm.network "public_network", use_dhcp_assigned_default_route: true, bridge: [ "eth0", "wlan0", "en1: Wi-Fi (AirPort)" ]
+  
   config.ssh.pty = true
   config.ssh.insert_key = false
   config.vm.synced_folder '.', '/vagrant', disabled: false, automount: true
 
   # ansible provisioning executed only in finalizing step (finalize.sh)
-  config.vm.provision "ansible_local" do |ansible|
+  config.vm.provision "ansible", type: "ansible_local" do |ansible|
     ansible.install = false
     ansible.verbose = true
     ansible.compatibility_mode = "2.0"
