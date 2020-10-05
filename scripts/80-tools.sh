@@ -140,7 +140,8 @@ sudo emerge -nuvtND --with-bdeps=y \
 sudo emerge -nuvtND --with-bdeps=y \
 	sys-devel/gdb \
 	dev-util/strace \
-	dev-util/systemtap
+	dev-util/systemtap \
+	sys-apps/lnxhc
 
 #sudo emerge -nuvtND --with-bdeps=y dev-db/mysql-super-smack    # benchmark mysql/postgresql
 
