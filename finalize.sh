@@ -27,6 +27,7 @@ if [ -f "$BUILD_OUTPUT_FILE_INTERMEDIATE" ]; then
     vagrant --provision up || { echo "Unable to startup '$BUILD_BOX_NAME'."; exit 1; }
     echo "Exporting final box to '$BUILD_OUTPUT_FILE_FINAL' ..."
     vagrant package --output "$BUILD_OUTPUT_FILE_FINAL"
+	echo "Build finalized."
 else
     echo "There is no box file '$BUILD_OUTPUT_FILE_INTERMEDIATE' in the current directory. You may need to run 'build.sh' first."
     exit 1

@@ -5,6 +5,18 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
+# ---- import binary packages
+
+mkdir -p /tmp/packages || true
+echo "$BUILD_BOX_DESCRIPTION" >> /tmp/packages/.release_$BUILD_BOX_NAME-$BUILD_BOX_VERSION
+sudo mkdir -p /var/cache/portage/packages || true # TODO check if needed, set with rsync?
+sudo rsync -urv /tmp/packages /var/cache/portage/
+sudo chown -R root:root /var/cache/portage/packages
+sudo find /var/cache/portage/packages/ -type d -exec chmod 755 {} +
+sudo find /var/cache/portage/packages/ -type f -exec chmod 644 {} +
+sudo chown root:portage /var/cache/portage/packages
+sudo chmod 775 /var/cache/portage/packages
+
 # ---- box name
 
 echo "$BUILD_BOX_DESCRIPTION" >> ~vagrant/.release_$BUILD_BOX_NAME
@@ -64,10 +76,10 @@ cat <<'DATA' | sudo tee -a /etc/portage/make.conf
 # experimental: add some flags for CPUs after 2011 (intel-nehalem/amd-bulldozer)
 #CPU_FLAGS_X86="${CPU_FLAGS_X86} popcnt sse3 sse4_1 sse4_2 ssse3"
 
-# testing: save some space: just install locales "en", "en_US", "de", "fr"
-#INSTALL_MASK="/usr/share/locale -/usr/share/locale/en -/usr/share/locale/en_US -/usr/share/locale/de -/usr/share/locale/fr"
+MAKEOPTS="BUILD_MAKEOPTS"
 
 DATA
+sudo sed -i 's/BUILD_MAKEOPTS/'"$BUILD_MAKEOPTS"'/g' /etc/portage/make.conf
 
 # experimental
 #sudo sed -i 's/USE=\"/USE="gold /g' /etc/portage/make.conf
@@ -218,6 +230,11 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-libvirt
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-quemu
 >=app-emulation/qemu-5.0.0-r2 gnutls lzo nfs plugins spice snappy vhost-user-fs virtfs
+>=x11-libs/libxcb-1.14 xkb
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-ant
+# FIXME temporary added here, pulls in jython (build failing)
+dev-java/ant -bsf
 DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
@@ -241,8 +258,8 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-ffmpeg
 >=media-libs/quirc-1.0 AS-IS
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
->=sys-devel/llvm-9.0 Apache-2.0-with-LLVM-exceptions
->=sys-devel/llvm-common-9.0 Apache-2.0-with-LLVM-exceptions
+#>=sys-devel/llvm-9.0 Apache-2.0-with-LLVM-exceptions
+#>=sys-devel/llvm-common-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/clang-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/clang-common-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-libs/compiler-rt-sanitizers-9.0 Apache-2.0-with-LLVM-exceptions
@@ -285,6 +302,7 @@ sudo cp -f /usr/src/kernel.config /usr/src/linux/.config
 # --- sync
 
 sudo ego sync
+sudo eclean packages
 
 # --- mix-ins
 

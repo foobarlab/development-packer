@@ -7,21 +7,21 @@ fi
 
 # ---- LLVM
 
-sudo emerge -vt \
+sudo emerge -nuvtND --with-bdeps=y \
 	sys-devel/llvm \
 	sys-devel/llvm-common \
-	sys-devel/llvmgold \
-	sys-devel/lld \
-	dev-util/lldb
+	sys-devel/lld
 
 # disabled for now:
-#sudo emerge -vt \
-#	sys-libs/llvm-libunwind
+#sudo emerge -nuvtND --with-bdeps=y \
+#	sys-devel/llvmgold \
+#	sys-libs/llvm-libunwind \
+#	dev-util/lldb
 
 # ---- Python
 
-sudo emerge -vt dev-python/pip dev-python/sphinx dev-python/numpy
-#sudo emerge -vt dev-python/virtualenv
+sudo emerge -nuvtND --with-bdeps=y dev-python/pip dev-python/sphinx dev-python/numpy
+#sudo emerge -nuvtND --with-bdeps=y dev-python/virtualenv
 
 # ---- Ruby
 
@@ -36,11 +36,11 @@ gem: --no-rdoc --no-ri
 
 DATA
 
-sudo emerge -vt dev-lang/ruby dev-ruby/rubygems dev-ruby/bundler dev-ruby/sass
+sudo emerge -nuvtND --with-bdeps=y dev-lang/ruby dev-ruby/rubygems dev-ruby/bundler dev-ruby/sass
 
 # ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy
 
-sudo emerge -vt dev-java/openjdk-bin app-eselect/eselect-java \
+sudo emerge -nuvtND --with-bdeps=y dev-java/openjdk-bin app-eselect/eselect-java \
                 dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net \
                 dev-java/maven-bin dev-java/ant-ivy \
                 dev-lang/scala-bin dev-java/sbt-bin app-eselect/eselect-scala \
@@ -54,62 +54,62 @@ eselect java-vm show
 
 # ---- Kotlin
 
-sudo emerge -vt dev-lang/kotlin-bin
+sudo emerge -nuvtND --with-bdeps=y dev-lang/kotlin-bin
 
 # ---- Elixir / Erlang OTP
 
-sudo emerge -vt dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
+sudo emerge -nuvtND --with-bdeps=y dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
 
 # add epmd to default runlevel (needed for couchdb/rabbitmq)
 #sudo rc-update add epmd default
 
 # ---- Haskell
 
-sudo emerge -vt dev-haskell/haskell-platform
+sudo emerge -nuvtND --with-bdeps=y dev-haskell/haskell-platform
 
 # ---- Clojure
 
-sudo emerge -vt dev-lang/clojure
+sudo emerge -nuvtND --with-bdeps=y dev-lang/clojure
 
 # ---- OCaml
 
-sudo emerge -vt dev-lang/ocaml
-#sudo emerge -vt dev-ml/llvm-ocaml  # FIXME
+sudo emerge -nuvtND --with-bdeps=y dev-lang/ocaml
+#sudo emerge -nuvtND --with-bdeps=y dev-ml/llvm-ocaml  # TODO
 
 # ---- JavaScript / node.js
 
-sudo emerge -vt net-libs/nodejs
+sudo emerge -nuvtND --with-bdeps=y net-libs/nodejs
 
 # TODO try nodeenv (pip install), see https://github.com/ekalinin/nodeenv
 
 # ---- PHP
 
 # PHP and some tools/exts, see: https://wiki.gentoo.org/wiki/PHP
-sudo emerge -vt dev-lang/php dev-php/xdebug dev-php/composer dev-php/pecl-oauth dev-php/igbinary
+sudo emerge -nuvtND --with-bdeps=y dev-lang/php dev-php/xdebug dev-php/composer dev-php/pecl-oauth dev-php/igbinary
 
 # deprecated extensions:
-#sudo emerge -vt dev-php/pecl-uploadprogress
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-uploadprogress
 
 # extensions:
-#sudo emerge -vt dev-php/pecl-taint dev-php/pecl-memcached
-#sudo emerge -vt dev-php/pecl-geoip dev-php/pecl-timezonedb
-#sudo emerge -vt dev-php/pecl-yaml dev-php/pecl-raphf dev-php/pecl-mailparse dev-php/pecl-event dev-php/pecl-eio dev-php/pecl-redis
-#sudo emerge -vt dev-php/pecl-http
-#sudo emerge -vt dev-php/pecl-amqp
-#sudo emerge -vt dev-php/pecl-stomp
-#sudo emerge -vt dev-php/pecl-apcu dev-php/pecl-apcu_bc
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-taint dev-php/pecl-memcached
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-geoip dev-php/pecl-timezonedb
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-yaml dev-php/pecl-raphf dev-php/pecl-mailparse dev-php/pecl-event dev-php/pecl-eio dev-php/pecl-redis
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-http
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-amqp
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-stomp
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-apcu dev-php/pecl-apcu_bc
 
 # update PEAR/PECL channels while online
 #sudo emerge -v --config PEAR-PEAR
 	
 # foobarlab overlay PECL packages:
-#sudo emerge -vt dev-php/pecl-solr
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-solr
 # see: https://github.com/arnaud-lb/php-rdkafka
-#sudo emerge -vt dev-php/pecl-rdkafka
+#sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-rdkafka
 
 # ---- Go
 
-sudo emerge -vt dev-lang/go
+sudo emerge -nuvtND --with-bdeps=y dev-lang/go
 
 # Go apps in /opt/go:
 sudo mkdir -p /opt/go
@@ -143,13 +143,13 @@ sudo go env
 
 # ---- Lua
 
-sudo emerge -vt dev-lang/lua dev-lang/luajit
+sudo emerge -nuvtND --with-bdeps=y dev-lang/lua dev-lang/luajit
 
 # ---- Rust
 
-#sudo emerge -vt dev-lang/rust-bin
-sudo emerge -vt dev-lang/rust
+sudo emerge --unmerge dev-lang/rust-bin || true
+sudo emerge -nuvtND --with-bdeps=y dev-lang/rust
 
 # ---- Whitespace
 
-sudo emerge -vt dev-lang/whitespace
+sudo emerge -nuvtND --with-bdeps=y dev-lang/whitespace

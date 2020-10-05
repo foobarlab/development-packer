@@ -1,5 +1,5 @@
 {
-  "min_packer_version": "1.6.0",
+  "min_packer_version": "1.6.3",
   "builders": [{
     "boot_wait": "30s",
     "type": "virtualbox-ovf",
@@ -17,34 +17,40 @@
         ["modifyvm","{{.Name}}","--memory","{{user `memory`}}"],
         ["modifyvm","{{.Name}}","--cpus","{{user `cpus`}}"],
         ["modifyvm","{{.Name}}","--nictype1","virtio"],
+        ["modifyvm","{{.Name}}","--nictype2","virtio"],
         ["modifyvm","{{.Name}}","--audio","none"],
         ["modifyvm","{{.Name}}","--usb","off"],
         ["modifyvm","{{.Name}}","--chipset","ich9"],
         ["modifyvm","{{.Name}}","--rtcuseutc","on"],
-        ["modifyvm","{{.Name}}","--vram", "12"],
+        ["modifyvm","{{.Name}}","--vram", "64"],
         ["modifyvm","{{.Name}}","--vrde", "off"],
         ["modifyvm","{{.Name}}","--hpet", "on"],
         ["modifyvm","{{.Name}}","--hwvirtex", "on"],
         ["modifyvm","{{.Name}}","--vtxvpid", "on"],
-        ["modifyvm","{{.Name}}","--largepages", "on"]
+        ["modifyvm","{{.Name}}","--largepages", "on"],
+        ["modifyvm","{{.Name}}","--graphicscontroller", "vmsvga"],
+        ["modifyvm","{{.Name}}","--accelerate3d", "on"]
       ]
   }],
   "provisioners": [{
       "destination": "/tmp",
       "source": "scripts",
       "type": "file"
-  },
-  {
+  },{
+      "destination": "/tmp/packages",
+      "source": "packages",
+      "type": "file"
+  },{
       "type": "shell",
       "script": "provision.sh",
       "environment_vars": [
           "SCRIPTS=/tmp",
-          "MAKEOPTS=-j{{user `cpus`}}",
           "BUILD_RUN=true",
           "BUILD_BOX_NAME={{user `vm_name`}}",
           "BUILD_BOX_USERNAME={{user `vm_username`}}",
           "BUILD_BOX_DESCRIPTION={{user `box_description`}}",
           "BUILD_BOX_VERSION={{user `box_version`}}",
+		  "BUILD_MAKEOPTS={{user `makeopts`}}",
 		  "BUILD_TIMESTAMP={{user `timestamp`}}",
 		  "BUILD_KERNEL={{user `kernel`}}",
 		  "BUILD_INCLUDE_ANSIBLE={{user `include_ansible`}}",
@@ -70,9 +76,10 @@
     "guest_os_type": "{{env `BUILD_GUEST_TYPE`}}",
     "vm_name": "{{env `BUILD_BOX_NAME`}}",
     "vm_username": "{{env `BUILD_BOX_USERNAME`}}",
-    "memory": "{{env `BUILD_GUEST_MEMORY`}}",
-    "cpus": "{{env `BUILD_GUEST_CPUS`}}",
+    "cpus": "{{env `BUILD_CPUS`}}",
+    "memory": "{{env `BUILD_MEMORY`}}",
     "box_version": "{{env `BUILD_BOX_VERSION`}}",
+    "makeopts": "{{env `BUILD_MAKEOPTS`}}",
     "timestamp": "{{env `BUILD_TIMESTAMP`}}",
     "kernel": "{{env `BUILD_KERNEL`}}",
     "include_ansible": "{{env `BUILD_INCLUDE_ANSIBLE`}}",
@@ -82,7 +89,7 @@
     "custom_overlay_url": "{{env `BUILD_CUSTOM_OVERLAY_URL`}}",
     "custom_overlay_branch": "{{env `BUILD_CUSTOM_OVERLAY_BRANCH`}}",
     "mysql_root_password": "{{env `BUILD_MYSQL_ROOT_PASSWORD`}}",
-    "headless": "true",
+    "headless": "{{env `BUILD_HEADLESS`}}",
     "username": "vagrant",
     "password": "vagrant"
   }

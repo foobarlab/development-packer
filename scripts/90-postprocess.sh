@@ -9,7 +9,7 @@ fi
 sudo perl-cleaner --all
 
 # update haskell packages
-sudo haskell-updater
+sudo haskell-updater || true
 
 # remove any temp portage flags and update system
 for dir in /etc/portage/package.*; do

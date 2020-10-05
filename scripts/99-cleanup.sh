@@ -9,7 +9,13 @@ user_id=$(id -u)    # FIX: because of "/etc/profile.d/java-config-2.sh: line 22:
 sudo env-update
 source /etc/profile
 
+sudo eclean packages
+
 sudo emerge --depclean
+sudo emerge -vt @preserved-rebuild
+
+sudo bash -c "sed -i '/^MAKEOPTS/d' /etc/portage/make.conf"           # delete MAKEOPTS (make.conf)
+#sudo bash -c "sed -i 's/^\(MAKEOPTS.*\)/#\1/g' /etc/genkernel.conf"   # comment-in MAKEOPTS (genkernel) # FIXME do when genkernel was invoked in 20-kernel.sh
 
 sudo find /etc/ -name '._cfg*'				# DEBUG: list all config files needing an update
 sudo find /etc/ -name '._cfg*' -print -exec cat -n '{}' \;  # DEBUG: cat all config files needing an update
@@ -18,6 +24,7 @@ sudo find /etc/ -name '._cfg*' -print -exec cat -n '{}' \;  # DEBUG: cat all con
 sudo rm -f /etc/._cfg0000_boot.conf
 sudo rm -f /etc/._cfg0000_genkernel.conf
 sudo rm -f /etc/._cfg0000_updatedb.conf
+sudo rm -f /etc/ssh/._cfg0000_sshd_config
 sudo rm -f /etc/conf.d/._cfg0000_consolefont
 sudo rm -f /etc/conf.d/._cfg0000_hostname
 
@@ -33,6 +40,7 @@ sudo eclean-kernel -l
 sudo ego boot update
 
 sudo eix-update
+sudo eix-test-obsolete
 
 sudo rm -f /etc/resolv.conf
 sudo rm -f /etc/resolv.conf.bak

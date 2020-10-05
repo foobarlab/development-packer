@@ -5,20 +5,21 @@
 export BUILD_BOX_NAME="development"
 export BUILD_BOX_USERNAME="foobarlab"
 
+export BUILD_BOX_PROVIDER="virtualbox"
+
+export BUILD_BOX_SOURCES="https://github.com/foobarlab/development-packer"
+
 export BUILD_PARENT_BOX_NAME="funtoo-base"
 export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="$BUILD_BOX_USERNAME/$BUILD_PARENT_BOX_NAME"
 
 export BUILD_GUEST_TYPE="Gentoo_64"
 
-# memory/cpus used during box creation:
-export BUILD_GUEST_CPUS="4"
-export BUILD_GUEST_MEMORY="8192"
+# number of cores used during box creation (memory is calculated automatically):
+export BUILD_CPUS="4"
 
-# memory/cpus used for final box:
+# default memory/cpus used for final created box:
 export BUILD_BOX_CPUS="2"
-export BUILD_BOX_MEMORY="4096"
-
-export BUILD_BOX_PROVIDER="virtualbox"
+export BUILD_BOX_MEMORY="2048"
 
 export BUILD_CUSTOM_OVERLAY=true
 export BUILD_CUSTOM_OVERLAY_NAME="foobarlab"
@@ -29,14 +30,20 @@ export BUILD_CUSTOM_OVERLAY_BRANCH="master"
 #export BUILD_AUTO_FINALIZE=false  # if 'true' automatically run finalize.sh script
 
 export BUILD_KERNEL=false                 # build a new kernel?
-export BUILD_INCLUDE_ANSIBLE=false        # include Ansible? (already installed in funtoo-base)
-export BUILD_INCLUDE_DOCKER=true          # include Docker?
+export BUILD_INCLUDE_ANSIBLE=false        # include Ansible build? (already enabled in funtoo-base)
+export BUILD_INCLUDE_DOCKER=true          # include Docker build?
+export BUILD_HEADLESS=false               # if false, gui will be shown
+export BUILD_MYSQL_ROOT_PASSWORD=changeme # set the root password for MySQL/MariaDB
+# TODO flag for xorg (BUILD_WINDOW_SYSTEM)?
 
-export BUILD_KEEP_MAX_CLOUD_BOXES=3       # set the maximum number of boxes to keep in Vagrant Cloud
-
-export BUILD_MYSQL_ROOT_PASSWORD=changeme      # set the root password for MySQL/MariaDB 
+export BUILD_KEEP_MAX_CLOUD_BOXES=1       # set the maximum number of boxes to keep in Vagrant Cloud
 
 # ----------------------------! do not edit below this line !----------------------------
+
+let "jobs = $BUILD_CPUS + 1"       # calculate number of jobs (threads + 1)
+export BUILD_MAKEOPTS="-j${jobs}"
+let "memory = $jobs * 2048"        # recommended 2GB for each job
+export BUILD_MEMORY="${memory}"
 
 export BUILD_BOX_RELEASE_NOTES="Development environment based on Funtoo Linux providing various programming languages and stacks. See README in sources for details."     # edit this to reflect actual setup
 
@@ -51,7 +58,7 @@ else
     # NOTE: for Jenkins builds we got some additional information: BUILD_NUMBER, BUILD_ID, BUILD_DISPLAY_NAME, BUILD_TAG, BUILD_URL
     BUILD_BOX_DESCRIPTION="$BUILD_BOX_DESCRIPTION ($BUILD_TAG)"
 fi
-export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP<br><br>Source code: https://github.com/foobarlab/development-packer"
+export BUILD_BOX_DESCRIPTION="$BUILD_BOX_RELEASE_NOTES<br><br>$BUILD_BOX_DESCRIPTION<br>created @$BUILD_TIMESTAMP<br><br>Source code: $BUILD_BOX_SOURCES"
 
 export BUILD_OUTPUT_FILE_TEMP="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.tmp.box"
 export BUILD_OUTPUT_FILE_INTERMEDIATE="$BUILD_BOX_NAME-$BUILD_BOX_VERSION.raw.box"

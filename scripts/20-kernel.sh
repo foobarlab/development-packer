@@ -26,7 +26,7 @@ if [ -f ${SCRIPTS}/scripts/kernel.config ]; then
 fi
 
 sudo eselect kernel list
-sudo emerge -vt sys-kernel/debian-sources
+sudo emerge -nuvtND --with-bdeps=y sys-kernel/debian-sources
 
 sudo eselect kernel list
 sudo eselect kernel set 1
@@ -39,6 +39,8 @@ sudo cp -f /usr/src/kernel.config /usr/src/kernel.config.bak
 sudo mv -f /usr/src/kernel.config /usr/src/linux/.config
 sudo make olddefconfig
 sudo mv -f /usr/src/linux/.config /usr/src/kernel.config
+
+# TODO set MAKEOPTS in genkernel.conf to BUILD_MAKEOPTS?
 
 sudo genkernel all
 
