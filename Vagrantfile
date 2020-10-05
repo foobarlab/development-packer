@@ -62,6 +62,9 @@ rm -f /var/log/portage/elog/*.log
 sync && sleep 30
 # debug: list running services
 rc-status
+# clean shell history
+rm -f /home/vagrant/.bash_history
+rm -f /root/.bash_history
 # run zerofree at last to squeeze the last bit
 # /boot
 mount -v -n -o remount,ro /dev/sda1
