@@ -55,7 +55,9 @@ if [ "$BUILD_CUSTOM_OVERLAY" = true ]; then
 	# example: git clone --depth 1 -b development "https://github.com/foobarlab/foobarlab-overlay.git" ./foobarlab
 	sudo git clone --depth 1 -b $BUILD_CUSTOM_OVERLAY_BRANCH "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
 	cd ./$BUILD_CUSTOM_OVERLAY_NAME
-	sudo git config pull.rebase true
+	#sudo git config pull.rebase true  # merge (default strategy)
+	#sudo git config pull.rebase true  # rebase
+	sudo git config pull.ff only       # fast forward only
 	sudo chown -R portage.portage /var/git/overlay
 	cat <<'DATA' | sudo tee -a /etc/portage/repos.conf/$BUILD_CUSTOM_OVERLAY_NAME
 [DEFAULT]
@@ -274,16 +276,17 @@ DATA
 
 sudo mkdir -p /etc/portage/package.mask
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
-# workaround: temporary mask
 >=dev-lang/erlang-23.0
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
-# workaround: temporary mask
 >=dev-lang/php-7.4
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
-# workaround: temporary mask
 >=dev-lang/clojure-1.9.0
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-nodejs
+# using 12.x LTS
+>=net-libs/nodejs-13
 DATA
 
 # ---- package.unmask
