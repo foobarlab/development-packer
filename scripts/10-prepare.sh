@@ -230,7 +230,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-libvirt
 >=sys-auth/consolekit-1.2.1 policykit
 >=dev-libs/glib-2.64.2 dbus
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-quemu
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-qemu
 >=app-emulation/qemu-5.0.0-r2 gnutls lzo nfs plugins spice snappy vhost-user-fs virtfs
 >=x11-libs/libxcb-1.14 xkb
 DATA
@@ -260,8 +260,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-ffmpeg
 >=media-libs/quirc-1.0 AS-IS
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
-#>=sys-devel/llvm-9.0 Apache-2.0-with-LLVM-exceptions
-#>=sys-devel/llvm-common-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/clang-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/clang-common-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-libs/compiler-rt-sanitizers-9.0 Apache-2.0-with-LLVM-exceptions
