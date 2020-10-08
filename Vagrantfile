@@ -113,18 +113,41 @@ Vagrant.configure("2") do |config|
     #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
   end
   
+  # force base mac address to be re-generated
+  #config.vm.base_mac = nil
+  
+  # fixed mac address for eth0
+  config.vm.base_mac = "080027344abc"
+  
   # adapter 1 (eth0): private network (NAT with forwarding)
   config.vm.network "forwarded_port", guest: 80, host: 8000
   
   # adapter 2 (eth1): public network (bridged)
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true, bridge: [ "eth0", "wlan0", "en1: Wi-Fi (AirPort)" ]
+  config.vm.network "public_network",
+  	type: "dhcp",
+  	mac: "0800276c6237",  # fixed, pattern: 080027xxxxxx
+  	use_dhcp_assigned_default_route: true,
+  	bridge: [
+  		"eth0",
+  		"wlan0",
+  		"en0: Wi-Fi (Airport)",
+  		"en1: Wi-Fi (AirPort)"
+  	]
   
   config.ssh.pty = true
   config.ssh.insert_key = false
   config.vm.synced_folder '.', '/vagrant', disabled: false, automount: true
 
+  # debug: show network interfaces + ip adresses
+  config.vm.provision "net_debug", type: "shell", privileged: true, inline: <<-SHELL
+    echo "Configured network interfaces:"
+    ip a | grep glo | awk '{print $8 " => " $2}' | cut -f1 -d/
+    ip a | grep link/ether | awk '{print "MAC  => " $2}'
+    cat /etc/udev/rules.d/70-persistent-net.rules
+  SHELL
+
   # ansible provisioning executed only in finalizing step (finalize.sh)
-  config.vm.provision "ansible", type: "ansible_local" do |ansible|
+  config.vm.provision "provision_ansible", type: "ansible_local" do |ansible|
     ansible.install = false
     ansible.verbose = true
     ansible.compatibility_mode = "2.0"

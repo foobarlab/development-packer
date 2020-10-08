@@ -1,6 +1,12 @@
 ---
 # vim: syntax=yaml
 
+# debug ansible_vars:
+#- name: Display all variables/facts known for a host
+#  debug:
+#    var: hostvars[inventory_hostname]
+#  tags: debug_info
+
 #- include: security-limits.yml
 - include: sysctl.yml
 - include: iptables.yml

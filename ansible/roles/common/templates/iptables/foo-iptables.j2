@@ -1,7 +1,9 @@
 #!/bin/bash
 # this script sets your custom iptables and saves them to be reloaded on every system startup
 
-# the following is our IPv4 address on eth1 (external interface):
+# the following is our IPv4 address on our public interface:
+# TODO detect public ip from bash script (if names could change, like eth1 -> eth2)
+# TODO consistent if names managed by udev? see: https://wiki.gentoo.org/wiki/Udev
 EXTERNAL_IPADDR={{ ansible_eth1.ipv4.address }}
 
 # reset and clear all rules beforehand
