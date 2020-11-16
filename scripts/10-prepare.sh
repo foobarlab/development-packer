@@ -269,6 +269,9 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
 >=sys-devel/lld-9.0 Apache-2.0-with-LLVM-exceptions
 >=dev-util/lldb-9.0 Apache-2.0-with-LLVM-exceptions
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-subversion
+>=dev-vcs/subversion-1.14.0-r1 FSFAP
+DATA
 
 # ---- package.mask
 
