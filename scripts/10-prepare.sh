@@ -238,6 +238,15 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-ant
 # FIXME temporary added here, pulls in jython (build failing)
 dev-java/ant -bsf
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-nodemcu-uploader
+# Workaround: disable Python 2.7 (dependency 'wrapt' only available in Python 3.x):
+dev-embedded/nodemcu-uploader -python_targets_python2_7
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-docker-compose
+# Workaround for 'docker-compose' to prevent emerging 'configparser' which is Python 2.7 only:
+dev-python/importlib_metadata -python_targets_python2_7
+dev-python/jsonschema -python_targets_python2_7
+DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
