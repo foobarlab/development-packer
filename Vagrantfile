@@ -143,7 +143,7 @@ Vagrant.configure("2") do |config|
     echo "Configured network interfaces:"
     ip a | grep glo | awk '{print $8 " => " $2}' | cut -f1 -d/
     ip a | grep link/ether | awk '{print "MAC  => " $2}'
-    cat /etc/udev/rules.d/70-persistent-net.rules
+    cat /etc/udev/rules.d/70-persistent-net.rules || true
   SHELL
 
   # ansible provisioning executed only in finalizing step (finalize.sh)
