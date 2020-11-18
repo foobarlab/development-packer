@@ -48,9 +48,9 @@ sudo emerge -nuvtND --with-bdeps=y dev-java/openjdk-bin app-eselect/eselect-java
 
 # show/set our default java vm (user/system)
 eselect java-vm show
-#sudo eselect java-vm set system openjdk-bin-11
-#eselect java-vm set user openjdk-bin-11
-#eselect java-vm show
+sudo eselect java-vm set system openjdk-bin-11
+eselect java-vm set user openjdk-bin-11
+eselect java-vm show
 
 # ---- Kotlin
 
@@ -61,7 +61,7 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/kotlin-bin
 sudo emerge -nuvtND --with-bdeps=y dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
 
 # add epmd to default runlevel (needed for couchdb/rabbitmq)
-#sudo rc-update add epmd default
+#sudo rc-update add epmd default   # TODO remmove, hopefully better managed in Ansible
 
 # ---- Haskell
 
@@ -75,6 +75,10 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/clojure
 
 sudo emerge -nuvtND --with-bdeps=y dev-lang/ocaml
 #sudo emerge -nuvtND --with-bdeps=y dev-ml/llvm-ocaml  # TODO
+
+# ---- Racket
+
+sudo emerge -nuvtND --with-bdeps=y dev-scheme/racket
 
 # ---- JavaScript / node.js
 
