@@ -289,6 +289,10 @@ sudo mkdir -p /etc/portage/package.mask
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
 >=dev-lang/erlang-23.0
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-elixir
+# workaround: mask for rabbitmq-server-3.8.x:
+>=dev-lang/elixir-1.11
+DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
 >=dev-lang/php-7.4
 DATA
@@ -307,6 +311,14 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
 # unmask dev-db/couchdb as we use our own version (foobarlab overlay):
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
+DATA
+
+# ---- package.accept_keywords
+
+sudo mkdir -p /etc/portage/package.accept_keywords
+cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/dev-linux-headers
+# needed for dev-util/perf:
+sys-kernel/linux-headers **
 DATA
 
 # --- always copy kernel.config to current kernel src
