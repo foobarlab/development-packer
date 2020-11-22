@@ -5,7 +5,7 @@ system("./config.sh >/dev/null")
 
 $script_export_packages = <<SCRIPT
 # sync any guest packages to host (shared folder)
-rsync -urv /var/cache/portage/packages/* /vagrant/packages/  # TODO check delete? check if works
+rsync -urv /var/cache/portage/packages/* /vagrant/packages/  # TODO delete outdated?
 # clean guest packages
 rm -rf /var/cache/portage/packages/*
 # let it settle
