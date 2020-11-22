@@ -148,3 +148,7 @@ sudo emerge -nuvtND --with-bdeps=y \
 # ---- Kerberos V
 
 sudo emerge -nuvtND --with-bdeps=y app-crypt/mit-krb5
+
+# ---- create snapshot of packages compiled so far
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

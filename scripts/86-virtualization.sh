@@ -41,3 +41,7 @@ sudo udevadm trigger -c add /dev/kvm || true
 ## FIXME edit /etc/conf.d/libvirtd?
 #
 ##sudo rc-update add libvirt-guests default
+
+# ---- create snapshot of packages compiled so far
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

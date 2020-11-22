@@ -121,3 +121,7 @@ sudo emerge -nuvtND --with-bdeps=y \
 	net-dns/avahi \
 	sys-auth/nss-mdns \
 	dev-python/zeroconf
+
+# ---- create snapshot of packages compiled so far
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

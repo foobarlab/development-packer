@@ -13,3 +13,7 @@ sudo emerge -nuvtND --with-bdeps=y \
     dev-db/phpmyadmin \
     www-apps/phpsysinfo \
     www-apps/postfixadmin
+
+# ---- create snapshot of packages compiled so far
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

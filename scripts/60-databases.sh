@@ -45,4 +45,8 @@ sudo emerge -nuvtND --with-bdeps=y dev-db/couchdb
 
 # ---- Solr
 
-sudo emerge -nuvtND --with-bdeps=y dev-db/apache-solr-bin 
+sudo emerge -nuvtND --with-bdeps=y dev-db/apache-solr-bin
+
+# ---- create snapshot of packages compiled so far
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

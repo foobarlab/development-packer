@@ -153,3 +153,7 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/rust
 # ---- Whitespace
 
 sudo emerge -nuvtND --with-bdeps=y dev-lang/whitespace
+
+# ---- create snapshot of packages compiled so far
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

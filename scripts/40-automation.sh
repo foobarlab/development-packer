@@ -28,3 +28,6 @@ interpreter_python = auto_silent	# Python discovery, see: https://docs.ansible.c
 ssh_args = -o ControlMaster=auto -o ControlPersist=60s -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes
 
 DATA
+
+# ---- create snapshot of packages compiled so far
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/
