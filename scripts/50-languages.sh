@@ -67,11 +67,6 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/elixir dev-lang/erlang dev-util/reba
 
 sudo emerge -nuvtND --with-bdeps=y dev-haskell/haskell-platform
 
-# ---- Clojure
-
-# FIXME currently released Clojure 1.10.1 does not compile
-#sudo emerge -nuvtND --with-bdeps=y dev-lang/clojure
-
 # ---- OCaml
 
 sudo emerge -nuvtND --with-bdeps=y dev-lang/ocaml

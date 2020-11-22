@@ -296,10 +296,6 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
 >=dev-lang/php-7.4
 DATA
-# TODO remove, better utilize more recent version
-#cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
-#>=dev-lang/clojure-1.9.0
-#DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-nodejs
 # using 12.x LTS
 >=net-libs/nodejs-13
