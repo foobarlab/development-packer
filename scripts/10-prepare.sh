@@ -248,6 +248,10 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-docker-compose
 dev-python/importlib_metadata -python_targets_python2_7
 dev-python/jsonschema -python_targets_python2_7
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-db
+# Workaround: does not compile with OpenJDK 11:
+=sys-libs/db-5.3.28-r3 -java
+DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
