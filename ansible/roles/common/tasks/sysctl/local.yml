@@ -8,15 +8,16 @@
     state: touch
     mode: u=rw,g=r,o=r
 
-# /proc/sys/fs/inotify/max_user_watches, default: 8192, custom: 65536
+# /proc/sys/fs/inotify/max_user_watches, default: 8192
 - name: sysctl - local - change inotify limit
   lineinfile:
     path: /etc/sysctl.d/local.conf
     regexp: '^(#)?fs.inotify.max_user_watches'
     line: 'fs.inotify.max_user_watches=65536'
+    #line: 'fs.inotify.max_user_watches=524288' # TODO recommended for Theia (see https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#troubleshooting)
 
 # fs.file-max, see: https://easyengine.io/tutorials/linux/increase-open-files-limit/
-# /proc/sys/fs/file-max, default: 393841, custom: 2097152
+# /proc/sys/fs/file-max, default: 393841
 - name: sysctl - local - tweak openfiles limit
   lineinfile:
     path: /etc/sysctl.d/local.conf
