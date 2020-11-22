@@ -20,6 +20,3 @@ sudo emerge -nuvtND --with-bdeps=y dev-embedded/avrdude dev-embedded/avra dev-em
 
 sudo emerge -nuvtND --with-bdeps=y dev-embedded/esptool dev-embedded/nodemcu-uploader dev-embedded/stm32flash
 
-# ---- create snapshot of packages compiled so far
-
-sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

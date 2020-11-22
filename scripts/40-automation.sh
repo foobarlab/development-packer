@@ -29,5 +29,3 @@ ssh_args = -o ControlMaster=auto -o ControlPersist=60s -o UserKnownHostsFile=/de
 
 DATA
 
-# ---- create snapshot of packages compiled so far
-sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

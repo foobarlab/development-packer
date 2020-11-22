@@ -22,6 +22,3 @@ sudo /usr/share/docker/contrib/check-config.sh /usr/src/kernel.config || true
 sudo usermod -aG docker vagrant
 #sudo rc-update add docker default
 
-# ---- create snapshot of packages compiled so far
-
-sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/
