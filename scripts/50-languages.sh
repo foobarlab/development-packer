@@ -48,9 +48,11 @@ sudo emerge -nuvtND --with-bdeps=y dev-java/openjdk-bin app-eselect/eselect-java
 
 # show/set our default java vm (user/system)
 eselect java-vm show
-sudo eselect java-vm set system openjdk-bin-11
-eselect java-vm set user openjdk-bin-11
-eselect java-vm show
+
+# FIXME openjdk-11 causes errors for sys-libs/db (see https://bugs.gentoo.org/713866) and dev-lang/clojure, so stick to default icedtea vm for now (switch to openjdk in Ansible?)
+#sudo eselect java-vm set system openjdk-bin-11
+#eselect java-vm set user openjdk-bin-11
+#eselect java-vm show
 
 # ---- Kotlin
 
