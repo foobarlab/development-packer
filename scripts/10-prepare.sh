@@ -326,6 +326,15 @@ DATA
 
 sudo cp -f /usr/src/kernel.config /usr/src/linux/.config
 
+# --- workaround: manually download mariadb as ebuild fails downloading (see FL-7706)
+
+current_dir=`pwd`
+cd /var/cache/portage/distfiles/
+sudo wget --content-disposition https://downloads.mariadb.org/f/mariadb-10.4.15/source/mariadb-10.4.15.tar.gz/from/https%3A//archive.mariadb.org/?serve
+sudo chown -R portage:portage /var/cache/portage/distfiles/
+ls -la /var/cache/portage/distfiles/
+cd $current_dir
+
 # --- sync
 
 sudo ego sync
