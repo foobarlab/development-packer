@@ -70,8 +70,7 @@ sudo emerge -nuvtND --with-bdeps=y \
   app-vim/wikipedia-syntax \
   app-vim/xsl-syntax \
   app-vim/webapi \
-  app-vim/vim2hs \
-  app-vim/vimclojure
+  app-vim/vim2hs
 
 # ---- various network utils
 
