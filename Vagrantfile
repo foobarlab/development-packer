@@ -5,7 +5,7 @@ system("./config.sh >/dev/null")
 
 $script_export_packages = <<SCRIPT
 # sync any guest packages to host (shared folder)
-rsync -urv /var/cache/portage/packages/* /vagrant/packages/  # TODO check delete? check if works
+rsync -urv /var/cache/portage/packages/* /vagrant/packages/  # TODO delete outdated?
 # clean guest packages
 rm -rf /var/cache/portage/packages/*
 # let it settle
@@ -36,14 +36,15 @@ rc-status
 /etc/init.d/xdm-setup stop || true
 /etc/init.d/elogind stop || true
 /etc/init.d/gpm stop || true
-/etc/init.d/rsyslog stop
-/etc/init.d/dbus -D stop
-/etc/init.d/haveged stop
-/etc/init.d/udev stop
-/etc/init.d/vixie-cron stop
-/etc/init.d/dhcpcd stop
-/etc/init.d/local stop
-/etc/init.d/acpid stop
+/etc/init.d/rsyslog stop || true
+/etc/init.d/dbus -D stop || true
+/etc/init.d/haveged stop || true
+/etc/init.d/udev stop || true
+/etc/init.d/vixie-cron stop || true
+/etc/init.d/dhcpcd stop || true
+/etc/init.d/local stop || true
+/etc/init.d/acpid stop || true
+/etc/init.d/mysql stop || true
 # clean all logs
 shopt -s globstar
 truncate -s 0 /var/log/*.log
@@ -62,13 +63,18 @@ rm -f /var/log/portage/elog/*.log
 sync && sleep 30
 # debug: list running services
 rc-status
+# clean shell history
+set +o history
+rm -f /home/vagrant/.bash_history
+rm -f /root/.bash_history
+sync
 # run zerofree at last to squeeze the last bit
 # /boot
 mount -v -n -o remount,ro /dev/sda1
-zerofree -v /dev/sda1
+zerofree /dev/sda1 && echo "zerofree: success on /dev/sda1 (boot)"
 # /
 mount -v -n -o remount,ro /dev/sda4
-zerofree -v /dev/sda4
+zerofree /dev/sda4 && echo "zerofree: success on /dev/sda4 (root)"
 # swap
 swapoff -v /dev/sda3
 bash -c 'dd if=/dev/zero of=/dev/sda3 2>/dev/null' || true
@@ -106,26 +112,51 @@ Vagrant.configure("2") do |config|
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-sched", "off"]
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-vm-entry", "on"]
     #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
- end
-  # public network (bridged)
-  # TODO read file '.mac-address' and insert dynamically? autogenerate?
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true, mac: "0800273CA135", bridge: [ 
-    "eth0",
-    # TODO add alternative network cards here, see: https://www.vagrantup.com/docs/networking/public_network.html
-  ]
-  config.ssh.pty = true
+  end
+  
+  # force base mac address to be re-generated
+  #config.vm.base_mac = nil
+  
+  # fixed mac address for eth0
+  config.vm.base_mac = "080027344abc"
+  
+  # adapter 1 (eth0): private network (NAT with forwarding)
+  config.vm.network "forwarded_port", guest: 80, host: 8000
+  
+  # adapter 2 (eth1): public network (bridged)
+  config.vm.network "public_network",
+  	type: "dhcp",
+  	mac: "0800276c6237",  # fixed, pattern: 080027xxxxxx
+  	use_dhcp_assigned_default_route: true,
+  	bridge: [
+  		"eth0",
+  		"wlan0",
+  		"en0: Wi-Fi (Airport)",
+  		"en1: Wi-Fi (AirPort)"
+  	]
+  
   config.ssh.insert_key = false
+  config.ssh.connect_timeout = 60
+  
   config.vm.synced_folder '.', '/vagrant', disabled: false, automount: true
 
+  # debug: show network interfaces + ip adresses
+  config.vm.provision "net_debug", type: "shell", privileged: true, inline: <<-SHELL
+    echo "Configured network interfaces:"
+    ip a | grep glo | awk '{print $8 " => " $2}' | cut -f1 -d/
+    ip a | grep link/ether | awk '{print "MAC  => " $2}'
+    cat /etc/udev/rules.d/70-persistent-net.rules || true
+  SHELL
+
   # ansible provisioning executed only in finalizing step (finalize.sh)
-  config.vm.provision "ansible_local" do |ansible|
+  config.vm.provision "provision_ansible", type: "ansible_local" do |ansible|
     ansible.install = false
     ansible.verbose = true
     ansible.compatibility_mode = "2.0"
     ansible.playbook = "provision.yml"
-    #ansible.extra_vars = {
-    #  box_version: "#{ENV['BUILD_BOX_VERSION']}"
-    #}
+    ansible.extra_vars = {
+      mysql_root_password: "#{ENV['BUILD_MYSQL_ROOT_PASSWORD']}"
+    }
   end
 
   config.vm.provision "export_packages", type: "shell", inline: $script_export_packages, privileged: true

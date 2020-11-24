@@ -24,20 +24,21 @@ sudo udevadm trigger -c add /dev/kvm || true
 
 # ---- LXC
 
-# 'criu' provides checkpoint/restore functionality
-sudo emerge -nuvtND --with-bdeps=y \
-	sys-process/criu \
-	app-emulation/lxc
+## 'criu' provides checkpoint/restore functionality
+#sudo emerge -nuvtND --with-bdeps=y \
+#	sys-process/criu \
+#	app-emulation/lxc
 
 # ---- LibVirt
 
-sudo emerge -nuvtND --with-bdeps=y \
-	app-emulation/libvirt \
-	app-emulation/spice
+#sudo emerge -nuvtND --with-bdeps=y \
+#	app-emulation/libvirt \
+#	app-emulation/spice
+#
+## add user 'vagrant' to group 'libvirt' for administrative access
+#sudo gpasswd -a vagrant libvirt
+#
+## FIXME edit /etc/conf.d/libvirtd?
+#
+##sudo rc-update add libvirt-guests default
 
-# add user 'vagrant' to group 'libvirt' for administrative access
-sudo gpasswd -a vagrant libvirt
-
-# FIXME edit /etc/conf.d/libvirtd?
-
-#sudo rc-update add libvirt-guests default

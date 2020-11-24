@@ -21,6 +21,7 @@ sudo chmod 775 /var/cache/portage/packages
 
 echo "$BUILD_BOX_DESCRIPTION" >> ~vagrant/.release_$BUILD_BOX_NAME
 sed -i 's/<br>/\n/g' ~vagrant/.release_$BUILD_BOX_NAME
+sed -i 's/<a .*a>/'$BUILD_GIT_COMMIT_ID'/g' ~vagrant/.release_$BUILD_BOX_NAME
 
 # ---- /etc/motd and /etc/issue
 
@@ -55,7 +56,9 @@ if [ "$BUILD_CUSTOM_OVERLAY" = true ]; then
 	# example: git clone --depth 1 -b development "https://github.com/foobarlab/foobarlab-overlay.git" ./foobarlab
 	sudo git clone --depth 1 -b $BUILD_CUSTOM_OVERLAY_BRANCH "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
 	cd ./$BUILD_CUSTOM_OVERLAY_NAME
-	sudo git config pull.rebase true
+	#sudo git config pull.rebase true  # merge (default strategy)
+	#sudo git config pull.rebase true  # rebase
+	sudo git config pull.ff only       # fast forward only
 	sudo chown -R portage.portage /var/git/overlay
 	cat <<'DATA' | sudo tee -a /etc/portage/repos.conf/$BUILD_CUSTOM_OVERLAY_NAME
 [DEFAULT]
@@ -228,13 +231,22 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-libvirt
 >=sys-auth/consolekit-1.2.1 policykit
 >=dev-libs/glib-2.64.2 dbus
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-quemu
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-qemu
 >=app-emulation/qemu-5.0.0-r2 gnutls lzo nfs plugins spice snappy vhost-user-fs virtfs
 >=x11-libs/libxcb-1.14 xkb
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-ant
 # FIXME temporary added here, pulls in jython (build failing)
 dev-java/ant -bsf
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-nodemcu-uploader
+# Workaround: disable Python 2.7 (dependency 'wrapt' only available in Python 3.x):
+dev-embedded/nodemcu-uploader -python_targets_python2_7
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-docker-compose
+# Workaround for 'docker-compose' to prevent emerging 'configparser' which is Python 2.7 only:
+dev-python/importlib_metadata -python_targets_python2_7
+dev-python/jsonschema -python_targets_python2_7
 DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
@@ -258,8 +270,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-ffmpeg
 >=media-libs/quirc-1.0 AS-IS
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
-#>=sys-devel/llvm-9.0 Apache-2.0-with-LLVM-exceptions
-#>=sys-devel/llvm-common-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/clang-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-devel/clang-common-9.0 Apache-2.0-with-LLVM-exceptions
 >=sys-libs/compiler-rt-sanitizers-9.0 Apache-2.0-with-LLVM-exceptions
@@ -269,21 +279,26 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-llvm
 >=sys-devel/lld-9.0 Apache-2.0-with-LLVM-exceptions
 >=dev-util/lldb-9.0 Apache-2.0-with-LLVM-exceptions
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-subversion
+>=dev-vcs/subversion-1.14.0-r1 FSFAP
+DATA
 
 # ---- package.mask
 
 sudo mkdir -p /etc/portage/package.mask
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
-# workaround: temporary mask
 >=dev-lang/erlang-23.0
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-elixir
+# workaround: mask for rabbitmq-server-3.8.x:
+>=dev-lang/elixir-1.11
+DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
-# workaround: temporary mask
 >=dev-lang/php-7.4
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-clojure
-# workaround: temporary mask
->=dev-lang/clojure-1.9.0
+cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-nodejs
+# using 12.x LTS
+>=net-libs/nodejs-13
 DATA
 
 # ---- package.unmask
@@ -293,6 +308,14 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.unmask/dev-couchdb
 # unmask dev-db/couchdb as we use our own version (foobarlab overlay):
 # Pacho Ramos <pacho@gentoo.org> (11 Nov 2018): Unmaintained, security issues (#630796, #663164). Removal in a month.
 >=dev-db/couchdb-2.3.0
+DATA
+
+# ---- package.accept_keywords
+
+sudo mkdir -p /etc/portage/package.accept_keywords
+cat <<'DATA' | sudo tee -a /etc/portage/package.accept_keywords/dev-linux-headers
+# needed for dev-util/perf:
+sys-kernel/linux-headers **
 DATA
 
 # --- always copy kernel.config to current kernel src

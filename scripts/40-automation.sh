@@ -23,6 +23,9 @@ cat <<'DATA' | sudo tee -a /etc/ansible/ansible.cfg
 [defaults]
 host_key_checking = no				# disable SSH host key checking, see: https://www.vagrantup.com/docs/provisioning/ansible_local.html
 interpreter_python = auto_silent	# Python discovery, see: https://docs.ansible.com/ansible/latest/reference_appendices/interpreter_discovery.html
+
 [ssh_connection]
 ssh_args = -o ControlMaster=auto -o ControlPersist=60s -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes
+
 DATA
+

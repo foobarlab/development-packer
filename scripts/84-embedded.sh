@@ -13,8 +13,10 @@ sudo emerge -nuvtND --with-bdeps=y sys-devel/crossdev
 
 sudo emerge -nuvtND --with-bdeps=y dev-embedded/avrdude dev-embedded/avra dev-embedded/arduino-builder
 
-# TODO configure crossdev (run 'crossdev -s4 avr')
+# TODO configure crossdev:
+#sudo crossdev -s4 avr
 
 # ---- ESP8266/ ESP32 / STM32
 
 sudo emerge -nuvtND --with-bdeps=y dev-embedded/esptool dev-embedded/nodemcu-uploader dev-embedded/stm32flash
+

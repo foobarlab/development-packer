@@ -70,8 +70,7 @@ sudo emerge -nuvtND --with-bdeps=y \
   app-vim/wikipedia-syntax \
   app-vim/xsl-syntax \
   app-vim/webapi \
-  app-vim/vim2hs \
-  app-vim/vimclojure
+  app-vim/vim2hs
 
 # ---- various network utils
 
@@ -95,8 +94,7 @@ sudo emerge -nuvtND --with-bdeps=y \
   net-misc/httpie \
   net-misc/geoipupdate \
   net-analyzer/tsung \
-  net-misc/keychain \
-  net-analyzer/cbm
+  net-misc/keychain
 
 # install 'minica' in GOPATH
 sudo GOPATH="/opt/go" go get github.com/jsha/minica
@@ -112,10 +110,10 @@ sudo emerge -nuvtND --with-bdeps=y \
   app-text/multitail \
   app-misc/jq \
   sys-process/iotop \
-  app-editors/curses-hexedit
+  app-editors/curses-hexedit \
+  sys-apps/exa
 
 # FIXME app-shells/fzf no more in portage tree
-# FIXME sys-apps/exa fails to build
 
 # ---- gfx/video utils
 
@@ -126,24 +124,27 @@ sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-imagick
 
 # ---- protobuf
 
-sudo emerge -nuvtND --with-bdeps=y \
-  dev-libs/protobuf \
-  dev-python/protobuf-python \
-  dev-libs/protobuf-c \
-  dev-java/protobuf-java \
-  dev-erlang/protobuffs \
-  dev-go/go-protobuf \
-  dev-ruby/google-protobuf
+#sudo emerge -nuvtND --with-bdeps=y \
+#  dev-libs/protobuf \
+#  dev-python/protobuf-python \
+#  dev-libs/protobuf-c \
+#  dev-java/protobuf-java \
+#  dev-erlang/protobuffs \
+#  dev-go/go-protobuf \
+#  dev-ruby/google-protobuf
 
 # ---- debugging / profiling / benchmark
 
 sudo emerge -nuvtND --with-bdeps=y \
 	sys-devel/gdb \
 	dev-util/strace \
-	dev-util/systemtap
+	dev-util/systemtap \
+	sys-apps/lnxhc \
+	dev-util/perf
 
 #sudo emerge -nuvtND --with-bdeps=y dev-db/mysql-super-smack    # benchmark mysql/postgresql
 
 # ---- Kerberos V
 
 sudo emerge -nuvtND --with-bdeps=y app-crypt/mit-krb5
+

@@ -91,7 +91,7 @@ if [ -f "$BUILD_OUTPUT_FILE_TEMP" ]; then
     echo "Adding '$BUILD_BOX_NAME' ..."
     vagrant box add --name "$BUILD_BOX_NAME" "$BUILD_OUTPUT_FILE_TEMP"
     echo "Powerup and provision '$BUILD_BOX_NAME' (running only 'shell' scripts) ..."
-    vagrant --provision up --provision-with shell || { echo "Unable to startup '$BUILD_BOX_NAME'."; exit 1; }
+    vagrant --provision up --provision-with net_debug,export_packages,cleanup_kernel,cleanup || { echo "Unable to startup '$BUILD_BOX_NAME'."; exit 1; }
     echo "Exporting intermediate box to '$BUILD_OUTPUT_FILE_INTERMEDIATE' ..."
     vagrant package --output "$BUILD_OUTPUT_FILE_INTERMEDIATE"
 	echo "Removing temporary box file ..."

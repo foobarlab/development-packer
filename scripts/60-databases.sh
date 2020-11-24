@@ -45,4 +45,5 @@ sudo emerge -nuvtND --with-bdeps=y dev-db/couchdb
 
 # ---- Solr
 
-sudo emerge -nuvtND --with-bdeps=y dev-db/apache-solr-bin 
+sudo emerge -nuvtND --with-bdeps=y dev-db/apache-solr-bin
+

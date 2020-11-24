@@ -9,7 +9,7 @@ fi
 
 # ---- Apache
 
-sudo emerge -nuvtND --with-bdeps=y www-servers/apache www-apache/mod_security www-apache/modsecurity-crs app-admin/apachetop
+sudo emerge -nuvtND --with-bdeps=y www-servers/apache app-admin/apachetop
 
 # add some more (optional) modules
 sudo emerge -nuvtND --with-bdeps=y \
@@ -25,7 +25,11 @@ sudo emerge -nuvtND --with-bdeps=y \
 	www-apache/mod_umask \
 	www-apache/mod_xsendfile
 
-# TESTING: www-apache/mod_dnssd www-apache/mod_tidy
+# TODO: add mod_security
+#sudo emerge -nuvtND --with-bdeps=y www-apache/mod_security www-apache/modsecurity-crs
+
+# TESTING:
+#sudo emerge -nuvtND --with-bdeps=y www-apache/mod_dnssd www-apache/mod_tidy
 
 # set global server name to avoid annoying warning message on startup
 cat <<'DATA' | sudo tee -a /etc/apache2/httpd.conf
@@ -117,3 +121,4 @@ sudo emerge -nuvtND --with-bdeps=y \
 	net-dns/avahi \
 	sys-auth/nss-mdns \
 	dev-python/zeroconf
+

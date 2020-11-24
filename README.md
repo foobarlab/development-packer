@@ -11,13 +11,13 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
  - Timezone: ```UTC```
  - NAT Networking using DHCP (virtio)
  - Vagrant user *vagrant* with password *vagrant* (can get superuser via sudo without password), additionally using the default SSH authorized keys provided by Vagrant (see https://github.com/hashicorp/vagrant/tree/master/keys) 
- - Optional: build your own Debian Kernel 5.4
+ - Optional: build your own Debian Kernel 5.9
  - List of installed software:
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
     - Optional: *Docker* (for containerization, default: enabled)
     - Version Control: *Git, Subversion, Mercurial, CVS*
-    - Programming languages: *Python, Ruby, Java, (Kotlin), Scala, Groovy, (Clojure), Rust, PHP, Javascript with Node.js, Perl, Go, Elixir, Erlang, (OCaml), (Haskell), Lua, (Whitespace), (LLVM)*
+    - Programming languages: *Python, Ruby, Java, Kotlin, Scala, Groovy, Rust, PHP, Javascript with Node.js, Perl, Go, Elixir, Erlang, OCaml, Haskell, Lua, Whitespace, LLVM*
     - Build tools: *Ant, Maven, Ivy*
     - Mail servers: *Postfix*
     - Web Servers: *Apache, Nginx, Varnish*
