@@ -24,6 +24,3 @@ source /etc/profile
 
 # show updated packages
 sudo genlop -u -l
-
-# create snapshot of packages compiled so far
-sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/
