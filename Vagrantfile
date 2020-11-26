@@ -104,7 +104,7 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--largepages", "on"]
     vb.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
     vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
- 	# spectre meltdown mitigations, see https://www.virtualbox.org/ticket/17987
+    # spectre meltdown mitigations, see https://www.virtualbox.org/ticket/17987
     #vb.customize ["modifyvm", :id, "--largepages", "off"]
     #vb.customize ["modifyvm", :id, "--spec-ctrl", "on"]
     #vb.customize ["modifyvm", :id, "--ibpb-on-vm-entry", "on"]
