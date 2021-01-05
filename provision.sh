@@ -24,6 +24,7 @@ for script in \
   84-embedded \
   85-docker \
   86-virtualization \
+  87-user-tools \
   90-postprocess \
   99-cleanup
 do

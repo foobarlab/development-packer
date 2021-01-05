@@ -248,6 +248,13 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-docker-compose
 dev-python/importlib_metadata -python_targets_python2_7
 dev-python/jsonschema -python_targets_python2_7
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-vice
+app-emulation/vice -gtk
+DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-alsa-plugins
+# required by firefox-bin:
+>=media-plugins/alsa-plugins-1.1.9 pulseaudio
+DATA
 
 # temporary fixes (removed in 90-postprocess.sh)
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/temp-circular-fix
