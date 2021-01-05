@@ -67,7 +67,7 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/elixir dev-lang/erlang dev-util/reba
 
 # ---- Haskell
 
-sudo emerge -nuvtND --with-bdeps=y dev-haskell/haskell-platform
+sudo emerge -nuvtND --with-bdeps=y dev-lang/ghc
 
 # ---- OCaml
 
