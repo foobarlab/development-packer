@@ -47,3 +47,6 @@ sudo emerge -nuvtND --with-bdeps=y dev-db/couchdb
 
 sudo emerge -nuvtND --with-bdeps=y dev-db/apache-solr-bin
 
+# ---- MongoDB
+
+sudo emerge -nuvtND --with-bdeps=y dev-db/mongodb

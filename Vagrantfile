@@ -45,6 +45,7 @@ rc-status
 /etc/init.d/local stop || true
 /etc/init.d/acpid stop || true
 /etc/init.d/mysql stop || true
+/etc/init.d/mongodb stop || true
 # clean all logs
 shopt -s globstar
 truncate -s 0 /var/log/*.log
