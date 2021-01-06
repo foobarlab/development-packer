@@ -74,11 +74,7 @@ fi
 
 # ---- make.conf
 
-# TODO experimental
 cat <<'DATA' | sudo tee -a /etc/portage/make.conf
-# experimental: add some flags for CPUs after 2011 (intel-nehalem/amd-bulldozer)
-#CPU_FLAGS_X86="${CPU_FLAGS_X86} popcnt sse3 sse4_1 sse4_2 ssse3"
-
 MAKEOPTS="BUILD_MAKEOPTS"
 
 DATA
@@ -302,10 +298,6 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-elixir
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
 >=dev-lang/php-7.4
-DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-nodejs
-# using 12.x LTS
->=net-libs/nodejs-13
 DATA
 
 # ---- package.unmask
