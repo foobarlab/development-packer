@@ -285,6 +285,9 @@ DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-subversion
 >=dev-vcs/subversion-1.14.0-r1 FSFAP
 DATA
+cat <<'DATA' | sudo tee -a /etc/portage/package.license/dev-mongodb
+>=dev-db/mongodb-4.0.20 SSPL-1
+DATA
 
 # ---- package.mask
 
