@@ -34,5 +34,8 @@
 - include: docker.yml
 - include: theia.yml
 
+# integrate dashboard
+- include: dashboard.yml
+
 # configure service startup
 - include: finalize.yml
