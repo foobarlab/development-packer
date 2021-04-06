@@ -56,9 +56,9 @@ if [ "$BUILD_CUSTOM_OVERLAY" = true ]; then
 	# example: git clone --depth 1 -b development "https://github.com/foobarlab/foobarlab-overlay.git" ./foobarlab
 	sudo git clone --depth 1 -b $BUILD_CUSTOM_OVERLAY_BRANCH "$BUILD_CUSTOM_OVERLAY_URL" ./$BUILD_CUSTOM_OVERLAY_NAME
 	cd ./$BUILD_CUSTOM_OVERLAY_NAME
-	#sudo git config pull.rebase true  # merge (default strategy)
-	#sudo git config pull.rebase true  # rebase
-	sudo git config pull.ff only       # fast forward only
+	# set default strategy:
+	#sudo git config pull.rebase true  # merge
+	sudo git config pull.ff only       # fast forward only (recommended)
 	sudo chown -R portage.portage /var/git/overlay
 	cat <<'DATA' | sudo tee -a /etc/portage/repos.conf/$BUILD_CUSTOM_OVERLAY_NAME
 [DEFAULT]
