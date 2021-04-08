@@ -293,12 +293,13 @@ DATA
 
 sudo mkdir -p /etc/portage/package.mask
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-erlang
+# masked for couchdb 3.1.1
 >=dev-lang/erlang-23.0
 DATA
-cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-elixir
-# workaround: mask for rabbitmq-server-3.8.x:
->=dev-lang/elixir-1.11
-DATA
+#cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-elixir
+## workaround: mask for rabbitmq-server-3.8.x:
+#>=dev-lang/elixir-1.11
+#DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.mask/dev-php
 >=dev-lang/php-7.4
 DATA
