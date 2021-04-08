@@ -17,7 +17,9 @@ fi
 
 # ---- Docker and tooling
 
-sudo emerge -nuvtND --with-bdeps=y app-emulation/docker dev-util/docker-ls app-emulation/docker-compose app-emulation/docker-swarm dev-python/docker-py
+# TODO docker-swarm is deprecated, install docker-swarmkit
+
+sudo emerge -nuvtND --with-bdeps=y app-emulation/docker dev-util/docker-ls app-emulation/docker-compose dev-python/docker-py
 sudo /usr/share/docker/contrib/check-config.sh /usr/src/kernel.config || true
 sudo usermod -aG docker vagrant
 #sudo rc-update add docker default
