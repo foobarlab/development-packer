@@ -50,3 +50,7 @@ sudo emerge -nuvtND --with-bdeps=y dev-db/apache-solr-bin
 # ---- MongoDB
 
 sudo emerge -nuvtND --with-bdeps=y dev-db/mongodb
+
+# ---- Sync packages
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

@@ -42,3 +42,6 @@ sudo udevadm trigger -c add /dev/kvm || true
 #
 ##sudo rc-update add libvirt-guests default
 
+# ---- Sync packages
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

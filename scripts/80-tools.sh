@@ -148,3 +148,6 @@ sudo emerge -nuvtND --with-bdeps=y \
 
 sudo emerge -nuvtND --with-bdeps=y app-crypt/mit-krb5
 
+# ---- Sync packages
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

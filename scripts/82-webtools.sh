@@ -14,3 +14,6 @@ sudo emerge -nuvtND --with-bdeps=y \
     www-apps/phpsysinfo \
     www-apps/postfixadmin
 
+# ---- Sync packages
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

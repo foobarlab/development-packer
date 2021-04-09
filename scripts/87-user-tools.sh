@@ -13,3 +13,7 @@ fi
 sudo emerge -nuvtND --with-bdeps=y \
     www-client/firefox-bin \
     app-emulation/vice
+
+# ---- Sync packages
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

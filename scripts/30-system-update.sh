@@ -24,3 +24,6 @@ source /etc/profile
 
 # show updated packages
 sudo genlop -u -l
+
+# sync any guest packages to host (shared folder)
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/

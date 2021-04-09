@@ -156,3 +156,6 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/rust
 
 sudo emerge -nuvtND --with-bdeps=y dev-lang/whitespace
 
+# ---- Sync packages
+
+sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/
