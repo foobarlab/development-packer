@@ -13,10 +13,11 @@ fi
 
 # ---- various version control systems (other than Git)
 
-sudo emerge -nuvtND --with-bdeps=y \
-  dev-vcs/subversion \
-  dev-vcs/mercurial \
-  dev-vcs/cvs
+# FIXME skipped due subversion failing to compile (FL-8246), reenable when working
+#sudo emerge -nuvtND --with-bdeps=y \
+#  dev-vcs/subversion \
+#  dev-vcs/mercurial \
+#  dev-vcs/cvs
 
 # TODO add 'dev-vcs/git-lfs' (last build failed)
 
@@ -139,8 +140,9 @@ sudo emerge -nuvtND --with-bdeps=y \
 	sys-devel/gdb \
 	dev-util/strace \
 	dev-util/systemtap \
-	sys-apps/lnxhc \
-	dev-util/perf
+	sys-apps/lnxhc
+
+# TODO 'dev-util/perf' failed to compile
 
 #sudo emerge -nuvtND --with-bdeps=y dev-db/mysql-super-smack    # benchmark mysql/postgresql
 

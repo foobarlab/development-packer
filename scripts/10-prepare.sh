@@ -203,7 +203,8 @@ gnome-base/librsvg -tools
 # customize media-gfx/imagemagick (required by dev-php/pecl-imagick):
 media-gfx/imagemagick -openmp
 # additional supported libs for imagick:
-media-gfx/imagemagick -corefonts fontconfig graphviz jpeg2k postscript wmf raw heif hdri fpx lqr
+# FIXME 'heif' fails to compile
+media-gfx/imagemagick -corefonts fontconfig graphviz jpeg2k postscript wmf raw hdri fpx lqr
 # required by media-gfx/graphviz, dev-php/phpDocumentor, dev-php/phing:
 media-libs/gd fontconfig
 DATA
