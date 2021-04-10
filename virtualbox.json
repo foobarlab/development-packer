@@ -38,10 +38,6 @@
       "source": "scripts",
       "type": "file"
   },{
-      "destination": "/tmp/packages",
-      "source": "packages",
-      "type": "file"
-  },{
       "type": "shell",
       "script": "provision.sh",
       "environment_vars": [
