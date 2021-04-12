@@ -40,7 +40,7 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/ruby dev-ruby/rubygems dev-ruby/bund
 
 # ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy
 
-sudo emerge -nuvtND --with-bdeps=y dev-java/openjdk-bin app-eselect/eselect-java \
+sudo emerge -nuvtND --with-bdeps=y dev-java/openjdk-bin:8 dev-java/openjdk-bin app-eselect/eselect-java \
                 dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net \
                 dev-java/maven-bin dev-java/ant-ivy \
                 dev-lang/scala-bin dev-java/sbt-bin app-eselect/eselect-scala \
@@ -158,4 +158,5 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/whitespace
 
 # ---- Sync packages
 
-sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/
+sf_vagrant="`sudo df | grep vagrant | tail -1 | awk '{ print $6 }'`"
+sudo rsync -urv /var/cache/portage/packages/* $sf_vagrant/packages/

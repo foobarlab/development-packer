@@ -22,4 +22,5 @@ sudo emerge -nuvtND --with-bdeps=y dev-embedded/esptool dev-embedded/nodemcu-upl
 
 # ---- Sync packages
 
-sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/
+sf_vagrant="`sudo df | grep vagrant | tail -1 | awk '{ print $6 }'`"
+sudo rsync -urv /var/cache/portage/packages/* $sf_vagrant/packages/

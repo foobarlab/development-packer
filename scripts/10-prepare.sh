@@ -7,10 +7,10 @@ fi
 
 # ---- import binary packages
 
-mkdir -p /vagrant/packages || true
-echo "$BUILD_BOX_DESCRIPTION" >> /vagrant/packages/.release_$BUILD_BOX_NAME-$BUILD_BOX_VERSION
+sf_vagrant="`sudo df | grep vagrant | tail -1 | awk '{ print $6 }'`"
+mkdir -p $sf_vagrant/packages || true
 sudo mkdir -p /var/cache/portage/packages || true
-sudo rsync -urv /vagrant/packages /var/cache/portage/
+sudo rsync -urv $sf_vagrant/packages /var/cache/portage/
 sudo chown -R root:root /var/cache/portage/packages
 sudo find /var/cache/portage/packages/ -type d -exec chmod 755 {} +
 sudo find /var/cache/portage/packages/ -type f -exec chmod 644 {} +

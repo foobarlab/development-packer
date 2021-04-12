@@ -140,7 +140,8 @@ sudo emerge -nuvtND --with-bdeps=y \
 	sys-devel/gdb \
 	dev-util/strace \
 	dev-util/systemtap \
-	sys-apps/lnxhc
+	sys-apps/lnxhc \
+	app-admin/dio
 
 # TODO 'dev-util/perf' failed to compile
 
@@ -152,4 +153,5 @@ sudo emerge -nuvtND --with-bdeps=y app-crypt/mit-krb5
 
 # ---- Sync packages
 
-sudo rsync -urv /var/cache/portage/packages/* /vagrant/packages/
+sf_vagrant="`sudo df | grep vagrant | tail -1 | awk '{ print $6 }'`"
+sudo rsync -urv /var/cache/portage/packages/* $sf_vagrant/packages/

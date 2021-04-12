@@ -46,22 +46,18 @@ rc-status
 /etc/init.d/acpid stop || true
 /etc/init.d/mysql stop || true
 /etc/init.d/mongodb stop || true
-# clean all logs
-shopt -s globstar
-truncate -s 0 /var/log/*.log
-truncate -s 0 /var/log/**/*.log
-find /var/log -type f -name '*.[0-99].gz' -exec rm {} +
-logfiles=( messages dmesg lastlog wtmp )
-for i in "${logfiles[@]}"; do
-	truncate -s 0 /var/log/$i
-done
+# let it settle
+sync && sleep 10
+# run cleanup script (from funtoo-base box)
+/usr/local/sbin/foo-cleanup
+# delete some logfiles
 logfiles=( emerge emerge-fetch genkernel )
 for i in "${logfiles[@]}"; do
-	rm -f /var/log/$i.log
+    rm -f /var/log/$i.log
 done
 rm -f /var/log/portage/elog/*.log
 # let it settle
-sync && sleep 30
+sync && sleep 10
 # debug: list running services
 rc-status
 # clean shell history
@@ -114,16 +110,16 @@ Vagrant.configure("2") do |config|
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-vm-entry", "on"]
     #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
   end
-  
+
   # force base mac address to be re-generated
   #config.vm.base_mac = nil
-  
+
   # fixed mac address for eth0
   config.vm.base_mac = "080027344abc"
-  
+
   # adapter 1 (eth0): private network (NAT with forwarding)
   config.vm.network "forwarded_port", guest: 80, host: 8000
-  
+
   # adapter 2 (eth1): public network (bridged)
   config.vm.network "public_network",
   	type: "dhcp",
@@ -135,10 +131,10 @@ Vagrant.configure("2") do |config|
   		"en0: Wi-Fi (Airport)",
   		"en1: Wi-Fi (AirPort)"
   	]
-  
+
   config.ssh.insert_key = false
   config.ssh.connect_timeout = 60
-  
+
   config.vm.synced_folder '.', '/vagrant', disabled: false, automount: true
 
   # debug: show network interfaces + ip adresses
