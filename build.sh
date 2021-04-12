@@ -94,10 +94,10 @@ if [ -f "$BUILD_OUTPUT_FILE_TEMP" ]; then
     vagrant --provision up --provision-with net_debug,export_packages,cleanup_kernel,cleanup || { echo "Unable to startup '$BUILD_BOX_NAME'."; exit 1; }
     echo "Exporting intermediate box to '$BUILD_OUTPUT_FILE_INTERMEDIATE' ..."
     vagrant package --output "$BUILD_OUTPUT_FILE_INTERMEDIATE"
-	echo "Removing temporary box file ..."
-	rm -f  "$BUILD_OUTPUT_FILE_TEMP"
-	# TODO rename packer.log for backup
-	echo "Please run 'finalize.sh' to finish configuration and create the final box file."
+    echo "Removing temporary box file ..."
+    rm -f  "$BUILD_OUTPUT_FILE_TEMP"
+    # TODO rename packer.log for backup
+    echo "Please run 'finalize.sh' to finish configuration and create the final box file."
 else
     echo "There is no box file '$BUILD_OUTPUT_FILE_TEMP' in the current directory."
     exit 1
