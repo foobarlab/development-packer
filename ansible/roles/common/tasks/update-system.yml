@@ -5,4 +5,4 @@
   shell: /usr/local/sbin/foo-sync
 
 - name: update system - run world update
-  shell: emerge -vtuDN --with-bdeps=y @world
+  shell: emerge -vtuDN --color=n --with-bdeps=y @world
