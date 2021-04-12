@@ -12,4 +12,5 @@
 - include: iptables.yml
 - include: users-and-groups.yml
 - include: fix-dirs.yml
+- include: update-system.yml
 - include: java.yml
