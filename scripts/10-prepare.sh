@@ -187,7 +187,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-php
 dev-lang/php curl pdo mysql mysqli xmlwriter xmlreader apache2 argon2 bcmath calendar cgi enchant flatfile fpm inifile mhash odbc postgres soap sockets sodium spell xmlrpc xslt zip zip-encryption sqlite phar opcache tidy xpm gmp ftp
 # required by www-apps/postfixadmin:
 >=dev-lang/php-5.6 imap
-# various extensions:
+# various extensions: FIXME check for PHP 7.4 compatibility
 dev-php/pecl-redis igbinary
 DATA
 cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-erlang
