@@ -39,6 +39,7 @@ sudo cp -f /usr/src/kernel.config /usr/src/kernel.config.bak
 sudo mv -f /usr/src/kernel.config /usr/src/linux/.config
 sudo make olddefconfig
 sudo mv -f /usr/src/linux/.config /usr/src/kernel.config
+sudo cp -f /usr/src/kernel.config /usr/src/kernel.config.base
 
 # TODO set MAKEOPTS in genkernel.conf to BUILD_MAKEOPTS?
 
