@@ -98,9 +98,8 @@ sudo emerge -nuvtND --with-bdeps=y \
 # ---- Varnish proxy cache
 
 sudo emerge -nuvtND --with-bdeps=y \
-	www-servers/varnish
-
-# www-misc/varnish-modules # FIXME works in varnish 6.4 but not 6.5
+	net-proxy/varnish \
+	net-proxy/varnish-modules
 
 # ---- RabbitMQ
 
