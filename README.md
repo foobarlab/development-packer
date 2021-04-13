@@ -11,7 +11,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
  - Timezone: ```UTC```
  - NAT Networking using DHCP (virtio)
  - Vagrant user *vagrant* with password *vagrant* (can get superuser via sudo without password), additionally using the default SSH authorized keys provided by Vagrant (see https://github.com/hashicorp/vagrant/tree/master/keys) 
- - Optional: build your own Debian Kernel 5.9
+ - Optional: build your own Debian Kernel 5.10 (debian-sources)
  - List of installed software:
     - Any software installed in the [base box](https://github.com/foobarlab/funtoo-base-packer)
     - Optional: *Ansible* (for automation, default: enabled)
@@ -32,7 +32,7 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
 
 ### Download pre-build images
 
-Get the latest nightly build from Vagrant Cloud: [foobarlab/development](https://app.vagrantup.com/foobarlab/boxes/development)
+Get the latest experimental build from Vagrant Cloud: [foobarlab/development](https://app.vagrantup.com/foobarlab/boxes/development)
 
 ### Build your own using Packer
 

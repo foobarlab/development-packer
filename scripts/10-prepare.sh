@@ -331,7 +331,7 @@ sudo cp -f /usr/src/kernel.config /usr/src/linux/.config
 sudo ego sync
 sudo eclean packages
 
-# --- mix-ins
+# ---- profile mix-ins
 
 sudo epro mix-ins +media
 sudo epro list
