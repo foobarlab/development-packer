@@ -64,7 +64,8 @@ display {
 "Funtoo Linux" {
     kernel kernel[-v]
     initrd initramfs[-v]
-    params += real_root=/dev/sda4 root=PARTLABEL=rootfs rootfstype=ext4
+    params += root=auto rootfstype=auto
+    params += nomodeset
 }
 DATA
 
