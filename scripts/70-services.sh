@@ -98,8 +98,9 @@ sudo emerge -nuvtND --with-bdeps=y \
 # ---- Varnish proxy cache
 
 sudo emerge -nuvtND --with-bdeps=y \
-	net-proxy/varnish \
-	net-proxy/varnish-modules
+	net-proxy/varnish
+
+# FIXME install net-proxy/varnish-modules
 
 # ---- RabbitMQ
 
