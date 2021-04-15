@@ -17,7 +17,8 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Optional: *Ansible* (for automation, default: enabled)
     - Optional: *Docker* (for containerization, default: enabled)
     - Version Control: *Git, Subversion, Mercurial, CVS*
-    - Programming languages: *Python, Ruby, Java, Kotlin, Scala, Groovy, Rust, PHP, Javascript with Node.js, Perl, Go, Elixir, Erlang, OCaml, Haskell, Lua, Whitespace, LLVM*
+    - Programming languages: *C, C++, Python, Ruby, Java, Kotlin, Scala, Groovy, Rust, PHP, Javascript with Node.js, Perl, Go, Elixir, Erlang, OCaml, Haskell, Lua, Whitespace, LLVM*
+    - MCU programming: *ARM, AVR, ATTiny, Arduino, ESP8266, ESP32*
     - Build tools: *Ant, Maven, Ivy*
     - Mail servers: *Postfix*
     - Web Servers: *Apache, Nginx, Varnish*
@@ -26,7 +27,6 @@ It is based on the [Funtoo Base Vagrant box](https://github.com/foobarlab/funtoo
     - Networking tools: *httpie, aria2, iperf, ethtool, iptraf-ng, nmap, bindtools, netcat, mtr, iftop, tcpdump, snort, wireshark, dnstracer, dhcpdump* and more
     - Web tools: *shellinabox, phpmyadmin*
     - Various *vim* plugins
-    - Arduino/AVR Development: *AVRDUDE, AVRA, Arduino Builder*
  - Scripts for system administration in /usr/local/sbin:
     - foo-iptables: custom iptables firewall rules (restored on reboot)
 
