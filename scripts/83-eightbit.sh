@@ -7,4 +7,7 @@ fi
 
 # ---- 6502 8-bit CPU programming (Commodore, Apple)
 
-# TODO add 6502 Assembler (TASS, Acme, ...)
+# TODO ebuilds for Assemblers: 64TASS, Acme, CC65, KickAss
+# TODO ebuilds for Crunchers: pucrunch, exomizer
+# TODO move VICE emulator from user-tools here
+# TODO ebuilds for other C64 tools: sprite, char, gfx, diredit, ...
