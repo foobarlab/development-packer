@@ -93,8 +93,14 @@ Vagrant.configure("2") do |config|
     # customize VirtualBox settings, see also 'virtualbox.json'
     vb.customize ["modifyvm", :id, "--nictype1", "virtio"]
     vb.customize ["modifyvm", :id, "--nictype2", "virtio"]
-    vb.customize ["modifyvm", :id, "--audio", "none"]
-    vb.customize ["modifyvm", :id, "--usb", "off"]
+    vb.customize ["modifyvm", :id, "--audio", "pulse"]
+    vb.customize ["modifyvm", :id, "--audiocontroller", "hda"]
+    vb.customize ["modifyvm", :id, "--audiocodec", " stac9700"]
+    vb.customize ["modifyvm", :id, "--audioin", "on"]
+    vb.customize ["modifyvm", :id, "--audioout", "on"]
+    vb.customize ["modifyvm", :id, "--usb", "on"]
+    vb.customize ["modifyvm", :id, "--usbehci", "on"]
+    vb.customize ["modifyvm", :id, "--usbxhci", "on"]
     vb.customize ["modifyvm", :id, "--rtcuseutc", "on"]
     vb.customize ["modifyvm", :id, "--chipset", "ich9"]
     vb.customize ["modifyvm", :id, "--vram", "64"]
@@ -103,6 +109,7 @@ Vagrant.configure("2") do |config|
     vb.customize ["modifyvm", :id, "--hwvirtex", "on"]
     vb.customize ["modifyvm", :id, "--vtxvpid", "on"]
     vb.customize ["modifyvm", :id, "--largepages", "on"]
+    vb.customize ["modifyvm", :id, "--spec-ctrl", "off"]
     vb.customize ["modifyvm", :id, "--graphicscontroller", "vmsvga"]
     vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
     # spectre meltdown mitigations, see https://www.virtualbox.org/ticket/17987
@@ -113,6 +120,8 @@ Vagrant.configure("2") do |config|
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-sched", "off"]
     #vb.customize ["modifyvm", :id, "--l1d-flush-on-vm-entry", "on"]
     #vb.customize ["modifyvm", :id, "--nestedpaging", "off"]
+    # clipboard:
+    vb.customize ["modifyvm", :id, "--clipboard-mode", "bidirectional"]
   end
 
   # force base mac address to be re-generated
