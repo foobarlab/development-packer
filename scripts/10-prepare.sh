@@ -166,7 +166,7 @@ cat <<'DATA' | sudo tee -a /etc/portage/package.use/dev-java
 # customize java-jre, make it headless, see: https://wiki.gentoo.org/wiki/Java
 dev-java/oracle-jre-bin headless-awt -alsa -awt -cups -fontconfig
 dev-java/oracle-jdk-bin headless-awt -alsa -awt -cups -fontconfig
-dev-java/icedtea-bin headless-awt -gtk -alsa -cups -webstart
+dev-java/icedtea-bin headless-awt -gtk -alsa -cups -webstart -nsplugin
 dev-java/openjdk headless-awt -alsa -cups -webstart
 dev-java/openjdk-bin headless-awt -alsa -cups -webstart
 dev-java/openjdk-jre-bin headless-awt -alsa -cups -webstart
