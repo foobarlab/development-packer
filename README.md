@@ -84,6 +84,6 @@ Get the latest experimental build from Vagrant Cloud: [foobarlab/development](ht
 
  - Run ```./clean_cloud.sh```
 
-## Feedback welcome
+## Feedback and bug reports welcome
 
-Please create an issue.
+Please create an issue or submit a pull request.
