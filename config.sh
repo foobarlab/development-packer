@@ -5,15 +5,16 @@ command -v nproc >/dev/null 2>&1 || { echo "Command 'nproc' from coreutils requi
 
 . version.sh
 
-export BUILD_BOX_NAME="development"
 export BUILD_BOX_USERNAME="foobarlab"
+export BUILD_BOX_NAME="development"
 
 export BUILD_BOX_PROVIDER="virtualbox"
 
 export BUILD_BOX_SOURCES="https://github.com/foobarlab/development-packer"
 
+export BUILD_PARENT_BOX_USERNAME="foobarlab"
 export BUILD_PARENT_BOX_NAME="funtoo-base"
-export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="$BUILD_BOX_USERNAME/$BUILD_PARENT_BOX_NAME"
+export BUILD_PARENT_BOX_VAGRANTCLOUD_NAME="$BUILD_PARENT_BOX_USERNAME/$BUILD_PARENT_BOX_NAME"
 
 export BUILD_GUEST_TYPE="Gentoo_64"
 
