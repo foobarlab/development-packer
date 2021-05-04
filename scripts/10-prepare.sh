@@ -39,7 +39,7 @@ sudo cat /etc/motd
 
 sudo rm -f /etc/issue
 cat <<'DATA' | sudo tee -a /etc/issue
-This is a Funtoo GNU/Linux Vagrant Box (BUILD_BOX_USERNAME/BUILD_BOX_NAME BUILD_BOX_VERSION)
+This is a Funtoo GNU/Linux Vagrant Box (BUILD_BOX_USERNAME/BUILD_BOX_NAME-BUILD_BOX_VERSION)
 
 DATA
 sudo sed -i 's/BUILD_BOX_VERSION/'$BUILD_BOX_VERSION'/g' /etc/issue
