@@ -333,7 +333,6 @@ sudo eclean packages
 
 # ---- profile mix-ins
 
-sudo epro mix-ins +media
 sudo epro list
 
 user_id=$(id -u)    # FIX: because of "/etc/profile.d/java-config-2.sh: line 22: user_id: unbound variable" we try to set the variable here
