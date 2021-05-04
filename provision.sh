@@ -15,13 +15,13 @@ for script in \
   10-prepare \
   20-kernel \
   30-system-update \
+  35-window-system \
   40-automation \
   50-languages \
   60-databases \
   70-services \
   80-tools \
   82-webtools \
-  83-eightbit \
   84-embedded \
   85-docker \
   86-virtualization \

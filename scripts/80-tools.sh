@@ -118,10 +118,16 @@ sudo emerge -nuvtND --with-bdeps=y \
 
 # ---- gfx/video utils
 
-sudo emerge -nuvtND --with-bdeps=y media-gfx/imagemagick media-gfx/graphviz app-text/ghostscript-gpl media-video/ffmpeg media-video/rtmpdump
+sudo emerge -nuvtND --with-bdeps=y \
+    media-gfx/imagemagick \
+    media-gfx/graphviz \
+    app-text/ghostscript-gpl \
+    media-video/ffmpeg \
+    media-video/rtmpdump
 
 # PHP imagick ext:
-sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-imagick
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-php/pecl-imagick
 
 # ---- protobuf
 

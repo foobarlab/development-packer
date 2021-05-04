@@ -5,14 +5,12 @@ if [ -z ${BUILD_RUN:-} ]; then
   exit 1
 fi
 
-
 # ---- various user/client related software
 
 # TODO add www-client/ungoogled-chromium?
 
 sudo emerge -nuvtND --with-bdeps=y \
-    www-client/firefox-bin \
-    app-emulation/vice
+    www-client/firefox-bin
 
 # ---- Sync packages
 
