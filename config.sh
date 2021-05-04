@@ -22,10 +22,10 @@ export BUILD_GUEST_TYPE="Gentoo_64"
 export BUILD_BOX_CPUS="2"
 export BUILD_BOX_MEMORY="2048"
 
-export BUILD_CUSTOM_OVERLAY=true
-export BUILD_CUSTOM_OVERLAY_NAME="foobarlab"
-export BUILD_CUSTOM_OVERLAY_URL="https://github.com/foobarlab/foobarlab-overlay.git"
-export BUILD_CUSTOM_OVERLAY_BRANCH="development"   # set to 'development' for most current (or 'main' for more stable)
+export BUILD_CUSTOM_OVERLAY=false
+export BUILD_CUSTOM_OVERLAY_NAME="commodore"
+export BUILD_CUSTOM_OVERLAY_URL="https://github.com/eyesee/commodore-overlay.git"
+export BUILD_CUSTOM_OVERLAY_BRANCH="main"
 
 # TODO make finalize step optional, like:
 #export BUILD_AUTO_FINALIZE=false  # if 'true' automatically run finalize.sh script
