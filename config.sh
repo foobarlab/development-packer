@@ -22,7 +22,8 @@ export BUILD_GUEST_TYPE="Gentoo_64"
 export BUILD_BOX_CPUS="2"
 export BUILD_BOX_MEMORY="2048"
 
-export BUILD_CUSTOM_OVERLAY=false
+# add commodore overlay:
+export BUILD_CUSTOM_OVERLAY=true
 export BUILD_CUSTOM_OVERLAY_NAME="commodore"
 export BUILD_CUSTOM_OVERLAY_URL="https://github.com/eyesee/commodore-overlay.git"
 export BUILD_CUSTOM_OVERLAY_BRANCH="main"
