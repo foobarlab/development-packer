@@ -61,14 +61,14 @@
     regexp: '^(#)?net.ipv4.tcp_syncookies'
     line: 'net.ipv4.tcp_syncookies=1'
 
-- name: sysctl - local - iptables - allow IP forwarding (only for DEVELOPMENT!)
-  lineinfile:
-    path: /etc/sysctl.d/local.conf
-    regexp: '^(#)?net.ipv4.ip_forward'
-    line: 'net.ipv4.ip_forward=1'
+#- name: sysctl - local - iptables - allow IP forwarding (only for DEVELOPMENT!)
+#  lineinfile:
+#    path: /etc/sysctl.d/local.conf
+#    regexp: '^(#)?net.ipv4.ip_forward'
+#    line: 'net.ipv4.ip_forward=1'
 
-- name: sysctl - local - iptables - allow localnet routing (normally dropped as martian, only for DEVELOPMENT!)
-  lineinfile:
-    path: /etc/sysctl.d/local.conf
-    regexp: '^(#)?net.ipv4.conf.all.route_localnet'
-    line: 'net.ipv4.conf.all.route_localnet=1'
+#- name: sysctl - local - iptables - allow localnet routing (normally dropped as martian, only for DEVELOPMENT!)
+#  lineinfile:
+#    path: /etc/sysctl.d/local.conf
+#    regexp: '^(#)?net.ipv4.conf.all.route_localnet'
+#    line: 'net.ipv4.conf.all.route_localnet=1'
