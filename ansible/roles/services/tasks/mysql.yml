@@ -28,9 +28,8 @@
      group: root
      mode: 0600
 
-# TODO remove, basic configuration done in Packer
-#- name: mysql - configure initial installation
-#  shell: emerge --config dev-db/mariadb
+- name: mysql - configure initial installation
+  shell: emerge --config dev-db/mariadb
 
 - name: mysql - ensure service is started for basic configuring
   shell: rc-service -q mysql start
