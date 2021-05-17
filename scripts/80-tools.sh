@@ -13,11 +13,10 @@ fi
 
 # ---- various version control systems (other than Git)
 
-# FIXME skipped due subversion failing to compile (FL-8246), reenable when working
-#sudo emerge -nuvtND --with-bdeps=y \
-#  dev-vcs/subversion \
-#  dev-vcs/mercurial \
-#  dev-vcs/cvs
+sudo emerge -nuvtND --with-bdeps=y \
+  dev-vcs/subversion \
+  dev-vcs/mercurial \
+  dev-vcs/cvs
 
 # TODO add 'dev-vcs/git-lfs' (last build failed)
 
@@ -111,8 +110,7 @@ sudo emerge -nuvtND --with-bdeps=y \
   app-text/multitail \
   app-misc/jq \
   sys-process/iotop \
-  app-editors/curses-hexedit \
-  sys-apps/exa
+  app-editors/curses-hexedit
 
 # FIXME app-shells/fzf no more in portage tree
 
@@ -151,7 +149,7 @@ sudo emerge -nuvtND --with-bdeps=y \
 
 # TODO 'dev-util/perf' failed to compile
 
-#sudo emerge -nuvtND --with-bdeps=y dev-db/mysql-super-smack    # benchmark mysql/postgresql
+#sudo emerge -nuvtND --with-bdeps=y dev-db/mysql-super-smack    # TODO benchmark mysql/postgresql?
 
 # ---- Kerberos V
 

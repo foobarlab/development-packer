@@ -20,7 +20,11 @@ sudo emerge -nuvtND --with-bdeps=y \
 
 # ---- Python
 
-sudo emerge -nuvtND --with-bdeps=y dev-python/pip dev-python/sphinx dev-python/numpy
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-python/pip \
+    dev-python/sphinx \
+    dev-python/numpy
+
 #sudo emerge -nuvtND --with-bdeps=y dev-python/virtualenv
 
 # ---- Ruby
@@ -36,15 +40,27 @@ gem: --no-rdoc --no-ri
 
 DATA
 
-sudo emerge -nuvtND --with-bdeps=y dev-lang/ruby dev-ruby/rubygems dev-ruby/bundler dev-ruby/sass
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/ruby \
+    dev-ruby/rubygems \
+    dev-ruby/bundler \
+    dev-ruby/sass
 
 # ---- JVM stuff: Java / Scala / Groovy / Ant / Maven / Ivy
 
-sudo emerge -nuvtND --with-bdeps=y dev-java/openjdk-bin:8 dev-java/openjdk-bin app-eselect/eselect-java \
-                dev-java/ant dev-java/ant-contrib dev-java/ant-commons-net \
-                dev-java/maven-bin dev-java/ant-ivy \
-                dev-lang/scala-bin dev-java/sbt-bin app-eselect/eselect-scala \
-                dev-java/groovy
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-java/openjdk-bin:8 \
+    dev-java/openjdk-bin \
+    app-eselect/eselect-java \
+    dev-java/ant \
+    dev-java/ant-contrib \
+    dev-java/ant-commons-net \
+    dev-java/maven-bin \
+    dev-java/ant-ivy \
+    dev-lang/scala-bin \
+    dev-java/sbt-bin \
+    app-eselect/eselect-scala \
+    dev-java/groovy
 
 # show default java vm (user/system)
 eselect java-vm show
@@ -56,38 +72,49 @@ eselect java-vm show
 
 # ---- Kotlin
 
-sudo emerge -nuvtND --with-bdeps=y dev-lang/kotlin-bin
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/kotlin-bin
 
 # ---- Elixir / Erlang OTP
 
-sudo emerge -nuvtND --with-bdeps=y dev-lang/elixir dev-lang/erlang dev-util/rebar-bin
-
-# add epmd to default runlevel (needed for couchdb/rabbitmq)
-#sudo rc-update add epmd default   # TODO remmove, hopefully better managed in Ansible
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/elixir \
+    dev-lang/erlang \
+    dev-util/rebar-bin
 
 # ---- Haskell
 
-sudo emerge -nuvtND --with-bdeps=y dev-lang/ghc
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/ghc
 
 # ---- OCaml
 
-sudo emerge -nuvtND --with-bdeps=y dev-lang/ocaml
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/ocaml
+
 #sudo emerge -nuvtND --with-bdeps=y dev-ml/llvm-ocaml  # TODO
 
 # ---- Racket
 
-sudo emerge -nuvtND --with-bdeps=y dev-scheme/racket
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-scheme/racket
 
 # ---- JavaScript / node.js
 
-sudo emerge -nuvtND --with-bdeps=y net-libs/nodejs
+sudo emerge -nuvtND --with-bdeps=y \
+    net-libs/nodejs
 
 # TODO try nodeenv (pip install), see https://github.com/ekalinin/nodeenv
 
 # ---- PHP
 
 # PHP and some tools/exts, see: https://wiki.gentoo.org/wiki/PHP
-sudo emerge -nuvtND --with-bdeps=y dev-lang/php dev-php/xdebug dev-php/composer dev-php/pecl-oauth dev-php/igbinary
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/php \
+    dev-php/xdebug \
+    dev-php/composer \
+    dev-php/pecl-oauth \
+    dev-php/igbinary
 
 # deprecated extensions:
 #sudo emerge -nuvtND --with-bdeps=y dev-php/pecl-uploadprogress
@@ -111,7 +138,8 @@ sudo emerge -nuvtND --with-bdeps=y dev-lang/php dev-php/xdebug dev-php/composer 
 
 # ---- Go
 
-sudo emerge -nuvtND --with-bdeps=y dev-lang/go
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/go
 
 # Go apps in /opt/go:
 sudo mkdir -p /opt/go
@@ -145,16 +173,20 @@ sudo go env
 
 # ---- Lua
 
-sudo emerge -nuvtND --with-bdeps=y dev-lang/lua dev-lang/luajit
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/lua \
+    dev-lang/luajit
 
 # ---- Rust
 
 sudo emerge --unmerge dev-lang/rust-bin || true
-sudo emerge -nuvtND --with-bdeps=y dev-lang/rust
+sudo emerge -nuvtND --with-bdeps=y \
+    dev-lang/rust
 
 # ---- Whitespace
 
-sudo emerge -nuvtND --with-bdeps=y dev-lang/whitespace
+sudo emerge -nuvtND --with-bdeps=y \
+  dev-lang/whitespace
 
 # ---- Sync packages
 

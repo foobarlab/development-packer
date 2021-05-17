@@ -9,7 +9,9 @@ fi
 
 # ---- Apache
 
-sudo emerge -nuvtND --with-bdeps=y www-servers/apache app-admin/apachetop
+sudo emerge -nuvtND --with-bdeps=y \
+    www-servers/apache \
+    app-admin/apachetop
 
 # add some more (optional) modules
 sudo emerge -nuvtND --with-bdeps=y \
@@ -86,7 +88,8 @@ sudo emerge -nuvtND --with-bdeps=y \
 
 # ---- Lighttpd
 
-sudo emerge -nuvtND --with-bdeps=y www-servers/lighttpd
+sudo emerge -nuvtND --with-bdeps=y \
+    www-servers/lighttpd
 
 # ---- Let's encrypt
 
@@ -102,18 +105,17 @@ sudo emerge -nuvtND --with-bdeps=y \
 
 # FIXME install net-proxy/varnish-modules
 
-# ---- RabbitMQ
-
-sudo emerge -nuvtND --with-bdeps=y net-misc/rabbitmq-server
-
 # ---- DNSmasq
 
-sudo emerge -nuvtND --with-bdeps=y net-dns/dnsmasq
+sudo emerge -nuvtND --with-bdeps=y \
+    net-dns/dnsmasq
+
 #sudo rc-update add dnsmasq default
 
 # ---- Postfix
 
-sudo emerge -nuvtND --with-bdeps=y mail-mta/postfix
+sudo emerge -nuvtND --with-bdeps=y \
+    mail-mta/postfix
 
 # ---- Avahi / mDNS
 
